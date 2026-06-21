@@ -1,0 +1,17 @@
+# Unreal / mod build outputs
+Binaries/
+Intermediate/
+Saved/
+DerivedDataCache/
+.vs/
+
+# Local deploy / build copy artifacts
+.local-deploy/
+*.log
+
+# Graphify caches (keep graph.json; ignore heavy caches)
+graphify-out/cache/
+
+# OS cruft
+Thumbs.db
+.DS_Store
