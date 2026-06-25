@@ -1,0 +1,202 @@
+{
+  "Scripts/build.ps1": {
+    "mtime": 1782191641.8236213,
+    "ast_hash": "67bb3e701d9bdb37406ec303ffc50bce",
+    "semantic_hash": "67bb3e701d9bdb37406ec303ffc50bce"
+  },
+  "Scripts/open-editor.ps1": {
+    "mtime": 1782089191.6323788,
+    "ast_hash": "e63fa38190cedf3c3f2bfebbee4511bf",
+    "semantic_hash": "e63fa38190cedf3c3f2bfebbee4511bf"
+  },
+  "Scripts/ue/apply.py": {
+    "mtime": 1782086728.9004831,
+    "ast_hash": "b861f45859d5b2aadf18681865ecd759",
+    "semantic_hash": "b861f45859d5b2aadf18681865ecd759"
+  },
+  "Scripts/ue/apply2.py": {
+    "mtime": 1782086790.9995484,
+    "ast_hash": "8270164779eb853da41841d591cda867",
+    "semantic_hash": "8270164779eb853da41841d591cda867"
+  },
+  "Scripts/ue/apply_itempolish.py": {
+    "mtime": 1782347359.5544481,
+    "ast_hash": "d4a90b00395dc0ed7c1132625cfe8ffc",
+    "semantic_hash": "d4a90b00395dc0ed7c1132625cfe8ffc"
+  },
+  "Scripts/ue/create_mam_tree.py": {
+    "mtime": 1782365292.1002617,
+    "ast_hash": "791402149a01d527e1d8b0860bec4649",
+    "semantic_hash": "791402149a01d527e1d8b0860bec4649"
+  },
+  "Scripts/ue/discover.py": {
+    "mtime": 1782086342.1167707,
+    "ast_hash": "ac3071eb34457a22273cb0427c2d05fd",
+    "semantic_hash": "ac3071eb34457a22273cb0427c2d05fd"
+  },
+  "Scripts/ue/find_vfx.py": {
+    "mtime": 1782187484.8032103,
+    "ast_hash": "db038d828fd82d0caad9ac0ec0150ba9",
+    "semantic_hash": "db038d828fd82d0caad9ac0ec0150ba9"
+  },
+  "Scripts/ue/import_tripo.py": {
+    "mtime": 1782345849.9378946,
+    "ast_hash": "467c72c67f0870326e7c95bbb4efe6a3",
+    "semantic_hash": "467c72c67f0870326e7c95bbb4efe6a3"
+  },
+  "Scripts/ue/mkassets.py": {
+    "mtime": 1782086247.009292,
+    "ast_hash": "d0fb59dffb1c13d89cb8ff72043c7502",
+    "semantic_hash": "d0fb59dffb1c13d89cb8ff72043c7502"
+  },
+  "Scripts/ue/mkbeam.py": {
+    "mtime": 1782099750.7038305,
+    "ast_hash": "7625f15a608efa4e95a7521dd4a1bd52",
+    "semantic_hash": "7625f15a608efa4e95a7521dd4a1bd52"
+  },
+  "Scripts/ue/mkgameplay.py": {
+    "mtime": 1782086465.6517627,
+    "ast_hash": "3924979197d5b9d2225da71c67ef0264",
+    "semantic_hash": "3924979197d5b9d2225da71c67ef0264"
+  },
+  "Scripts/ue/mkicons.py": {
+    "mtime": 1782347829.7097182,
+    "ast_hash": "aff9ec6102d41e5174dd7744b988c1a1",
+    "semantic_hash": "aff9ec6102d41e5174dd7744b988c1a1"
+  },
+  "Scripts/ue/mksmoke.py": {
+    "mtime": 1782190575.425113,
+    "ast_hash": "306c4546b5d4808a1a868722c25aa55e",
+    "semantic_hash": "306c4546b5d4808a1a868722c25aa55e"
+  },
+  "Scripts/ue/move_sound_event.py": {
+    "mtime": 1782307602.853309,
+    "ast_hash": "4fffc0dc9c812367d70cd52ba729b057",
+    "semantic_hash": "4fffc0dc9c812367d70cd52ba729b057"
+  },
+  "Scripts/ue/probe.py": {
+    "mtime": 1782086034.4721463,
+    "ast_hash": "59434b80428311435952106f82d60f59",
+    "semantic_hash": "59434b80428311435952106f82d60f59"
+  },
+  "Scripts/ue/refine_probe.py": {
+    "mtime": 1782086546.48309,
+    "ast_hash": "0c09f217f2024a9dcd2e1158a340657f",
+    "semantic_hash": "0c09f217f2024a9dcd2e1158a340657f"
+  },
+  "Scripts/ue/run_ue_python.ps1": {
+    "mtime": 1782086147.2701492,
+    "ast_hash": "b843d5ae95cb0d452b7a70595d7528d0",
+    "semantic_hash": "b843d5ae95cb0d452b7a70595d7528d0"
+  },
+  "Scripts/ue/verify.py": {
+    "mtime": 1782086880.5125637,
+    "ast_hash": "821ec19fb3a6ad6e7f863fd4deaa0a34",
+    "semantic_hash": "821ec19fb3a6ad6e7f863fd4deaa0a34"
+  },
+  "Source/LaserRifleMod/LaserRifleMod.Build.cs": {
+    "mtime": 1782304333.8722532,
+    "ast_hash": "9247484dab0d6fced98515e506a1b45c",
+    "semantic_hash": "9247484dab0d6fced98515e506a1b45c"
+  },
+  "Source/LaserRifleMod/Private/LaserRifleCrosshair.cpp": {
+    "mtime": 1782339271.344414,
+    "ast_hash": "7f8a4ce46a39a806e0a58be60997f14e",
+    "semantic_hash": "7f8a4ce46a39a806e0a58be60997f14e"
+  },
+  "Source/LaserRifleMod/Private/LaserRifleMod.cpp": {
+    "mtime": 1782366262.730347,
+    "ast_hash": "d7ff80edc700aafe106c888524daf311",
+    "semantic_hash": "d7ff80edc700aafe106c888524daf311"
+  },
+  "Source/LaserRifleMod/Private/LaserRifleRootInstance.cpp": {
+    "mtime": 1782083949.8260443,
+    "ast_hash": "59faea7104a51880415c4f4e2207d4d2",
+    "semantic_hash": "59faea7104a51880415c4f4e2207d4d2"
+  },
+  "Source/LaserRifleMod/Private/LaserRifleRootWorld.cpp": {
+    "mtime": 1782191478.1648903,
+    "ast_hash": "3c93361de0f258c30f7c8c69d83f961b",
+    "semantic_hash": "3c93361de0f258c30f7c8c69d83f961b"
+  },
+  "Source/LaserRifleMod/Private/LaserRifleSchematics.cpp": {
+    "mtime": 1782365278.5625136,
+    "ast_hash": "13bdb29fd95a36a000fed402bc517bc4",
+    "semantic_hash": "13bdb29fd95a36a000fed402bc517bc4"
+  },
+  "Source/LaserRifleMod/Private/LaserRifleSessionSettings.cpp": {
+    "mtime": 1782277675.8146524,
+    "ast_hash": "02b1de044125b39224cd959d4d082cf5",
+    "semantic_hash": "02b1de044125b39224cd959d4d082cf5"
+  },
+  "Source/LaserRifleMod/Private/LaserRifleSubsystem.cpp": {
+    "mtime": 1782191796.60477,
+    "ast_hash": "45d537fdec0ef5613cc2270c5ae88025",
+    "semantic_hash": "45d537fdec0ef5613cc2270c5ae88025"
+  },
+  "Source/LaserRifleMod/Private/LaserRifleWeapon.cpp": {
+    "mtime": 1782366254.1518955,
+    "ast_hash": "fea8a04086fcc1e85fcbdfb71674626c",
+    "semantic_hash": "fea8a04086fcc1e85fcbdfb71674626c"
+  },
+  "Source/LaserRifleMod/Public/LaserRifleCrosshair.h": {
+    "mtime": 1782306822.9805255,
+    "ast_hash": "d891bb3cb10edc8de6c8fd95c576cdd2",
+    "semantic_hash": "d891bb3cb10edc8de6c8fd95c576cdd2"
+  },
+  "Source/LaserRifleMod/Public/LaserRifleMod.h": {
+    "mtime": 1782081849.5163445,
+    "ast_hash": "84569e9732bc9ba615e1ed6926853350",
+    "semantic_hash": "84569e9732bc9ba615e1ed6926853350"
+  },
+  "Source/LaserRifleMod/Public/LaserRifleRootInstance.h": {
+    "mtime": 1782081882.355639,
+    "ast_hash": "3007de84f33257ae55c7894e4270e654",
+    "semantic_hash": "3007de84f33257ae55c7894e4270e654"
+  },
+  "Source/LaserRifleMod/Public/LaserRifleRootWorld.h": {
+    "mtime": 1782094079.7025876,
+    "ast_hash": "705d8b3acad86977ac7b78dd6760818b",
+    "semantic_hash": "705d8b3acad86977ac7b78dd6760818b"
+  },
+  "Source/LaserRifleMod/Public/LaserRifleSchematics.h": {
+    "mtime": 1782365204.851446,
+    "ast_hash": "b8057c10a9f2be399d5809fe95b7bd77",
+    "semantic_hash": "b8057c10a9f2be399d5809fe95b7bd77"
+  },
+  "Source/LaserRifleMod/Public/LaserRifleSessionSettings.h": {
+    "mtime": 1782191422.62378,
+    "ast_hash": "e959642dc8dfe684c514d53f31076fbb",
+    "semantic_hash": "e959642dc8dfe684c514d53f31076fbb"
+  },
+  "Source/LaserRifleMod/Public/LaserRifleSubsystem.h": {
+    "mtime": 1782191374.971518,
+    "ast_hash": "a76a6c28f720499eb1a7033b4aea89bd",
+    "semantic_hash": "a76a6c28f720499eb1a7033b4aea89bd"
+  },
+  "Source/LaserRifleMod/Public/LaserRifleWeapon.h": {
+    "mtime": 1782366198.1731935,
+    "ast_hash": "984c963317293c9e86ac2e357bf5f96c",
+    "semantic_hash": "984c963317293c9e86ac2e357bf5f96c"
+  },
+  "audio_staging/gen_laser.py": {
+    "mtime": 1782305354.098526,
+    "ast_hash": "bc383c93cc4558fc817c278322ebbf27",
+    "semantic_hash": "bc383c93cc4558fc817c278322ebbf27"
+  },
+  "audio_staging/laser_zap_v1.wav": {
+    "mtime": 1782305358.8299272,
+    "ast_hash": "3f3b1e813458de6be78485786b4bb64c",
+    "semantic_hash": "3f3b1e813458de6be78485786b4bb64c"
+  },
+  "audio_staging/laser_zap_v2.wav": {
+    "mtime": 1782305358.8486843,
+    "ast_hash": "a46e3d0a4788de6e86e6b9e1ca07bbc1",
+    "semantic_hash": "a46e3d0a4788de6e86e6b9e1ca07bbc1"
+  },
+  "audio_staging/laser_zap_v3.wav": {
+    "mtime": 1782305358.8573635,
+    "ast_hash": "a4ff08c0e05061ff7c2f6366c869cb12",
+    "semantic_hash": "a4ff08c0e05061ff7c2f6366c869cb12"
+  }
+}
