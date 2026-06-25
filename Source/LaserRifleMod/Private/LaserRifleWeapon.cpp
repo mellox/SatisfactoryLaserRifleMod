@@ -308,6 +308,13 @@ void ALaserRifleWeapon::ProceduralArmsHold(float Dt)
 	// sliders are intuitive now (Forward/Back really moves it forward, etc.).
 	// Defaults = the player's dialed-in hold (forward 20, centered, up 15, scale 0.6).
 	float Sc = 0.6f;
+	// Per-tier hold-scale override (<=0 = keep 0.6). Lets a chunkier/leaner mesh be sized
+	// right in-hand per Mk without re-export; the global GripOverride sliders still win if on.
+	{
+		int32 VL = 1; if (ALaserRifleSubsystem* S = GetSub()) { VL = S->GetVisualLevel(); }
+		const int32 SIdx = FMath::Clamp(VL, 1, 10) - 1;
+		if (LevelHoldScales.IsValidIndex(SIdx) && LevelHoldScales[SIdx] > 0.01f) { Sc = LevelHoldScales[SIdx]; }
+	}
 	FRotator Fine = FRotator::ZeroRotator;
 	FVector Off(20.f, 0.f, 15.f);   // forward, right, up (view space)
 	if (ConfigBool(Id_GripOverride, false))
@@ -540,6 +547,16 @@ void ALaserRifleWeapon::FireLaser(AFGCharacterPlayer* Char, APlayerController* P
 	{
 		const FBox LB = BodyMesh->GetStaticMesh()->GetBoundingBox();
 		MuzzleLocal = FVector(LB.Max.X, LB.GetCenter().Y, LB.GetCenter().Z);
+	}
+	// Per-tier muzzle override (zero = keep the bbox guess). Fixes a tier whose beam exits
+	// the wrong end because the export orientation heuristic mis-picked the muzzle.
+	{
+		int32 VL = 1; if (ALaserRifleSubsystem* S = GetSub()) { VL = S->GetVisualLevel(); }
+		const int32 MIdx = FMath::Clamp(VL, 1, 10) - 1;
+		if (LevelMuzzleOffsets.IsValidIndex(MIdx) && !LevelMuzzleOffsets[MIdx].IsNearlyZero())
+		{
+			MuzzleLocal = LevelMuzzleOffsets[MIdx];
+		}
 	}
 	const FVector BeamStart = BodyMesh
 		? BodyMesh->GetComponentTransform().TransformPosition(MuzzleLocal)
@@ -884,6 +901,21 @@ void ALaserRifleWeapon::ApplyVisualsForLevel(int32 VisualLevel)
 	if (LevelBodyMeshes.IsValidIndex(Idx) && LevelBodyMeshes[Idx])
 	{
 		BodyMesh->SetStaticMesh(LevelBodyMeshes[Idx]);
+		// Per-tier geometry diagnostic (once per tier change). bbox proportions + muzzle (Max.X)
+		// + center let per-tier hold scale / muzzle be dialed from the LOG alone, and longestIsX
+		// flags any mesh whose barrel didn't land on +X (beam would exit the wrong end).
+		if (Idx != LastDiagLevel)
+		{
+			LastDiagLevel = Idx;
+			const FBox LB = LevelBodyMeshes[Idx]->GetBoundingBox();
+			const FVector Ext = LB.GetSize();
+			const FVector Cen = LB.GetCenter();
+			UE_LOG(LogLaserRifle, Display,
+				TEXT("[LR] Visual Mk%d mesh=%s bbox=(%.1f,%.1f,%.1f) muzzleX=%.1f center=(%.1f,%.1f,%.1f) longestIsX=%d"),
+				Idx + 1, *GetNameSafe(LevelBodyMeshes[Idx]), Ext.X, Ext.Y, Ext.Z,
+				LB.Max.X, Cen.X, Cen.Y, Cen.Z,
+				(Ext.X >= Ext.Y && Ext.X >= Ext.Z) ? 1 : 0);
+		}
 	}
 	// Drive the body's glow strips in the SAME per-level colour as the beam, so
 	// they always match. Works on the mesh's own material (M_Rifle_MkNN), which

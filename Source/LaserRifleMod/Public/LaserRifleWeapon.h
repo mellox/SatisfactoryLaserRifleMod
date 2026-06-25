@@ -64,6 +64,18 @@ protected:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "LaserRifle")
 	TArray<FLinearColor> LevelBeamColors;
 
+	/** Per-tier first-person HOLD scale override (index 0 = Mk1). <=0 or missing = use the
+	 *  default 0.6. Lets each Mk's mesh be sized in-hand without re-exporting; the per-tier
+	 *  geometry log ([LR] Visual MkN bbox=...) gives the numbers to fill this. */
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "LaserRifle|PerTier")
+	TArray<float> LevelHoldScales;
+
+	/** Per-tier muzzle point in BodyMesh local space (index 0 = Mk1). ZERO/missing = use the
+	 *  mesh bbox Max.X. Use this if a tier's beam exits the wrong end (orientation heuristic
+	 *  guessed the muzzle wrong for that mesh). */
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "LaserRifle|PerTier")
+	TArray<FVector> LevelMuzzleOffsets;
+
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "LaserRifle")
 	TObjectPtr<UMaterialInterface> BodyMaterial;
 
@@ -184,6 +196,7 @@ private:
 
 	float FireCooldown = 0.f;
 	bool bAttached = false;
+	int32 LastDiagLevel = -1;   // per-tier geometry diag logs once per tier change
 	float Heat = 0.f;          // 0..1 heat; >=1 = overheated (locked until cooled)
 	bool bOverheated = false;
 	float FirePulse = 0.f;     // 0..1 per-shot emissive surge (energy crackle on fire)
