@@ -5,9 +5,8 @@
 #include "LaserRifleRootWorld.generated.h"
 
 /**
- * Root game-world module. SML auto-discovers it (bRootModule) and spawns the
- * Laser Rifle subsystem in every game world. Will later also register the
- * Mk1-Mk10 schematics / research tree.
+ * Root game-world module: spawns the subsystem, registers the Mk1-Mk10 schematics
+ * (Mk1 unlocks Recipe_LaserRifle via a constructor subobject) and the MAM tree.
  */
 UCLASS()
 class LASERRIFLEMOD_API ULaserRifleRootWorld : public UGameWorldModule

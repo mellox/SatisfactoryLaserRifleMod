@@ -12,6 +12,11 @@ DerivedDataCache/
 # Graphify caches (keep graph.json; ignore heavy caches)
 graphify-out/cache/
 
+# Unused third-party placeholder pack (icons now rendered from the Tripo mesh)
+kenney_blaster-kit_2.1/
+# Stray local test dir
+__writetest_dir/
+
 # OS cruft
 Thumbs.db
 .DS_Store

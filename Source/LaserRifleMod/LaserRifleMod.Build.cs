@@ -12,7 +12,8 @@ public class LaserRifleMod : ModuleRules
 			"Core", "CoreUObject", "Engine", "InputCore",
 			"FactoryGame", "SML",
 			"AssetRegistry",
-			"SlateCore"   // schematic / descriptor icons (FSlateBrush) used later
+			"AkAudio",                     // Wwise: play laser fire sound (UAkAudioEvent)
+			"UMG", "Slate", "SlateCore"   // UUserWidget crosshair + FSlateBrush icons
 		});
 	}
 }

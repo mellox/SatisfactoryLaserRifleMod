@@ -130,12 +130,18 @@ This is the part no external tool can do for you — it must be authored here, a
 
 Confirmed for this mod (changeable later):
 
-- **Firing:** **hitscan** (trace + instant damage), not projectile. **[C++]**
-- **Ammo:** **built-in battery / charge** stored in equipment item-state — no separate craftable ammo item. **[C++]**
-- **Upgrades:** **single "Rifle" research line, Mk1–Mk10** (one MAM/HUB schematic chain; level = highest purchased), mirroring the WeaponUpgrades mod's pure-C++ schematic pattern (each level its own `UClass` so `IsSchematicPurchased` can count it). **[C++]**
-- **Config:** SML session-setting **sliders** to tune the damage curve (reusing WeaponUpgrades' config infra). **[C++]**
-- **Scaling:** damage = `base × (1 + Base)^level`, default `Base ≈ 0.16` → **×4.41 at Mk10** (tunable via slider). Beam color + intensity and the body mesh swap per level, all keyed off the replicated level value the rifle reads on equip / on research change. **[C++ drives level → asset values]**
+- **Firing:** **hitscan**, provided by the engine's native **`UFGAmmoTypeLaser`** (→ `UFGAmmoTypeInstantHit` → `UFGAmmoType`) — a trace/instant-hit laser bolt with damage, effective range, beam FX, and a built-in charge-bonus-damage field. **No custom firing C++ needed.** **[asset / engine]**
+- **Ammo / battery:** **built-in charge** = the engine's item-state ammo count (`FFGWeaponItemState.CurrentAmmoCount`, SaveGame on `AFGWeapon`). No separate craftable ammo item; regen behavior tuned via config. **[asset / engine + C++ config]**
+- **Upgrades:** **single "Rifle" research line, Mk1–Mk10** (one MAM/HUB schematic chain; level = highest purchased), mirroring WeaponUpgrades' pure-C++ schematic pattern (each level its own `UClass` so `IsSchematicPurchased` can count it). **[C++]**
+- **Config:** SML session-setting **sliders / toggles** (reusing WeaponUpgrades' config infra). **All future options live here** — the subsystem is the single config surface, so new toggles don't require rearchitecting. **[C++]**
+- **Scaling:** damage = `base × (1 + Base)^level`, default `Base ≈ 0.16` → **×4.41 at Mk10** (tunable via slider), applied by the subsystem over our laser ammo type (WeaponUpgrades pattern). **[C++]**
 - **Meshes:** all from the **Kenney Blaster Kit** (no Tripo needed). 10 of the 18 bodies, ordered below. **[asset]**
+
+**Architecture (decision A — C++ subsystem + Blueprint weapon):**
+
+- **`[C++]` subsystem** owns: the Mk level (from purchased schematics), the per-level **damage multiplier**, the per-level **visual level**, all **config** settings, and `BlueprintCallable` getters. Damage and visual level are exposed as **independent outputs**.
+- **`[asset/BP]` weapon** (a Blueprint child of `AFGWeapon`) reads those getters to swap its **body mesh** and **beam color/intensity** per level. Per-level visual values live in the BP/data, so the look is retunable **without a rebuild**.
+- **Why this split:** decoupling damage from visuals future-proofs config changes. Example: a "Freeze appearance at Mk N" toggle just makes the subsystem return a frozen `VisualLevel` while `DamageMultiplier` keeps using the real research level — one new setting, no structural change. Firing (the hard part) is engine-provided, so our C++ stays focused on progression + scaling + config.
 
 **Mk1 → Mk10 mapping (proposed default):**
 
@@ -253,3 +259,83 @@ The held-weapon **class defaults** (mesh, attach socket, tuned values) are **[as
 - Schematics reference: <https://docs.ficsit.app/satisfactory-modding/latest/Development/Satisfactory/Schematic.html>
 - Modeling guide (mesh import specifics): linked from the modding docs index <https://docs.ficsit.app/>
 - Satisfactory Modding Discord — the fastest place for weapon-specific questions.
+
+---
+
+## Part 6 — In-editor asset build (exact steps & values) — [asset], your click-work
+
+The C++ core is built and deployed (subsystem + 10 schematics + config). These are
+the in-editor assets that reference it. Do them in the CSS 5.6.1 editor.
+
+### ⚠️ Contract values that MUST match the C++ (exact strings)
+
+| Thing | Exact value (do not change) | Why |
+|---|---|---|
+| Laser ammo asset path | `/LaserRifleMod/Equipment/LaserRifle/Ammo_LaserRifle` | the subsystem resolves `Ammo_LaserRifle_C` here to scale its damage |
+| Research tree asset path | `/LaserRifleMod/Research/MAM_LaserRifle` | RootWorld auto-registers `MAM_LaserRifle_C` here |
+| Schematic classes (tree nodes) | `USchematic_LaserRifle_01` … `_10` | the 10 Mk levels the subsystem counts |
+| Subsystem getters (call from weapon BP) | `GetVisualLevel`, `GetDamageMultiplier`, `GetRifleLevel`, `GetMaxLevel` | on `ALaserRifleSubsystem` (BlueprintPure) |
+
+> Tip throughout: where a base-game equivalent exists (Rifle weapon BP, Rifle
+> recipe, an ammo type), **duplicate it and reskin** rather than building from a
+> blank parent — far fewer hidden fields to get wrong.
+
+### 6.1 Folders (under `LaserRifleMod Content`)
+Create: `Equipment/LaserRifle/`, `Equipment/LaserRifle/Meshes/`, `Equipment/LaserRifle/Icons/`, `Recipes/`, `Research/`.
+(Enable Content Browser → View Options → Show Plugin Content if the mod folder is hidden.)
+
+### 6.2 Import the 10 body meshes
+From `kenney_blaster-kit_2.1/Models/FBX format/` import these into `Equipment/LaserRifle/Meshes/`, in Mk order:
+`blaster-a, blaster-i, blaster-b, blaster-h, blaster-e, blaster-c, blaster-d, blaster-k, blaster-l, blaster-r`.
+- Import as **Static Mesh**, Generate Collision = on, Combine Meshes = on.
+- Kenney meshes are small (~metres in cm) — after import, check size against a held weapon; if tiny, set Import Uniform Scale (try 100) and re-import, or scale in the weapon BP.
+- Import `Models/FBX format/Textures/variation-a.png` once. Create one material `M_LaserRifle_Body` from it with a **Tint (Vector param)** and **Emissive (Vector param + scalar Intensity)** so the weapon BP can drive per-level color via a Dynamic Material Instance.
+
+### 6.3 Icons (optional but nice)
+Quickest: import `kenney_blaster-kit_2.1/Previews/blaster-*.png` (already 64px) into `Icons/` as `T_LaserRifle_Icon_Mk1..10`. Or use one shared icon to start.
+
+### 6.4 Laser ammo — `Ammo_LaserRifle`  (parent `UFGAmmoTypeLaser`)
+Create Blueprint Class → parent **UFGAmmoTypeLaser**, save EXACTLY at `Equipment/LaserRifle/Ammo_LaserRifle`.
+- `mDamageTypesOnImpact`: add one element, an instanced `UFGDamageType`, `mDamageAmount` = your Mk1 base (e.g. **10**). (The subsystem multiplies THIS per level.)
+- `mMaxAmmoEffectiveRange` ≈ **10000**; `mMagazineSize` = battery capacity (e.g. **25**); `mFireRate` to taste.
+- Beam FX fields (tracer/impact) for the laser look; the per-level beam COLOR is driven from the weapon BP (6.5).
+- `mBonusChargeDamagePercentage`: optional extra damage at full charge.
+
+### 6.5 Weapon — `BP_Equip_LaserRifle`  (parent `AFGWeapon`)
+Easiest: **duplicate the base-game Rifle equipment BP** and repoint it; otherwise create a Blueprint Class with parent **AFGWeapon**.
+- Set its allowed/desired ammo to **Ammo_LaserRifle** (so it fires our bolt).
+- Add a **Static Mesh Component "BodyMesh"** for the visible body (the AFGWeapon skeletal `mWeaponMesh` is for rigged guns; a static body is simpler).
+- On **Equipped** and whenever level changes, call the subsystem and apply visuals:
+  - get the `ALaserRifleSubsystem` (Get All Actors Of Class / mod-subsystem accessor),
+  - `V = GetVisualLevel()` (1–10; treat 0 as 1 for the look),
+  - set `BodyMesh` static mesh to `Meshes[V]` (a 10-entry array you fill: SM for blaster-a…r in Mk order),
+  - set the body MID **Tint/Emissive** + beam color to the Mk `V` color (Mk1 emerald `#2ECC71` → Mk10 white-hot `#F5FBFF`, per the table in Part 4).
+- Damage scaling itself needs **no BP work** — the subsystem already multiplies the ammo damage by `GetDamageMultiplier()`.
+
+### 6.6 Equipment descriptor — `Desc_LaserRifle`  (parent `FGEquipmentDescriptor`)
+- `mDisplayName` = "Laser Rifle"; `mDescription` = short blurb.
+- Icon = `T_LaserRifle_Icon_Mk1` (or shared); world/inventory mesh = a body SM (e.g. blaster-a).
+- Stack size = 1; **equipment class = `BP_Equip_LaserRifle`**.
+
+### 6.7 Recipe — `Recipe_LaserRifle`  (parent `FGRecipe`)
+Easiest: duplicate the base Rifle recipe. Otherwise:
+- `mProduct` = `Desc_LaserRifle` × 1.
+- `mIngredients` = your craft cost (e.g. 20 Reinforced Iron Plate, 20 Wire, 10 Rotor) — keep each qty ≤ half its stack size.
+- `mProducedIn` = the **Equipment Workshop / Craft Bench** (the building the base Rifle is crafted in). The recipe also registers the item.
+
+### 6.8 Research tree — `MAM_LaserRifle`  (parent `UFGResearchTree`)
+Save EXACTLY at `Research/MAM_LaserRifle` (RootWorld auto-registers `MAM_LaserRifle_C`).
+- Add **10 nodes**, linear chain Mk1 → Mk2 → … → Mk10.
+- Node N → schematic class **`USchematic_LaserRifle_0N`** (`_10` for node 10). These C++ classes appear in the schematic class picker.
+- Set the tree's MAM category/unlock so it shows up (e.g. gated behind a base MAM node you already have, or available from start).
+- This is what makes the Mk1–10 actually purchasable; without it the schematics exist but can't be researched.
+
+### 6.9 Build + test
+Run `Scripts/build.ps1` (game closed) — it cooks these assets into the pak and recompiles the C++ (now `core-2`, which auto-registers the tree). In game:
+1. Research Mk1 in the MAM → craft the rifle (recipe) → equip + fire.
+2. Research up the line → confirm damage rises and the body/beam change per Mk.
+3. Test the **Freeze Appearance at Mk** config (Mod Savegame Settings) → look locks, damage keeps climbing.
+
+> Differential note (from the C++ review): the subsystem writes damage onto the
+> ammo's shared `UFGDamageType` — verify in-game that researching changes felt
+> damage and that reloading/save-reload keeps the right value.
