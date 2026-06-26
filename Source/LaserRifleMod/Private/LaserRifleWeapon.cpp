@@ -118,7 +118,7 @@ ALaserRifleWeapon::ALaserRifleWeapon()
 	}
 
 	// Spark/flame pool (the low/mid-tier "shinies"); MIDs from the emissive beam material in BeginPlay.
-	for (int32 i = 0; i < 20; ++i)
+	for (int32 i = 0; i < 32; ++i)
 	{
 		UStaticMeshComponent* S = CreateDefaultSubobject<UStaticMeshComponent>(
 			*FString::Printf(TEXT("Spark_%d"), i));
@@ -823,28 +823,28 @@ void ALaserRifleWeapon::UpdateSparks(float Dt)
 	const bool bLow = (Tier <= 3);
 	const bool bMid = (Tier >= 4 && Tier <= 6);
 	float Rate = 0.f; bool bFlame = false;
-	FLinearColor C(1.f, 0.5f, 0.1f);            // default warm spark
+	FLinearColor C(1.f, 0.55f, 0.12f);          // default warm spark
 	if (bLow)
 	{
-		Rate = 2.f + Heat * 10.f + FirePulse * 30.f;        // idle trickle, ramps with heat, bursts on fire
-		if (Heat >= 1.f) { Rate += 18.f; bFlame = true; C = FLinearColor(1.f, 0.25f, 0.03f); }  // overheat = flames
+		Rate = 10.f + Heat * 25.f + FirePulse * 90.f;       // many tiny sparks; bursts on fire/heat
+		if (Heat >= 1.f) { Rate += 40.f; bFlame = true; C = FLinearColor(1.f, 0.28f, 0.04f); }  // overheat = flames
 	}
 	else if (bMid)
 	{
-		C = FLinearColor(0.35f, 0.6f, 1.f);                  // electric blue crackle
-		Rate = 1.f + Heat * 4.f + FirePulse * 24.f + (Heat >= 1.f ? 6.f : 0.f);
+		C = FLinearColor(0.4f, 0.65f, 1.f);                  // electric blue crackle
+		Rate = 4.f + Heat * 14.f + FirePulse * 70.f + (Heat >= 1.f ? 16.f : 0.f);
 	}
-	else // high tiers: occasional energy motes on fire (the orb is the main show)
+	else // high tiers: a few energy motes on fire (the orb is the main show)
 	{
 		C = CurrentBeamColor();
-		Rate = FirePulse * 10.f;
+		Rate = FirePulse * 25.f;
 	}
-	SparkSpawnTimer -= Dt;
-	if (Rate > 0.f && SparkSpawnTimer <= 0.f)
-	{
-		SpawnSpark(C, bFlame);
-		SparkSpawnTimer = 1.f / FMath::Clamp(Rate, 1.f, 80.f);
-	}
+	// Spawn the right COUNT this frame (framerate-independent) so bursts read as a spray.
+	SparkSpawnTimer += Rate * Dt;
+	int32 NSpawn = FMath::Min(FMath::FloorToInt(SparkSpawnTimer), 6);
+	SparkSpawnTimer -= (float)NSpawn;
+	for (int32 k = 0; k < NSpawn; ++k) { SpawnSpark(C, bFlame); }
+
 	for (int32 i = 0; i < SparkComps.Num(); ++i)
 	{
 		if (!SparkComps[i] || SparkAge[i] >= SparkLife[i]) { continue; }
@@ -853,12 +853,17 @@ void ALaserRifleWeapon::UpdateSparks(float Dt)
 		if (T >= 1.f) { SparkComps[i]->SetVisibility(false); continue; }
 		SparkVel[i].Z -= SparkGrav[i] * Dt;                  // gravity (sparks fall) / buoyancy (flames rise)
 		SparkPos[i] += SparkVel[i] * Dt;
-		SparkComps[i]->SetWorldLocation(SparkPos[i]);
-		SparkComps[i]->SetWorldScale3D(FVector(FMath::Lerp(0.045f, 0.012f, T)));
+		// TINY STREAK aligned to velocity (thin ellipsoid) = a spark, not a bloomed blob.
+		const FVector Dir = SparkVel[i].GetSafeNormal();
+		const float Wid = bFlame ? 0.010f : 0.0035f;
+		const float Len = bFlame ? 0.012f : FMath::Lerp(0.022f, 0.005f, T);
+		SparkComps[i]->SetWorldLocationAndRotation(SparkPos[i],
+			FRotationMatrix::MakeFromZ(Dir.IsNearlyZero() ? FVector::UpVector : Dir).Rotator());
+		SparkComps[i]->SetWorldScale3D(FVector(Wid, Wid, Len));
 		if (SparkMIDs.IsValidIndex(i) && SparkMIDs[i])
 		{
 			SparkMIDs[i]->SetVectorParameterValue(TEXT("BeamColor"), SparkColor[i]);
-			SparkMIDs[i]->SetScalarParameterValue(TEXT("Intensity"), FMath::Lerp(9.f, 0.f, T));
+			SparkMIDs[i]->SetScalarParameterValue(TEXT("Intensity"), FMath::Lerp(7.f, 0.f, T));
 		}
 	}
 }
@@ -880,15 +885,15 @@ void ALaserRifleWeapon::SpawnSpark(const FLinearColor& Color, bool bFlame)
 	SparkPos[Slot] = BodyMesh->GetComponentTransform().TransformPosition(Local);
 	if (bFlame)
 	{
-		SparkVel[Slot] = FVector(FMath::FRandRange(-8.f, 8.f), FMath::FRandRange(-8.f, 8.f), FMath::FRandRange(20.f, 55.f));
-		SparkGrav[Slot] = -50.f;                              // buoyant rise
-		SparkLife[Slot] = FMath::FRandRange(0.35f, 0.7f);
+		SparkVel[Slot] = FVector(FMath::FRandRange(-10.f, 10.f), FMath::FRandRange(-10.f, 10.f), FMath::FRandRange(25.f, 60.f));
+		SparkGrav[Slot] = -60.f;                              // buoyant rise
+		SparkLife[Slot] = FMath::FRandRange(0.30f, 0.6f);
 	}
 	else
 	{
-		SparkVel[Slot] = FVector(FMath::FRandRange(-45.f, 45.f), FMath::FRandRange(-45.f, 45.f), FMath::FRandRange(10.f, 65.f));
-		SparkGrav[Slot] = 220.f;
-		SparkLife[Slot] = FMath::FRandRange(0.15f, 0.4f);
+		SparkVel[Slot] = FVector(FMath::FRandRange(-90.f, 90.f), FMath::FRandRange(-90.f, 90.f), FMath::FRandRange(20.f, 120.f));
+		SparkGrav[Slot] = 300.f;                              // fast arcing sparks
+		SparkLife[Slot] = FMath::FRandRange(0.12f, 0.3f);
 	}
 	SparkColor[Slot] = Color;
 	SparkAge[Slot] = 0.f;

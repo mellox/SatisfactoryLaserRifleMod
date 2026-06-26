@@ -1,16 +1,16 @@
 # Graph Report - SatisfactoryLaserRifleMod  (2026-06-25)
 
 ## Corpus Check
-- 43 files · ~7,036,608 words
+- 43 files · ~7,037,457 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 298 nodes · 437 edges · 41 communities (30 shown, 11 thin omitted)
+- 301 nodes · 452 edges · 41 communities (30 shown, 11 thin omitted)
 - Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 8 edges (avg confidence: 0.8)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `2ff134af`
+- Built from commit: `705b815c`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -43,16 +43,16 @@
 - [[_COMMUNITY_Community 40|Community 40]]
 
 ## God Nodes (most connected - your core abstractions)
-1. `Tick()` - 18 edges
+1. `Tick()` - 20 edges
 2. `FireLaser()` - 12 edges
 3. `Building a Laser Rifle Mod for Satisfactory — Full Pipeline` - 12 edges
-4. `Part 6 — In-editor asset build (exact steps & values) — [asset], your click-work` - 11 edges
-5. `FLinearColor` - 9 edges
-6. `GetSub()` - 9 edges
-7. `MakeSlider()` - 9 edges
-8. `GetAllSchematics()` - 8 edges
-9. `GripCfg()` - 8 edges
-10. `ProceduralArmsHold()` - 8 edges
+4. `FLinearColor` - 11 edges
+5. `Part 6 — In-editor asset build (exact steps & values) — [asset], your click-work` - 11 edges
+6. `EffectiveMkLevel()` - 10 edges
+7. `CurrentBeamColor()` - 10 edges
+8. `FVector` - 9 edges
+9. `GetSub()` - 9 edges
+10. `MakeSlider()` - 9 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `Rifle Icon Hero` --references--> `Satisfactory Laser Rifle Guide Part 0`  [INFERRED]
@@ -73,7 +73,7 @@
 
 ### Community 0 - "Community 0"
 Cohesion: 0.14
-Nodes (35): AFGCharacterPlayer, ALaserRifleSubsystem, APlayerController, FLinearColor, FVector, ALaserRifleWeapon(), ApplyGripFromConfig(), ApplyVisualsForLevel() (+27 more)
+Nodes (38): AFGCharacterPlayer, ALaserRifleSubsystem, APlayerController, FLinearColor, FVector, int32, ALaserRifleWeapon(), ApplyGripFromConfig() (+30 more)
 
 ### Community 1 - "Community 1"
 Cohesion: 0.19
@@ -132,7 +132,7 @@ Cohesion: 0.49
 Nodes (10): err(), gen_class(), item_amount(), load_class(), log(), main(), make_desc(), make_equip_bp() (+2 more)
 
 ## Knowledge Gaps
-- **66 isolated node(s):** `UTexture2D`, `ALaserRifleSubsystem`, `LASERRIFLEMOD_API`, `int32`, `FPaintArgs` (+61 more)
+- **66 isolated node(s):** `ALaserRifleSubsystem`, `LASERRIFLEMOD_API`, `UTexture2D`, `int32`, `FPaintArgs` (+61 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **11 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -140,15 +140,15 @@ Nodes (10): err(), gen_class(), item_amount(), load_class(), log(), main(), make
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `FireLaser()` connect `Community 0` to `Community 3`?**
-  _High betweenness centrality (0.019) - this node is a cross-community bridge._
+  _High betweenness centrality (0.020) - this node is a cross-community bridge._
 - **Why does `FName` connect `Community 3` to `Community 0`?**
-  _High betweenness centrality (0.017) - this node is a cross-community bridge._
+  _High betweenness centrality (0.018) - this node is a cross-community bridge._
 - **Why does `FLinearColor` connect `Community 0` to `Community 8`?**
-  _High betweenness centrality (0.010) - this node is a cross-community bridge._
-- **What connects `UTexture2D`, `ALaserRifleSubsystem`, `LASERRIFLEMOD_API` to the rest of the system?**
+  _High betweenness centrality (0.011) - this node is a cross-community bridge._
+- **What connects `ALaserRifleSubsystem`, `LASERRIFLEMOD_API`, `UTexture2D` to the rest of the system?**
   _71 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Community 0` be split into smaller, more focused modules?**
-  _Cohesion score 0.14439946018893388 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.14169570267131243 - nodes in this community are weakly interconnected._
 - **Should `Community 4` be split into smaller, more focused modules?**
   _Cohesion score 0.09956709956709957 - nodes in this community are weakly interconnected._
 - **Should `Community 38` be split into smaller, more focused modules?**
