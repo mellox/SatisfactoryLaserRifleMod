@@ -1,16 +1,16 @@
 # Graph Report - SatisfactoryLaserRifleMod  (2026-06-25)
 
 ## Corpus Check
-- 41 files · ~7,024,318 words
+- 41 files · ~7,035,892 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 286 nodes · 400 edges · 40 communities (29 shown, 11 thin omitted)
+- 286 nodes · 402 edges · 40 communities (29 shown, 11 thin omitted)
 - Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 8 edges (avg confidence: 0.8)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `b277fa7c`
+- Built from commit: `438ee21c`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -42,16 +42,16 @@
 - [[_COMMUNITY_Community 39|Community 39]]
 
 ## God Nodes (most connected - your core abstractions)
-1. `Tick()` - 15 edges
+1. `Tick()` - 17 edges
 2. `Building a Laser Rifle Mod for Satisfactory — Full Pipeline` - 12 edges
 3. `FireLaser()` - 11 edges
 4. `Part 6 — In-editor asset build (exact steps & values) — [asset], your click-work` - 11 edges
 5. `FLinearColor` - 9 edges
 6. `MakeSlider()` - 9 edges
-7. `GripCfg()` - 8 edges
-8. `NativePaint()` - 8 edges
-9. `GetAllSchematics()` - 8 edges
-10. `MakeCheckBox()` - 8 edges
+7. `GetAllSchematics()` - 8 edges
+8. `GripCfg()` - 8 edges
+9. `GetSub()` - 8 edges
+10. `NativePaint()` - 8 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `Rifle Icon Hero` --references--> `Satisfactory Laser Rifle Guide Part 0`  [INFERRED]
@@ -72,7 +72,7 @@
 
 ### Community 0 - "Community 0"
 Cohesion: 0.14
-Nodes (34): AFGCharacterPlayer, ALaserRifleSubsystem, APlayerController, FLinearColor, FVector, int32, ALaserRifleWeapon(), ApplyGripFromConfig() (+26 more)
+Nodes (34): AFGCharacterPlayer, ALaserRifleSubsystem, APlayerController, FLinearColor, FVector, ALaserRifleWeapon(), ApplyGripFromConfig(), ApplyVisualsForLevel() (+26 more)
 
 ### Community 1 - "Community 1"
 Cohesion: 0.19
@@ -127,7 +127,7 @@ Cohesion: 0.60
 Nodes (5): img_bytes(), load_pil(), main(), parse_glb(), tex_to_image_index()
 
 ## Knowledge Gaps
-- **66 isolated node(s):** `ALaserRifleSubsystem`, `LASERRIFLEMOD_API`, `int32`, `FPaintArgs`, `FGeometry` (+61 more)
+- **66 isolated node(s):** `UTexture2D`, `ALaserRifleSubsystem`, `LASERRIFLEMOD_API`, `int32`, `FPaintArgs` (+61 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **11 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -140,10 +140,10 @@ _Questions this graph is uniquely positioned to answer:_
   _High betweenness centrality (0.018) - this node is a cross-community bridge._
 - **Why does `FLinearColor` connect `Community 0` to `Community 8`?**
   _High betweenness centrality (0.011) - this node is a cross-community bridge._
-- **What connects `ALaserRifleSubsystem`, `LASERRIFLEMOD_API`, `# IMPORTANT: set CDO defaults then SAVE (no post-set recompile -- recompiling a` to the rest of the system?**
+- **What connects `UTexture2D`, `ALaserRifleSubsystem`, `LASERRIFLEMOD_API` to the rest of the system?**
   _71 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Community 0` be split into smaller, more focused modules?**
-  _Cohesion score 0.1379800853485064 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.14082503556187767 - nodes in this community are weakly interconnected._
 - **Should `Community 4` be split into smaller, more focused modules?**
   _Cohesion score 0.09956709956709957 - nodes in this community are weakly interconnected._
 - **Should `Community 38` be split into smaller, more focused modules?**

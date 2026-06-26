@@ -105,8 +105,8 @@
     "semantic_hash": "7f8a4ce46a39a806e0a58be60997f14e"
   },
   "Source/LaserRifleMod/Private/LaserRifleMod.cpp": {
-    "mtime": 1782377204.9047055,
-    "ast_hash": "945a1470d5f0ff7282c006d76cc96d03",
+    "mtime": 1782431815.824494,
+    "ast_hash": "55b70c5b7517288a239a4f6754956ae2",
     "semantic_hash": ""
   },
   "Source/LaserRifleMod/Private/LaserRifleRootInstance.cpp": {
@@ -120,9 +120,9 @@
     "semantic_hash": "3c93361de0f258c30f7c8c69d83f961b"
   },
   "Source/LaserRifleMod/Private/LaserRifleSchematics.cpp": {
-    "mtime": 1782365278.5625136,
-    "ast_hash": "13bdb29fd95a36a000fed402bc517bc4",
-    "semantic_hash": "13bdb29fd95a36a000fed402bc517bc4"
+    "mtime": 1782431905.803183,
+    "ast_hash": "a46782e103a2e209b8b9eb2ed7864157",
+    "semantic_hash": ""
   },
   "Source/LaserRifleMod/Private/LaserRifleSessionSettings.cpp": {
     "mtime": 1782277675.8146524,
@@ -135,8 +135,8 @@
     "semantic_hash": "45d537fdec0ef5613cc2270c5ae88025"
   },
   "Source/LaserRifleMod/Private/LaserRifleWeapon.cpp": {
-    "mtime": 1782377191.7000327,
-    "ast_hash": "bc91ebd02ca58651af6f01cd8a19ea13",
+    "mtime": 1782431672.0210788,
+    "ast_hash": "7b876238635bf015c0e0e3042a826d5a",
     "semantic_hash": ""
   },
   "Source/LaserRifleMod/Public/LaserRifleCrosshair.h": {
@@ -175,8 +175,8 @@
     "semantic_hash": "a76a6c28f720499eb1a7033b4aea89bd"
   },
   "Source/LaserRifleMod/Public/LaserRifleWeapon.h": {
-    "mtime": 1782377150.2817407,
-    "ast_hash": "49334e4d36a1faefd28b8f55a5584ba3",
+    "mtime": 1782431625.3689284,
+    "ast_hash": "9611da213a3987621bfcdf7270164e11",
     "semantic_hash": ""
   },
   "audio_staging/gen_laser.py": {
@@ -687,6 +687,11 @@
   "tripo_rifles/fx/smoke_puff.png": {
     "mtime": 1782190546.2766745,
     "ast_hash": "2b9deec79bfc83a3054e5cebbac10fe2",
+    "semantic_hash": ""
+  },
+  "tripo_rifles/_review/_MK_LINE_FINAL.png": {
+    "mtime": 1782377492.8395817,
+    "ast_hash": "dbde3725355bf54e6d62d0ee3dd0163a",
     "semantic_hash": ""
   }
 }

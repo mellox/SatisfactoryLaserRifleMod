@@ -4,6 +4,116 @@
   "graph": {},
   "nodes": [
     {
+      "label": "make_mk_items.py",
+      "file_type": "code",
+      "source_file": "Scripts/ue/make_mk_items.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "ue_make_mk_items",
+      "community": 40,
+      "norm_label": "make_mk_items.py"
+    },
+    {
+      "label": "log()",
+      "file_type": "code",
+      "source_file": "Scripts/ue/make_mk_items.py",
+      "source_location": "L10",
+      "_origin": "ast",
+      "id": "ue_make_mk_items_log",
+      "community": 40,
+      "norm_label": "log()"
+    },
+    {
+      "label": "err()",
+      "file_type": "code",
+      "source_file": "Scripts/ue/make_mk_items.py",
+      "source_location": "L14",
+      "_origin": "ast",
+      "id": "ue_make_mk_items_err",
+      "community": 40,
+      "norm_label": "err()"
+    },
+    {
+      "label": "load_class()",
+      "file_type": "code",
+      "source_file": "Scripts/ue/make_mk_items.py",
+      "source_location": "L31",
+      "_origin": "ast",
+      "id": "ue_make_mk_items_load_class",
+      "community": 40,
+      "norm_label": "load_class()"
+    },
+    {
+      "label": "gen_class()",
+      "file_type": "code",
+      "source_file": "Scripts/ue/make_mk_items.py",
+      "source_location": "L34",
+      "_origin": "ast",
+      "id": "ue_make_mk_items_gen_class",
+      "community": 40,
+      "norm_label": "gen_class()"
+    },
+    {
+      "label": "item_amount()",
+      "file_type": "code",
+      "source_file": "Scripts/ue/make_mk_items.py",
+      "source_location": "L38",
+      "_origin": "ast",
+      "id": "ue_make_mk_items_item_amount",
+      "community": 40,
+      "norm_label": "item_amount()"
+    },
+    {
+      "label": "probe()",
+      "file_type": "code",
+      "source_file": "Scripts/ue/make_mk_items.py",
+      "source_location": "L44",
+      "_origin": "ast",
+      "id": "ue_make_mk_items_probe",
+      "community": 40,
+      "norm_label": "probe()"
+    },
+    {
+      "label": "make_equip_bp()",
+      "file_type": "code",
+      "source_file": "Scripts/ue/make_mk_items.py",
+      "source_location": "L62",
+      "_origin": "ast",
+      "id": "ue_make_mk_items_make_equip_bp",
+      "community": 40,
+      "norm_label": "make_equip_bp()"
+    },
+    {
+      "label": "make_desc()",
+      "file_type": "code",
+      "source_file": "Scripts/ue/make_mk_items.py",
+      "source_location": "L79",
+      "_origin": "ast",
+      "id": "ue_make_mk_items_make_desc",
+      "community": 40,
+      "norm_label": "make_desc()"
+    },
+    {
+      "label": "make_recipe()",
+      "file_type": "code",
+      "source_file": "Scripts/ue/make_mk_items.py",
+      "source_location": "L101",
+      "_origin": "ast",
+      "id": "ue_make_mk_items_make_recipe",
+      "community": 40,
+      "norm_label": "make_recipe()"
+    },
+    {
+      "label": "main()",
+      "file_type": "code",
+      "source_file": "Scripts/ue/make_mk_items.py",
+      "source_location": "L126",
+      "_origin": "ast",
+      "id": "ue_make_mk_items_main",
+      "community": 40,
+      "norm_label": "main()"
+    },
+    {
       "label": "LaserRifleMod.cpp",
       "file_type": "code",
       "source_file": "Source/LaserRifleMod/Private/LaserRifleMod.cpp",
@@ -137,7 +247,7 @@
       "label": "GetLevels()",
       "file_type": "code",
       "source_file": "Source/LaserRifleMod/Private/LaserRifleSchematics.cpp",
-      "source_location": "L195",
+      "source_location": "L203",
       "_origin": "ast",
       "id": "private_laserrifleschematics_getlevels",
       "community": 2,
@@ -147,7 +257,7 @@
       "label": "TArray",
       "file_type": "code",
       "source_file": "Source/LaserRifleMod/Private/LaserRifleSchematics.cpp",
-      "source_location": "L195",
+      "source_location": "L203",
       "_origin": "ast",
       "id": "tarray",
       "community": 2,
@@ -157,7 +267,7 @@
       "label": "TSubclassOf",
       "file_type": "code",
       "source_file": "Source/LaserRifleMod/Private/LaserRifleSchematics.cpp",
-      "source_location": "L195",
+      "source_location": "L203",
       "_origin": "ast",
       "id": "tsubclassof",
       "community": 2,
@@ -167,7 +277,7 @@
       "label": "UFGSchematic",
       "file_type": "code",
       "source_file": "Source/LaserRifleMod/Private/LaserRifleSchematics.cpp",
-      "source_location": "L195",
+      "source_location": "L203",
       "_origin": "ast",
       "id": "ufgschematic",
       "community": 2,
@@ -177,7 +287,7 @@
       "label": "GetDamageTiers()",
       "file_type": "code",
       "source_file": "Source/LaserRifleMod/Private/LaserRifleSchematics.cpp",
-      "source_location": "L210",
+      "source_location": "L218",
       "_origin": "ast",
       "id": "private_laserrifleschematics_getdamagetiers",
       "community": 2,
@@ -187,7 +297,7 @@
       "label": "GetHeatTiers()",
       "file_type": "code",
       "source_file": "Source/LaserRifleMod/Private/LaserRifleSchematics.cpp",
-      "source_location": "L219",
+      "source_location": "L227",
       "_origin": "ast",
       "id": "private_laserrifleschematics_getheattiers",
       "community": 2,
@@ -197,7 +307,7 @@
       "label": "GetCoolTiers()",
       "file_type": "code",
       "source_file": "Source/LaserRifleMod/Private/LaserRifleSchematics.cpp",
-      "source_location": "L225",
+      "source_location": "L233",
       "_origin": "ast",
       "id": "private_laserrifleschematics_getcooltiers",
       "community": 2,
@@ -207,7 +317,7 @@
       "label": "GetAllSchematics()",
       "file_type": "code",
       "source_file": "Source/LaserRifleMod/Private/LaserRifleSchematics.cpp",
-      "source_location": "L232",
+      "source_location": "L240",
       "_origin": "ast",
       "id": "private_laserrifleschematics_getallschematics",
       "community": 2,
@@ -427,7 +537,7 @@
       "label": "UpdateHeatFX()",
       "file_type": "code",
       "source_file": "Source/LaserRifleMod/Private/LaserRifleWeapon.cpp",
-      "source_location": "L611",
+      "source_location": "L614",
       "_origin": "ast",
       "id": "private_laserrifleweapon_updateheatfx",
       "community": 0,
@@ -437,7 +547,7 @@
       "label": "UpdateSmoke()",
       "file_type": "code",
       "source_file": "Source/LaserRifleMod/Private/LaserRifleWeapon.cpp",
-      "source_location": "L703",
+      "source_location": "L706",
       "_origin": "ast",
       "id": "private_laserrifleweapon_updatesmoke",
       "community": 0,
@@ -447,7 +557,7 @@
       "label": "SpawnPuff()",
       "file_type": "code",
       "source_file": "Source/LaserRifleMod/Private/LaserRifleWeapon.cpp",
-      "source_location": "L744",
+      "source_location": "L747",
       "_origin": "ast",
       "id": "private_laserrifleweapon_spawnpuff",
       "community": 0,
@@ -457,7 +567,7 @@
       "label": "FVector",
       "file_type": "code",
       "source_file": "Source/LaserRifleMod/Private/LaserRifleWeapon.cpp",
-      "source_location": "L744",
+      "source_location": "L747",
       "_origin": "ast",
       "id": "fvector",
       "community": 0,
@@ -467,7 +577,7 @@
       "label": "ShowBeam()",
       "file_type": "code",
       "source_file": "Source/LaserRifleMod/Private/LaserRifleWeapon.cpp",
-      "source_location": "L768",
+      "source_location": "L771",
       "_origin": "ast",
       "id": "private_laserrifleweapon_showbeam",
       "community": 0,
@@ -477,7 +587,7 @@
       "label": "FLinearColor",
       "file_type": "code",
       "source_file": "Source/LaserRifleMod/Private/LaserRifleWeapon.cpp",
-      "source_location": "L768",
+      "source_location": "L771",
       "_origin": "ast",
       "id": "flinearcolor",
       "community": 0,
@@ -487,7 +597,7 @@
       "label": "HideBeam()",
       "file_type": "code",
       "source_file": "Source/LaserRifleMod/Private/LaserRifleWeapon.cpp",
-      "source_location": "L813",
+      "source_location": "L816",
       "_origin": "ast",
       "id": "private_laserrifleweapon_hidebeam",
       "community": 0,
@@ -497,7 +607,7 @@
       "label": "ForceCrosshair()",
       "file_type": "code",
       "source_file": "Source/LaserRifleMod/Private/LaserRifleWeapon.cpp",
-      "source_location": "L818",
+      "source_location": "L821",
       "_origin": "ast",
       "id": "private_laserrifleweapon_forcecrosshair",
       "community": 0,
@@ -507,7 +617,7 @@
       "label": "EnsureCrosshair()",
       "file_type": "code",
       "source_file": "Source/LaserRifleMod/Private/LaserRifleWeapon.cpp",
-      "source_location": "L831",
+      "source_location": "L834",
       "_origin": "ast",
       "id": "private_laserrifleweapon_ensurecrosshair",
       "community": 0,
@@ -517,7 +627,7 @@
       "label": "GetSub()",
       "file_type": "code",
       "source_file": "Source/LaserRifleMod/Private/LaserRifleWeapon.cpp",
-      "source_location": "L860",
+      "source_location": "L863",
       "_origin": "ast",
       "id": "private_laserrifleweapon_getsub",
       "community": 0,
@@ -527,37 +637,47 @@
       "label": "ALaserRifleSubsystem",
       "file_type": "code",
       "source_file": "Source/LaserRifleMod/Private/LaserRifleWeapon.cpp",
-      "source_location": "L860",
+      "source_location": "L863",
       "_origin": "ast",
       "id": "alaserriflesubsystem",
       "community": 0,
       "norm_label": "alaserriflesubsystem"
     },
     {
-      "label": "LR_PaletteColor()",
+      "label": "EffectiveMkLevel()",
       "file_type": "code",
       "source_file": "Source/LaserRifleMod/Private/LaserRifleWeapon.cpp",
-      "source_location": "L872",
+      "source_location": "L875",
       "_origin": "ast",
-      "id": "private_laserrifleweapon_lr_palettecolor",
+      "id": "private_laserrifleweapon_effectivemklevel",
       "community": 0,
-      "norm_label": "lr_palettecolor()"
+      "norm_label": "effectivemklevel()"
     },
     {
       "label": "int32",
       "file_type": "code",
       "source_file": "Source/LaserRifleMod/Private/LaserRifleWeapon.cpp",
-      "source_location": "L872",
+      "source_location": "L875",
       "_origin": "ast",
       "id": "source_laserriflemod_private_laserrifleweapon_cpp_int32",
       "community": 0,
       "norm_label": "int32"
     },
     {
+      "label": "LR_PaletteColor()",
+      "file_type": "code",
+      "source_file": "Source/LaserRifleMod/Private/LaserRifleWeapon.cpp",
+      "source_location": "L882",
+      "_origin": "ast",
+      "id": "private_laserrifleweapon_lr_palettecolor",
+      "community": 0,
+      "norm_label": "lr_palettecolor()"
+    },
+    {
       "label": "LevelColor()",
       "file_type": "code",
       "source_file": "Source/LaserRifleMod/Private/LaserRifleWeapon.cpp",
-      "source_location": "L883",
+      "source_location": "L893",
       "_origin": "ast",
       "id": "private_laserrifleweapon_levelcolor",
       "community": 0,
@@ -567,7 +687,7 @@
       "label": "CurrentBeamColor()",
       "file_type": "code",
       "source_file": "Source/LaserRifleMod/Private/LaserRifleWeapon.cpp",
-      "source_location": "L896",
+      "source_location": "L906",
       "_origin": "ast",
       "id": "private_laserrifleweapon_currentbeamcolor",
       "community": 0,
@@ -577,7 +697,7 @@
       "label": "RefreshVisuals()",
       "file_type": "code",
       "source_file": "Source/LaserRifleMod/Private/LaserRifleWeapon.cpp",
-      "source_location": "L903",
+      "source_location": "L911",
       "_origin": "ast",
       "id": "private_laserrifleweapon_refreshvisuals",
       "community": 0,
@@ -587,7 +707,7 @@
       "label": "ApplyVisualsForLevel()",
       "file_type": "code",
       "source_file": "Source/LaserRifleMod/Private/LaserRifleWeapon.cpp",
-      "source_location": "L910",
+      "source_location": "L916",
       "_origin": "ast",
       "id": "private_laserrifleweapon_applyvisualsforlevel",
       "community": 0,
@@ -2852,6 +2972,293 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "Scripts/ue/make_mk_items.py",
+      "source_location": "L14",
+      "weight": 1.0,
+      "source": "ue_make_mk_items",
+      "target": "ue_make_mk_items_err",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Scripts/ue/make_mk_items.py",
+      "source_location": "L34",
+      "weight": 1.0,
+      "source": "ue_make_mk_items",
+      "target": "ue_make_mk_items_gen_class",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Scripts/ue/make_mk_items.py",
+      "source_location": "L38",
+      "weight": 1.0,
+      "source": "ue_make_mk_items",
+      "target": "ue_make_mk_items_item_amount",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Scripts/ue/make_mk_items.py",
+      "source_location": "L31",
+      "weight": 1.0,
+      "source": "ue_make_mk_items",
+      "target": "ue_make_mk_items_load_class",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Scripts/ue/make_mk_items.py",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "ue_make_mk_items",
+      "target": "ue_make_mk_items_log",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Scripts/ue/make_mk_items.py",
+      "source_location": "L126",
+      "weight": 1.0,
+      "source": "ue_make_mk_items",
+      "target": "ue_make_mk_items_main",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Scripts/ue/make_mk_items.py",
+      "source_location": "L79",
+      "weight": 1.0,
+      "source": "ue_make_mk_items",
+      "target": "ue_make_mk_items_make_desc",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Scripts/ue/make_mk_items.py",
+      "source_location": "L62",
+      "weight": 1.0,
+      "source": "ue_make_mk_items",
+      "target": "ue_make_mk_items_make_equip_bp",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Scripts/ue/make_mk_items.py",
+      "source_location": "L101",
+      "weight": 1.0,
+      "source": "ue_make_mk_items",
+      "target": "ue_make_mk_items_make_recipe",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Scripts/ue/make_mk_items.py",
+      "source_location": "L44",
+      "weight": 1.0,
+      "source": "ue_make_mk_items",
+      "target": "ue_make_mk_items_probe",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "Scripts/ue/make_mk_items.py",
+      "source_location": "L127",
+      "weight": 1.0,
+      "source": "ue_make_mk_items_main",
+      "target": "ue_make_mk_items_log",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "Scripts/ue/make_mk_items.py",
+      "source_location": "L96",
+      "weight": 1.0,
+      "source": "ue_make_mk_items_make_desc",
+      "target": "ue_make_mk_items_log",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "Scripts/ue/make_mk_items.py",
+      "source_location": "L76",
+      "weight": 1.0,
+      "source": "ue_make_mk_items_make_equip_bp",
+      "target": "ue_make_mk_items_log",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "Scripts/ue/make_mk_items.py",
+      "source_location": "L121",
+      "weight": 1.0,
+      "source": "ue_make_mk_items_make_recipe",
+      "target": "ue_make_mk_items_log",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "Scripts/ue/make_mk_items.py",
+      "source_location": "L45",
+      "weight": 1.0,
+      "source": "ue_make_mk_items_probe",
+      "target": "ue_make_mk_items_log",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "Scripts/ue/make_mk_items.py",
+      "source_location": "L84",
+      "weight": 1.0,
+      "source": "ue_make_mk_items_make_desc",
+      "target": "ue_make_mk_items_err",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "Scripts/ue/make_mk_items.py",
+      "source_location": "L68",
+      "weight": 1.0,
+      "source": "ue_make_mk_items_make_equip_bp",
+      "target": "ue_make_mk_items_err",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "Scripts/ue/make_mk_items.py",
+      "source_location": "L106",
+      "weight": 1.0,
+      "source": "ue_make_mk_items_make_recipe",
+      "target": "ue_make_mk_items_err",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "Scripts/ue/make_mk_items.py",
+      "source_location": "L110",
+      "weight": 1.0,
+      "source": "ue_make_mk_items_make_recipe",
+      "target": "ue_make_mk_items_load_class",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "Scripts/ue/make_mk_items.py",
+      "source_location": "L89",
+      "weight": 1.0,
+      "source": "ue_make_mk_items_make_desc",
+      "target": "ue_make_mk_items_gen_class",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "Scripts/ue/make_mk_items.py",
+      "source_location": "L67",
+      "weight": 1.0,
+      "source": "ue_make_mk_items_make_equip_bp",
+      "target": "ue_make_mk_items_gen_class",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "Scripts/ue/make_mk_items.py",
+      "source_location": "L108",
+      "weight": 1.0,
+      "source": "ue_make_mk_items_make_recipe",
+      "target": "ue_make_mk_items_gen_class",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "Scripts/ue/make_mk_items.py",
+      "source_location": "L109",
+      "weight": 1.0,
+      "source": "ue_make_mk_items_make_recipe",
+      "target": "ue_make_mk_items_item_amount",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "Scripts/ue/make_mk_items.py",
+      "source_location": "L128",
+      "weight": 1.0,
+      "source": "ue_make_mk_items_main",
+      "target": "ue_make_mk_items_probe",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "Scripts/ue/make_mk_items.py",
+      "source_location": "L131",
+      "weight": 1.0,
+      "source": "ue_make_mk_items_main",
+      "target": "ue_make_mk_items_make_equip_bp",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "Scripts/ue/make_mk_items.py",
+      "source_location": "L132",
+      "weight": 1.0,
+      "source": "ue_make_mk_items_main",
+      "target": "ue_make_mk_items_make_desc",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "Scripts/ue/make_mk_items.py",
+      "source_location": "L134",
+      "weight": 1.0,
+      "source": "ue_make_mk_items_main",
+      "target": "ue_make_mk_items_make_recipe",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "Source/LaserRifleMod/Private/LaserRifleMod.cpp",
       "source_location": "L5",
       "weight": 1.0,
@@ -3129,9 +3536,9 @@
       "source_location": "L195",
       "weight": 1.0,
       "context": "parameter_type",
+      "confidence_score": 1.0,
       "source": "private_laserrifleschematics_getlevels",
-      "target": "tarray",
-      "confidence_score": 1.0
+      "target": "tarray"
     },
     {
       "relation": "references",
@@ -3140,9 +3547,9 @@
       "source_location": "L195",
       "weight": 1.0,
       "context": "generic_arg",
+      "confidence_score": 1.0,
       "source": "private_laserrifleschematics_getlevels",
-      "target": "tsubclassof",
-      "confidence_score": 1.0
+      "target": "tsubclassof"
     },
     {
       "relation": "references",
@@ -3151,9 +3558,9 @@
       "source_location": "L195",
       "weight": 1.0,
       "context": "generic_arg",
+      "confidence_score": 1.0,
       "source": "private_laserrifleschematics_getlevels",
-      "target": "ufgschematic",
-      "confidence_score": 1.0
+      "target": "ufgschematic"
     },
     {
       "relation": "references",
@@ -3162,9 +3569,9 @@
       "source_location": "L232",
       "weight": 1.0,
       "context": "parameter_type",
+      "confidence_score": 1.0,
       "source": "private_laserrifleschematics_getallschematics",
-      "target": "tarray",
-      "confidence_score": 1.0
+      "target": "tarray"
     },
     {
       "relation": "references",
@@ -3173,9 +3580,9 @@
       "source_location": "L225",
       "weight": 1.0,
       "context": "parameter_type",
+      "confidence_score": 1.0,
       "source": "private_laserrifleschematics_getcooltiers",
-      "target": "tarray",
-      "confidence_score": 1.0
+      "target": "tarray"
     },
     {
       "relation": "references",
@@ -3184,9 +3591,9 @@
       "source_location": "L210",
       "weight": 1.0,
       "context": "parameter_type",
+      "confidence_score": 1.0,
       "source": "private_laserrifleschematics_getdamagetiers",
-      "target": "tarray",
-      "confidence_score": 1.0
+      "target": "tarray"
     },
     {
       "relation": "references",
@@ -3195,9 +3602,9 @@
       "source_location": "L219",
       "weight": 1.0,
       "context": "parameter_type",
+      "confidence_score": 1.0,
       "source": "private_laserrifleschematics_getheattiers",
-      "target": "tarray",
-      "confidence_score": 1.0
+      "target": "tarray"
     },
     {
       "relation": "references",
@@ -3206,9 +3613,9 @@
       "source_location": "L232",
       "weight": 1.0,
       "context": "generic_arg",
+      "confidence_score": 1.0,
       "source": "private_laserrifleschematics_getallschematics",
-      "target": "tsubclassof",
-      "confidence_score": 1.0
+      "target": "tsubclassof"
     },
     {
       "relation": "references",
@@ -3217,9 +3624,9 @@
       "source_location": "L225",
       "weight": 1.0,
       "context": "generic_arg",
+      "confidence_score": 1.0,
       "source": "private_laserrifleschematics_getcooltiers",
-      "target": "tsubclassof",
-      "confidence_score": 1.0
+      "target": "tsubclassof"
     },
     {
       "relation": "references",
@@ -3228,9 +3635,9 @@
       "source_location": "L210",
       "weight": 1.0,
       "context": "generic_arg",
+      "confidence_score": 1.0,
       "source": "private_laserrifleschematics_getdamagetiers",
-      "target": "tsubclassof",
-      "confidence_score": 1.0
+      "target": "tsubclassof"
     },
     {
       "relation": "references",
@@ -3239,9 +3646,9 @@
       "source_location": "L219",
       "weight": 1.0,
       "context": "generic_arg",
+      "confidence_score": 1.0,
       "source": "private_laserrifleschematics_getheattiers",
-      "target": "tsubclassof",
-      "confidence_score": 1.0
+      "target": "tsubclassof"
     },
     {
       "relation": "references",
@@ -3250,9 +3657,9 @@
       "source_location": "L232",
       "weight": 1.0,
       "context": "generic_arg",
+      "confidence_score": 1.0,
       "source": "private_laserrifleschematics_getallschematics",
-      "target": "ufgschematic",
-      "confidence_score": 1.0
+      "target": "ufgschematic"
     },
     {
       "relation": "references",
@@ -3261,9 +3668,9 @@
       "source_location": "L225",
       "weight": 1.0,
       "context": "generic_arg",
+      "confidence_score": 1.0,
       "source": "private_laserrifleschematics_getcooltiers",
-      "target": "ufgschematic",
-      "confidence_score": 1.0
+      "target": "ufgschematic"
     },
     {
       "relation": "references",
@@ -3272,9 +3679,9 @@
       "source_location": "L210",
       "weight": 1.0,
       "context": "generic_arg",
+      "confidence_score": 1.0,
       "source": "private_laserrifleschematics_getdamagetiers",
-      "target": "ufgschematic",
-      "confidence_score": 1.0
+      "target": "ufgschematic"
     },
     {
       "relation": "references",
@@ -3283,9 +3690,9 @@
       "source_location": "L219",
       "weight": 1.0,
       "context": "generic_arg",
+      "confidence_score": 1.0,
       "source": "private_laserrifleschematics_getheattiers",
-      "target": "ufgschematic",
-      "confidence_score": 1.0
+      "target": "ufgschematic"
     },
     {
       "relation": "calls",
@@ -3409,6 +3816,16 @@
       "confidence_score": 1.0,
       "source": "private_laserrifleweapon",
       "target": "private_laserrifleweapon_doreload"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Source/LaserRifleMod/Private/LaserRifleWeapon.cpp",
+      "source_location": "L875",
+      "weight": 1.0,
+      "source": "private_laserrifleweapon",
+      "target": "private_laserrifleweapon_effectivemklevel",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -3891,6 +4308,17 @@
       "source_file": "Source/LaserRifleMod/Private/LaserRifleWeapon.cpp",
       "source_location": "L314",
       "weight": 1.0,
+      "source": "private_laserrifleweapon_proceduralarmshold",
+      "target": "private_laserrifleweapon_effectivemklevel",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "Source/LaserRifleMod/Private/LaserRifleWeapon.cpp",
+      "source_location": "L314",
+      "weight": 1.0,
       "confidence_score": 1.0,
       "source": "private_laserrifleweapon_proceduralarmshold",
       "target": "private_laserrifleweapon_getsub"
@@ -3979,9 +4407,9 @@
       "source_file": "Source/LaserRifleMod/Private/LaserRifleWeapon.cpp",
       "source_location": "L481",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "private_laserrifleweapon_tick",
-      "target": "private_laserrifleweapon_applyvisualsforlevel",
-      "confidence_score": 1.0
+      "target": "private_laserrifleweapon_applyvisualsforlevel"
     },
     {
       "relation": "calls",
@@ -3993,6 +4421,17 @@
       "confidence_score": 1.0,
       "source": "private_laserrifleweapon_tick",
       "target": "private_laserrifleweapon_currentbeamcolor"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "Source/LaserRifleMod/Private/LaserRifleWeapon.cpp",
+      "source_location": "L480",
+      "weight": 1.0,
+      "source": "private_laserrifleweapon_tick",
+      "target": "private_laserrifleweapon_effectivemklevel",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
@@ -4034,9 +4473,9 @@
       "source_file": "Source/LaserRifleMod/Private/LaserRifleWeapon.cpp",
       "source_location": "L480",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "private_laserrifleweapon_tick",
-      "target": "private_laserrifleweapon_getsub",
-      "confidence_score": 1.0
+      "target": "private_laserrifleweapon_getsub"
     },
     {
       "relation": "calls",
@@ -4103,6 +4542,17 @@
       "confidence_score": 1.0,
       "source": "private_laserrifleweapon_firelaser",
       "target": "private_laserrifleweapon_currentbeamcolor"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "Source/LaserRifleMod/Private/LaserRifleWeapon.cpp",
+      "source_location": "L553",
+      "weight": 1.0,
+      "source": "private_laserrifleweapon_firelaser",
+      "target": "private_laserrifleweapon_effectivemklevel",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
@@ -4303,6 +4753,17 @@
       "target": "private_laserrifleweapon_getsub"
     },
     {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "Source/LaserRifleMod/Private/LaserRifleWeapon.cpp",
+      "source_location": "L878",
+      "weight": 1.0,
+      "source": "private_laserrifleweapon_effectivemklevel",
+      "target": "private_laserrifleweapon_getsub",
+      "confidence_score": 1.0
+    },
+    {
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "Source/LaserRifleMod/Private/LaserRifleWeapon.cpp",
@@ -4329,21 +4790,32 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "Source/LaserRifleMod/Private/LaserRifleWeapon.cpp",
-      "source_location": "L863",
+      "source_location": "L908",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "private_laserrifleweapon_levelcolor",
-      "target": "private_laserrifleweapon_lr_palettecolor"
+      "source": "private_laserrifleweapon_currentbeamcolor",
+      "target": "private_laserrifleweapon_effectivemklevel",
+      "confidence_score": 1.0
     },
     {
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "Source/LaserRifleMod/Private/LaserRifleWeapon.cpp",
-      "source_location": "L872",
+      "source_location": "L875",
       "weight": 1.0,
-      "context": "parameter_type",
-      "source": "private_laserrifleweapon_lr_palettecolor",
+      "context": "return_type",
+      "source": "private_laserrifleweapon_effectivemklevel",
       "target": "source_laserriflemod_private_laserrifleweapon_cpp_int32",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "Source/LaserRifleMod/Private/LaserRifleWeapon.cpp",
+      "source_location": "L913",
+      "weight": 1.0,
+      "source": "private_laserrifleweapon_refreshvisuals",
+      "target": "private_laserrifleweapon_effectivemklevel",
       "confidence_score": 1.0
     },
     {
@@ -4353,9 +4825,9 @@
       "source_location": "L910",
       "weight": 1.0,
       "context": "parameter_type",
+      "confidence_score": 1.0,
       "source": "private_laserrifleweapon_applyvisualsforlevel",
-      "target": "source_laserriflemod_private_laserrifleweapon_cpp_int32",
-      "confidence_score": 1.0
+      "target": "source_laserriflemod_private_laserrifleweapon_cpp_int32"
     },
     {
       "relation": "references",
@@ -4364,9 +4836,31 @@
       "source_location": "L883",
       "weight": 1.0,
       "context": "parameter_type",
+      "confidence_score": 1.0,
       "source": "private_laserrifleweapon_levelcolor",
-      "target": "source_laserriflemod_private_laserrifleweapon_cpp_int32",
-      "confidence_score": 1.0
+      "target": "source_laserriflemod_private_laserrifleweapon_cpp_int32"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "Source/LaserRifleMod/Private/LaserRifleWeapon.cpp",
+      "source_location": "L872",
+      "weight": 1.0,
+      "context": "parameter_type",
+      "confidence_score": 1.0,
+      "source": "private_laserrifleweapon_lr_palettecolor",
+      "target": "source_laserriflemod_private_laserrifleweapon_cpp_int32"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "Source/LaserRifleMod/Private/LaserRifleWeapon.cpp",
+      "source_location": "L863",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "private_laserrifleweapon_levelcolor",
+      "target": "private_laserrifleweapon_lr_palettecolor"
     },
     {
       "relation": "calls",
@@ -7048,5 +7542,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "438ee21cd014ac900f8df7da7c13bc3445dfa7e4"
+  "built_at_commit": "12e3ec87cc2ef4301e4063058fb97711aea515dc"
 }

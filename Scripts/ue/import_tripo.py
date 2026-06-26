@@ -16,6 +16,10 @@ SRC=r"C:\Claude\Projects\SatisfactoryLaserRifleMod\tripo_rifles"
 BP_PATH=EQ+"/BP_Equip_LaserRifle"
 TARGET_CM=110.0
 eal=unreal.EditorAssetLibrary; tools=unreal.AssetToolsHelpers.get_asset_tools()
+import json as _json
+try:
+    with open(os.path.join(SRC,"muzzle_fracs.json")) as _mf: MUZ_FRAC=_json.load(_mf)
+except Exception as _e: MUZ_FRAC={}
 MEL=unreal.MaterialEditingLibrary
 def log(m): unreal.log_warning("LR_TRIPO | "+str(m))
 
@@ -200,6 +204,7 @@ def assign(mesh, mat, mesh_path):
     log("  slot[0] material now: " + (cur.get_name() if cur else "NONE"))
 
 meshes=[None]*10
+muzzles=[None]*10   # per-Mk muzzle (beam origin) in the normalized mesh's local space
 for i in range(1,11):
     fbx=os.path.join(SRC,"Mk%02d.fbx"%i)
     if not os.path.exists(fbx):
@@ -211,6 +216,14 @@ for i in range(1,11):
     import_mesh(fbx,name,sc)
     mesh=eal.load_asset(MESH_DIR+"/"+name)
     if not mesh: log("Mk%02d mesh FAIL"%i); continue
+
+    # Per-Mk muzzle (beam origin): X = barrel tip (Max.X), Y/Z = mesh center nudged by the
+    # Blender-measured front-slice fraction (fy,fz of half-extent). Fixes "beam under the barrel".
+    _b=mesh.get_bounding_box(); _mn=_b.get_editor_property("min"); _mx=_b.get_editor_property("max")
+    _fy,_fz = MUZ_FRAC.get(str(i),[0.0,0.0])
+    _cy=(_mn.y+_mx.y)/2.0; _cz=(_mn.z+_mx.z)/2.0; _hy=(_mx.y-_mn.y)/2.0; _hz=(_mx.z-_mn.z)/2.0
+    muzzles[i-1]=unreal.Vector(_mx.x, _cy+_fy*_hy, _cz+_fz*_hz)
+    log("Mk%02d muzzle=(%.1f,%.1f,%.1f) frac=(%.2f,%.2f)"%(i,_mx.x,_cy+_fy*_hy,_cz+_fz*_hz,_fy,_fz))
 
     texdir=os.path.join(SRC,"Mk%02d_tex"%i)
     tdest=MESH_DIR+"/Mk%02d_Tex"%i
@@ -243,6 +256,8 @@ else:
     filled=[m if m is not None else first for m in filled]
     cdo=unreal.get_default_object(bp.generated_class())
     cdo.set_editor_property("LevelBodyMeshes", filled)
+    filled_muz=[(muzzles[k] if muzzles[k] is not None else unreal.Vector(0.0,0.0,0.0)) for k in range(10)]
+    cdo.set_editor_property("LevelMuzzleOffsets", filled_muz)
     cdo.set_editor_property("BodyMaterial", None)
     try: unreal.BlueprintEditorLibrary.compile_blueprint(bp)
     except Exception as e: log("compile warn: "+str(e))
