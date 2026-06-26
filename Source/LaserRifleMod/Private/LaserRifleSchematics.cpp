@@ -138,7 +138,7 @@ USchematic_LaserRifle_01::USchematic_LaserRifle_01()
 	if (IconF.Succeeded()) { LR_SetIcon(IconF.Object); }
 
 	static ConstructorHelpers::FClassFinder<UFGRecipe> RecipeFinder(
-		TEXT("/LaserRifleMod/Recipes/Recipe_LaserRifle.Recipe_LaserRifle_C"));
+		TEXT("/LaserRifleMod/Recipes/Recipe_LaserRifle_Mk1.Recipe_LaserRifle_Mk1_C"));
 	if (RecipeFinder.Succeeded())
 	{
 		ULaserRifleUnlockRecipe* Unlock =
@@ -155,6 +155,14 @@ USchematic_LaserRifle_01::USchematic_LaserRifle_01()
 		static ConstructorHelpers::FObjectFinder<UTexture2D> IconF( \
 			TEXT("/LaserRifleMod/Equipment/LaserRifle/Icons/T_LaserRifle_Icon_Mk" #Level ".T_LaserRifle_Icon_Mk" #Level)); \
 		if (IconF.Succeeded()) { LR_SetIcon(IconF.Object); } \
+		/* Separate-item design: this Mk schematic unlocks its OWN craftable rifle recipe. */ \
+		static ConstructorHelpers::FClassFinder<UFGRecipe> RecipeFinder( \
+			TEXT("/LaserRifleMod/Recipes/Recipe_LaserRifle_Mk" #Level ".Recipe_LaserRifle_Mk" #Level "_C")); \
+		if (RecipeFinder.Succeeded()) { \
+			ULaserRifleUnlockRecipe* Unlock = CreateDefaultSubobject<ULaserRifleUnlockRecipe>(TEXT("RecipeUnlock")); \
+			Unlock->LR_SetRecipe(RecipeFinder.Class); \
+			mUnlocks.Add(Unlock); \
+		} \
 	}
 
 LR_SCHEMATIC_CTOR(USchematic_LaserRifle_02, 2)

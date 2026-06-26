@@ -58,6 +58,12 @@ protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "LaserRifle")
 	TObjectPtr<UStaticMeshComponent> BeamMesh;
 
+	/** Separate-item design: if >0, THIS equipment IS that Mk (its descriptor is one of the 10
+	 *  craftable Mk rifles) and its look/stats are fixed to this Mk. 0 = legacy single-item that
+	 *  follows research level. Each BP_Equip_LaserRifle_MkN child sets this to N. */
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "LaserRifle")
+	int32 FixedMkLevel = 0;
+
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "LaserRifle")
 	TArray<TObjectPtr<UStaticMesh>> LevelBodyMeshes;
 
@@ -258,6 +264,8 @@ private:
 	void ForceCrosshair(class APlayerController* PC);
 	void EnsureCrosshair(class APlayerController* PC, const FLinearColor& Color);
 	FLinearColor LevelColor(int32 VisualLevel) const;
+	/** The Mk this rifle should show/use: the item's FixedMkLevel if set, else the research level. */
+	int32 EffectiveMkLevel() const;
 	ALaserRifleSubsystem* GetSub() const;
 	FLinearColor CurrentBeamColor() const;
 };

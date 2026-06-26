@@ -311,7 +311,7 @@ void ALaserRifleWeapon::ProceduralArmsHold(float Dt)
 	// Per-tier hold-scale override (<=0 = keep 0.6). Lets a chunkier/leaner mesh be sized
 	// right in-hand per Mk without re-export; the global GripOverride sliders still win if on.
 	{
-		int32 VL = 1; if (ALaserRifleSubsystem* S = GetSub()) { VL = S->GetVisualLevel(); }
+		const int32 VL = EffectiveMkLevel();
 		const int32 SIdx = FMath::Clamp(VL, 1, 10) - 1;
 		if (LevelHoldScales.IsValidIndex(SIdx) && LevelHoldScales[SIdx] > 0.01f) { Sc = LevelHoldScales[SIdx]; }
 	}
@@ -477,7 +477,7 @@ void ALaserRifleWeapon::Tick(float DeltaSeconds)
 	if (VisualPollTimer <= 0.f)
 	{
 		VisualPollTimer = 0.5f;
-		int32 VLnow = 1; if (ALaserRifleSubsystem* VS = GetSub()) { VLnow = VS->GetVisualLevel(); }
+		const int32 VLnow = EffectiveMkLevel();
 		if (VLnow != AppliedVisualLevel) { ApplyVisualsForLevel(VLnow); }
 	}
 
@@ -548,7 +548,10 @@ void ALaserRifleWeapon::FireLaser(AFGCharacterPlayer* Char, APlayerController* P
 
 	float Mult = 1.f;
 	if (ALaserRifleSubsystem* Sub = GetSub()) { Mult = Sub->GetDamageMultiplier(); }
-	const float Dmg = BaseDamage * Mult;
+	// Per-Mk base damage (separate-item design): each Mk rifle is inherently stronger, and the
+	// research Damage line (`Mult`) still scales on top. Mk1=1x .. Mk10~7.5x base.
+	const float MkScale = FMath::Pow(1.25f, (float)(EffectiveMkLevel() - 1));
+	const float Dmg = BaseDamage * MkScale * Mult;
 
 	// Beam from the gun body toward the impact (visible feedback).
 	// Muzzle = the +X tip of the body mesh, auto-derived from the CURRENT mesh's
@@ -564,7 +567,7 @@ void ALaserRifleWeapon::FireLaser(AFGCharacterPlayer* Char, APlayerController* P
 	// Per-tier muzzle override (zero = keep the bbox guess). Fixes a tier whose beam exits
 	// the wrong end because the export orientation heuristic mis-picked the muzzle.
 	{
-		int32 VL = 1; if (ALaserRifleSubsystem* S = GetSub()) { VL = S->GetVisualLevel(); }
+		const int32 VL = EffectiveMkLevel();
 		const int32 MIdx = FMath::Clamp(VL, 1, 10) - 1;
 		if (LevelMuzzleOffsets.IsValidIndex(MIdx) && !LevelMuzzleOffsets[MIdx].IsNearlyZero())
 		{
@@ -869,6 +872,13 @@ ALaserRifleSubsystem* ALaserRifleWeapon::GetSub() const
 	return nullptr;
 }
 
+int32 ALaserRifleWeapon::EffectiveMkLevel() const
+{
+	if (FixedMkLevel > 0) { return FMath::Clamp(FixedMkLevel, 1, 10); }
+	if (ALaserRifleSubsystem* Sub = GetSub()) { return FMath::Clamp(Sub->GetVisualLevel(), 1, 10); }
+	return 1;
+}
+
 static FLinearColor LR_PaletteColor(int32 Idx)
 {
 	static const FLinearColor P[10] = {
@@ -895,16 +905,12 @@ FLinearColor ALaserRifleWeapon::LevelColor(int32 VisualLevel) const
 
 FLinearColor ALaserRifleWeapon::CurrentBeamColor() const
 {
-	int32 V = 1;
-	if (ALaserRifleSubsystem* Sub = GetSub()) { V = Sub->GetVisualLevel(); }
-	return LevelColor(V);
+	return LevelColor(EffectiveMkLevel());
 }
 
 void ALaserRifleWeapon::RefreshVisuals()
 {
-	int32 VisualLevel = 1;
-	if (ALaserRifleSubsystem* Sub = GetSub()) { VisualLevel = Sub->GetVisualLevel(); }
-	ApplyVisualsForLevel(VisualLevel);
+	ApplyVisualsForLevel(EffectiveMkLevel());
 }
 
 void ALaserRifleWeapon::ApplyVisualsForLevel(int32 VisualLevel)
