@@ -200,6 +200,20 @@ private:
 	float SmokeSpawnTimer = 0.f;
 	FLinearColor CurrentGlow = FLinearColor::White;
 
+	// --- Per-Mk "shinies": spark/flame particles (low/mid tiers) + a plasma orb (high tiers). ---
+	UPROPERTY() TArray<TObjectPtr<UStaticMeshComponent>> SparkComps;
+	UPROPERTY() TArray<TObjectPtr<UMaterialInstanceDynamic>> SparkMIDs;
+	TArray<FVector> SparkPos;
+	TArray<FVector> SparkVel;
+	TArray<float> SparkAge;
+	TArray<float> SparkLife;
+	TArray<float> SparkGrav;             // per-spark vertical accel (+down sparks / -up flames)
+	TArray<FLinearColor> SparkColor;
+	float SparkSpawnTimer = 0.f;
+	UPROPERTY() TObjectPtr<UStaticMeshComponent> PlasmaOrb = nullptr;
+	UPROPERTY() TObjectPtr<UMaterialInstanceDynamic> PlasmaOrbMID = nullptr;
+	float OrbPhase = 0.f;
+
 	float FireCooldown = 0.f;
 	bool bAttached = false;
 	int32 LastDiagLevel = -1;   // per-tier geometry diag logs once per tier change
@@ -256,6 +270,11 @@ private:
 	void UpdateHeatFX(float DeltaSeconds);
 	void UpdateSmoke(float DeltaSeconds);
 	void SpawnPuff(const FVector& Origin);
+	/** Per-Mk spark/flame particles (low = orange sparks + overheat flames; mid = electric crackle). */
+	void UpdateSparks(float DeltaSeconds);
+	void SpawnSpark(const FLinearColor& Color, bool bFlame);
+	/** Per-Mk plasma orb (high tiers): a glowing energy ball that bobs + pulses near the emitter. */
+	void UpdatePlasmaOrb(float DeltaSeconds);
 	float GripCfg(const TCHAR* StrId, float DefaultValue) const;
 	bool  ConfigBool(const TCHAR* StrId, bool DefaultValue) const;
 	void FireLaser(AFGCharacterPlayer* Char, class APlayerController* PC);

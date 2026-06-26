@@ -40,9 +40,9 @@
     "semantic_hash": "db038d828fd82d0caad9ac0ec0150ba9"
   },
   "Scripts/ue/import_tripo.py": {
-    "mtime": 1782345849.9378946,
-    "ast_hash": "467c72c67f0870326e7c95bbb4efe6a3",
-    "semantic_hash": "467c72c67f0870326e7c95bbb4efe6a3"
+    "mtime": 1782435233.5116022,
+    "ast_hash": "7a6c530087ecd1bd95d822eb066d4aac",
+    "semantic_hash": ""
   },
   "Scripts/ue/mkassets.py": {
     "mtime": 1782086247.009292,
@@ -105,8 +105,8 @@
     "semantic_hash": "7f8a4ce46a39a806e0a58be60997f14e"
   },
   "Source/LaserRifleMod/Private/LaserRifleMod.cpp": {
-    "mtime": 1782433169.944472,
-    "ast_hash": "0f44238be53902029d7f6da7a1d34970",
+    "mtime": 1782435404.4818313,
+    "ast_hash": "08669ca0ec78cee1c93ed58ef2200194",
     "semantic_hash": ""
   },
   "Source/LaserRifleMod/Private/LaserRifleRootInstance.cpp": {
@@ -697,6 +697,11 @@
   "Scripts/ue/make_mk_items.py": {
     "mtime": 1782433081.9964104,
     "ast_hash": "fae6b852f0bcbbcb4a5985ad17321e3d",
+    "semantic_hash": ""
+  },
+  "tripo_rifles/muzzle_fracs.json": {
+    "mtime": 1782435170.6995816,
+    "ast_hash": "df7469a686593123fe1dffa57a34f5f0",
     "semantic_hash": ""
   }
 }

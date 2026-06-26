@@ -117,6 +117,30 @@ ALaserRifleWeapon::ALaserRifleWeapon()
 		SmokeAge.Add(1.f); SmokeLife.Add(1.f);   // age>=life => inactive
 	}
 
+	// Spark/flame pool (the low/mid-tier "shinies"); MIDs from the emissive beam material in BeginPlay.
+	for (int32 i = 0; i < 20; ++i)
+	{
+		UStaticMeshComponent* S = CreateDefaultSubobject<UStaticMeshComponent>(
+			*FString::Printf(TEXT("Spark_%d"), i));
+		S->SetupAttachment(RootComponent);
+		if (Sph.Succeeded()) { S->SetStaticMesh(Sph.Object); }
+		S->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+		S->SetCastShadow(false);
+		S->SetUsingAbsoluteLocation(true); S->SetUsingAbsoluteRotation(true); S->SetUsingAbsoluteScale(true);
+		S->SetOnlyOwnerSee(true); S->SetVisibility(false);
+			SparkComps.Add(S);
+		SparkPos.Add(FVector::ZeroVector); SparkVel.Add(FVector::ZeroVector);
+		SparkAge.Add(1.f); SparkLife.Add(1.f); SparkGrav.Add(220.f); SparkColor.Add(FLinearColor::White);
+	}
+	// Plasma orb (high-tier "shiny"): an emissive sphere that hovers near the emitter.
+	PlasmaOrb = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("PlasmaOrb"));
+	PlasmaOrb->SetupAttachment(RootComponent);
+	if (Sph.Succeeded()) { PlasmaOrb->SetStaticMesh(Sph.Object); }
+	PlasmaOrb->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+	PlasmaOrb->SetCastShadow(false);
+	PlasmaOrb->SetUsingAbsoluteLocation(true); PlasmaOrb->SetUsingAbsoluteRotation(true); PlasmaOrb->SetUsingAbsoluteScale(true);
+	PlasmaOrb->SetOnlyOwnerSee(true); PlasmaOrb->SetVisibility(false);
+
 	// Held as an arms-slot weapon. The hold POSE and attach MODE are decided at
 	// Equip time from config (default = floating viewmodel, no forced pose).
 	mEquipmentSlot = EEquipmentSlot::ES_ARMS;
@@ -155,6 +179,24 @@ void ALaserRifleWeapon::BeginPlay()
 			SmokeMIDs.Add(M);
 		}
 		else { SmokeMIDs.Add(nullptr); }
+	}
+
+	// Spark + plasma-orb MIDs from the unlit emissive beam material (BeamColor / Intensity params).
+	UMaterialInterface* FxSrc = BeamMaterial ? BeamMaterial.Get() : BodyMaterial.Get();
+	for (int32 i = 0; i < SparkComps.Num(); ++i)
+	{
+		if (SparkComps[i] && FxSrc)
+		{
+			UMaterialInstanceDynamic* M = UMaterialInstanceDynamic::Create(FxSrc, this);
+			SparkComps[i]->SetMaterial(0, M);
+			SparkMIDs.Add(M);
+		}
+		else { SparkMIDs.Add(nullptr); }
+	}
+	if (PlasmaOrb && FxSrc)
+	{
+		PlasmaOrbMID = UMaterialInstanceDynamic::Create(FxSrc, this);
+		PlasmaOrb->SetMaterial(0, PlasmaOrbMID);
 	}
 }
 
@@ -458,6 +500,8 @@ void ALaserRifleWeapon::Tick(float DeltaSeconds)
 	EnsureCrosshair(PC, AimColor);      // our own guaranteed crosshair (red = overheated)
 	UpdateHeatFX(DeltaSeconds);
 	UpdateSmoke(DeltaSeconds);
+	UpdateSparks(DeltaSeconds);
+	UpdatePlasmaOrb(DeltaSeconds);
 
 	// Native ammo HUD: keep the vanilla ammo count mirrored to the fuel-cell charge.
 	if (!bNativeAmmoInit) { EnsureNativeAmmo(); }
@@ -766,6 +810,111 @@ void ALaserRifleWeapon::SpawnPuff(const FVector& /*unused*/)
 	SmokeAge[Slot] = 0.f;
 	SmokeLife[Slot] = FMath::FRandRange(0.8f, 1.6f);
 	SmokeComps[Slot]->SetVisibility(true);
+}
+
+// --- Per-Mk "shinies" -------------------------------------------------------
+// Low tiers (1-3, cobbled junk): orange sparks off the exposed bits; on overheat they turn into
+// rising flames + heavier sparking. Mid tiers (4-6, industrial): electric-blue crackle between
+// parts. High tiers (7-10): mostly the plasma orb, with a few energy motes on fire.
+void ALaserRifleWeapon::UpdateSparks(float Dt)
+{
+	if (!BodyMesh) { return; }
+	const int32 Tier = EffectiveMkLevel();
+	const bool bLow = (Tier <= 3);
+	const bool bMid = (Tier >= 4 && Tier <= 6);
+	float Rate = 0.f; bool bFlame = false;
+	FLinearColor C(1.f, 0.5f, 0.1f);            // default warm spark
+	if (bLow)
+	{
+		Rate = 2.f + Heat * 10.f + FirePulse * 30.f;        // idle trickle, ramps with heat, bursts on fire
+		if (Heat >= 1.f) { Rate += 18.f; bFlame = true; C = FLinearColor(1.f, 0.25f, 0.03f); }  // overheat = flames
+	}
+	else if (bMid)
+	{
+		C = FLinearColor(0.35f, 0.6f, 1.f);                  // electric blue crackle
+		Rate = 1.f + Heat * 4.f + FirePulse * 24.f + (Heat >= 1.f ? 6.f : 0.f);
+	}
+	else // high tiers: occasional energy motes on fire (the orb is the main show)
+	{
+		C = CurrentBeamColor();
+		Rate = FirePulse * 10.f;
+	}
+	SparkSpawnTimer -= Dt;
+	if (Rate > 0.f && SparkSpawnTimer <= 0.f)
+	{
+		SpawnSpark(C, bFlame);
+		SparkSpawnTimer = 1.f / FMath::Clamp(Rate, 1.f, 80.f);
+	}
+	for (int32 i = 0; i < SparkComps.Num(); ++i)
+	{
+		if (!SparkComps[i] || SparkAge[i] >= SparkLife[i]) { continue; }
+		SparkAge[i] += Dt;
+		const float T = SparkAge[i] / FMath::Max(0.01f, SparkLife[i]);
+		if (T >= 1.f) { SparkComps[i]->SetVisibility(false); continue; }
+		SparkVel[i].Z -= SparkGrav[i] * Dt;                  // gravity (sparks fall) / buoyancy (flames rise)
+		SparkPos[i] += SparkVel[i] * Dt;
+		SparkComps[i]->SetWorldLocation(SparkPos[i]);
+		SparkComps[i]->SetWorldScale3D(FVector(FMath::Lerp(0.045f, 0.012f, T)));
+		if (SparkMIDs.IsValidIndex(i) && SparkMIDs[i])
+		{
+			SparkMIDs[i]->SetVectorParameterValue(TEXT("BeamColor"), SparkColor[i]);
+			SparkMIDs[i]->SetScalarParameterValue(TEXT("Intensity"), FMath::Lerp(9.f, 0.f, T));
+		}
+	}
+}
+
+void ALaserRifleWeapon::SpawnSpark(const FLinearColor& Color, bool bFlame)
+{
+	if (!BodyMesh || !BodyMesh->GetStaticMesh()) { return; }
+	int32 Slot = INDEX_NONE;
+	for (int32 i = 0; i < SparkComps.Num(); ++i) { if (SparkAge[i] >= SparkLife[i]) { Slot = i; break; } }
+	if (Slot == INDEX_NONE || !SparkComps[Slot]) { return; }
+	// Emit from a random point on the FRONT HALF of the gun (local space -> world), where the
+	// exposed wires / coils / emitter sit, so the sparks read as coming off the working parts.
+	const FBox LB = BodyMesh->GetStaticMesh()->GetBoundingBox();
+	const FVector Ext = LB.GetExtent(), Cen = LB.GetCenter();
+	const FVector Local = Cen + FVector(
+		FMath::FRandRange(0.05f, 1.0f) * Ext.X,              // front half toward the muzzle
+		FMath::FRandRange(-0.6f, 0.6f) * Ext.Y,
+		FMath::FRandRange(-0.3f, 0.7f) * Ext.Z);
+	SparkPos[Slot] = BodyMesh->GetComponentTransform().TransformPosition(Local);
+	if (bFlame)
+	{
+		SparkVel[Slot] = FVector(FMath::FRandRange(-8.f, 8.f), FMath::FRandRange(-8.f, 8.f), FMath::FRandRange(20.f, 55.f));
+		SparkGrav[Slot] = -50.f;                              // buoyant rise
+		SparkLife[Slot] = FMath::FRandRange(0.35f, 0.7f);
+	}
+	else
+	{
+		SparkVel[Slot] = FVector(FMath::FRandRange(-45.f, 45.f), FMath::FRandRange(-45.f, 45.f), FMath::FRandRange(10.f, 65.f));
+		SparkGrav[Slot] = 220.f;
+		SparkLife[Slot] = FMath::FRandRange(0.15f, 0.4f);
+	}
+	SparkColor[Slot] = Color;
+	SparkAge[Slot] = 0.f;
+	SparkComps[Slot]->SetVisibility(true);
+}
+
+void ALaserRifleWeapon::UpdatePlasmaOrb(float Dt)
+{
+	if (!PlasmaOrb) { return; }
+	const int32 Tier = EffectiveMkLevel();
+	const bool bShow = (Tier >= 7) && bAttached && BodyMesh && BodyMesh->GetStaticMesh();
+	if (!bShow) { if (PlasmaOrb->IsVisible()) { PlasmaOrb->SetVisibility(false); } return; }
+	OrbPhase += Dt;
+	const FBox LB = BodyMesh->GetStaticMesh()->GetBoundingBox();
+	const FVector Ext = LB.GetExtent(), Cen = LB.GetCenter();
+	const float bob = FMath::Sin(OrbPhase * 3.0f) * 0.06f * Ext.Z;
+	const FVector Local(Cen.X + Ext.X * 0.55f, Cen.Y, Cen.Z + Ext.Z * 0.35f + bob);  // near the emitter, above the barrel
+	PlasmaOrb->SetWorldLocation(BodyMesh->GetComponentTransform().TransformPosition(Local));
+	const float pulse = 0.5f + 0.5f * FMath::Sin(OrbPhase * 6.0f);
+	PlasmaOrb->SetWorldScale3D(FVector(0.05f + 0.015f * pulse + FirePulse * 0.05f));
+	PlasmaOrb->SetVisibility(true);
+	if (PlasmaOrbMID)
+	{
+		PlasmaOrbMID->SetVectorParameterValue(TEXT("BeamColor"), CurrentBeamColor());
+		PlasmaOrbMID->SetScalarParameterValue(TEXT("Intensity"), 6.f + 4.f * pulse + FirePulse * 20.f);
+	}
 }
 
 void ALaserRifleWeapon::ShowBeam(const FVector& A, const FVector& B, const FLinearColor& Color)
