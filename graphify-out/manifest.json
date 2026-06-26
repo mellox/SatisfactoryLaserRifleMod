@@ -105,9 +105,9 @@
     "semantic_hash": "7f8a4ce46a39a806e0a58be60997f14e"
   },
   "Source/LaserRifleMod/Private/LaserRifleMod.cpp": {
-    "mtime": 1782366262.730347,
-    "ast_hash": "d7ff80edc700aafe106c888524daf311",
-    "semantic_hash": "d7ff80edc700aafe106c888524daf311"
+    "mtime": 1782377204.9047055,
+    "ast_hash": "945a1470d5f0ff7282c006d76cc96d03",
+    "semantic_hash": ""
   },
   "Source/LaserRifleMod/Private/LaserRifleRootInstance.cpp": {
     "mtime": 1782083949.8260443,
@@ -135,9 +135,9 @@
     "semantic_hash": "45d537fdec0ef5613cc2270c5ae88025"
   },
   "Source/LaserRifleMod/Private/LaserRifleWeapon.cpp": {
-    "mtime": 1782366254.1518955,
-    "ast_hash": "fea8a04086fcc1e85fcbdfb71674626c",
-    "semantic_hash": "fea8a04086fcc1e85fcbdfb71674626c"
+    "mtime": 1782377191.7000327,
+    "ast_hash": "bc91ebd02ca58651af6f01cd8a19ea13",
+    "semantic_hash": ""
   },
   "Source/LaserRifleMod/Public/LaserRifleCrosshair.h": {
     "mtime": 1782306822.9805255,
@@ -175,9 +175,9 @@
     "semantic_hash": "a76a6c28f720499eb1a7033b4aea89bd"
   },
   "Source/LaserRifleMod/Public/LaserRifleWeapon.h": {
-    "mtime": 1782366198.1731935,
-    "ast_hash": "984c963317293c9e86ac2e357bf5f96c",
-    "semantic_hash": "984c963317293c9e86ac2e357bf5f96c"
+    "mtime": 1782377150.2817407,
+    "ast_hash": "49334e4d36a1faefd28b8f55a5584ba3",
+    "semantic_hash": ""
   },
   "audio_staging/gen_laser.py": {
     "mtime": 1782305354.098526,
@@ -198,5 +198,495 @@
     "mtime": 1782305358.8573635,
     "ast_hash": "a4ff08c0e05061ff7c2f6366c869cb12",
     "semantic_hash": "a4ff08c0e05061ff7c2f6366c869cb12"
+  },
+  "Scripts/ue/glb_extract.py": {
+    "mtime": 1782375720.5777729,
+    "ast_hash": "96a6d35d5b7f42775db6146e63ab22d9",
+    "semantic_hash": ""
+  },
+  "satisfactory-laser-rifle-guide.md": {
+    "mtime": 1782084661.2677543,
+    "ast_hash": "0a4af6791d83d42a356462452161eac8",
+    "semantic_hash": ""
+  },
+  "tripo-mcp-setup.md": {
+    "mtime": 1782101839.529059,
+    "ast_hash": "e84c43497d3404965f17513fe59d72fd",
+    "semantic_hash": ""
+  },
+  "tripo-rifle-prompts.md": {
+    "mtime": 1782101402.65641,
+    "ast_hash": "4a9f9dad3185f652b5433e897c7426d7",
+    "semantic_hash": ""
+  },
+  "tripo_rifles/README.txt": {
+    "mtime": 1782101374.4676294,
+    "ast_hash": "c67a74960f60e59e87cee4b81fe488b6",
+    "semantic_hash": ""
+  },
+  "Content/Equipment/LaserRifle/Icons/src/rifle_icon_Mk1.png": {
+    "mtime": 1782376433.8603878,
+    "ast_hash": "b3f768675bbd6c37ddb336ff73f0e519",
+    "semantic_hash": ""
+  },
+  "Content/Equipment/LaserRifle/Icons/src/rifle_icon_Mk10.png": {
+    "mtime": 1782376437.0098968,
+    "ast_hash": "8ace66a6ff9896ca469493be762bef8f",
+    "semantic_hash": ""
+  },
+  "Content/Equipment/LaserRifle/Icons/src/rifle_icon_Mk2.png": {
+    "mtime": 1782376434.3330834,
+    "ast_hash": "4bc919baf4d8586d755fc2d739a6d444",
+    "semantic_hash": ""
+  },
+  "Content/Equipment/LaserRifle/Icons/src/rifle_icon_Mk3.png": {
+    "mtime": 1782376434.701563,
+    "ast_hash": "0fff48700c6b807d28eccaf058440771",
+    "semantic_hash": ""
+  },
+  "Content/Equipment/LaserRifle/Icons/src/rifle_icon_Mk4.png": {
+    "mtime": 1782376435.2276082,
+    "ast_hash": "e6f167b1dcfb8049849f94cec30a6e54",
+    "semantic_hash": ""
+  },
+  "Content/Equipment/LaserRifle/Icons/src/rifle_icon_Mk5.png": {
+    "mtime": 1782348783.9233575,
+    "ast_hash": "ee3672be0e3fd2cf35d3834664ab2322",
+    "semantic_hash": ""
+  },
+  "Content/Equipment/LaserRifle/Icons/src/rifle_icon_Mk6.png": {
+    "mtime": 1782376435.602041,
+    "ast_hash": "163ff938035a3deef5cc4e0f36db3464",
+    "semantic_hash": ""
+  },
+  "Content/Equipment/LaserRifle/Icons/src/rifle_icon_Mk7.png": {
+    "mtime": 1782376436.0159583,
+    "ast_hash": "10b20624e91009b47bb4bfb2c28ebac2",
+    "semantic_hash": ""
+  },
+  "Content/Equipment/LaserRifle/Icons/src/rifle_icon_Mk8.png": {
+    "mtime": 1782376436.3267255,
+    "ast_hash": "cb2f024846a2c5bc34954898d0b54cc7",
+    "semantic_hash": ""
+  },
+  "Content/Equipment/LaserRifle/Icons/src/rifle_icon_Mk9.png": {
+    "mtime": 1782376436.7015944,
+    "ast_hash": "9e1e13e7ffb34d735e115be08e68dbd2",
+    "semantic_hash": ""
+  },
+  "Content/Equipment/LaserRifle/Icons/src/rifle_icon_hero.png": {
+    "mtime": 1782348784.6712356,
+    "ast_hash": "7c559f3bca376d17b1094c23a01398f3",
+    "semantic_hash": ""
+  },
+  "tripo_rifles/Mk01.fbm/Color.jpg": {
+    "mtime": 1782187331.2395313,
+    "ast_hash": "4ac7d0e2352532126df3566343feba29",
+    "semantic_hash": ""
+  },
+  "tripo_rifles/Mk01.fbm/Metallic.jpg": {
+    "mtime": 1782187331.2410512,
+    "ast_hash": "c427eab92ff33fde0b8d15cdd5240c89",
+    "semantic_hash": ""
+  },
+  "tripo_rifles/Mk01.fbm/Normal.jpg": {
+    "mtime": 1782187331.2395313,
+    "ast_hash": "768ed2de2848c69ef9e6c72cebca6c77",
+    "semantic_hash": ""
+  },
+  "tripo_rifles/Mk01.fbm/Roughness.jpg": {
+    "mtime": 1782187331.2395313,
+    "ast_hash": "28b4123911c123419cb730101d1a477d",
+    "semantic_hash": ""
+  },
+  "tripo_rifles/Mk01_tex/Base Color.png": {
+    "mtime": 1782375730.153803,
+    "ast_hash": "0e228fedc570595948ba98114c306dbe",
+    "semantic_hash": ""
+  },
+  "tripo_rifles/Mk01_tex/Metallic.png": {
+    "mtime": 1782375731.1436088,
+    "ast_hash": "891b75bfc32dec902de1d0a6697971be",
+    "semantic_hash": ""
+  },
+  "tripo_rifles/Mk01_tex/Normal.png": {
+    "mtime": 1782375730.5977013,
+    "ast_hash": "c7667fdec571beaee7a67eb8406bfdf7",
+    "semantic_hash": ""
+  },
+  "tripo_rifles/Mk01_tex/Roughness.png": {
+    "mtime": 1782375730.9087238,
+    "ast_hash": "72393443e8f8b243864a4e0123112e1a",
+    "semantic_hash": ""
+  },
+  "tripo_rifles/Mk02_tex/Base Color.png": {
+    "mtime": 1782375948.2706146,
+    "ast_hash": "a640cd0759b8be0c3de605f1b944c3c2",
+    "semantic_hash": ""
+  },
+  "tripo_rifles/Mk02_tex/Metallic.png": {
+    "mtime": 1782375949.2806084,
+    "ast_hash": "00983cb75acefa1b36eed4d50f398aca",
+    "semantic_hash": ""
+  },
+  "tripo_rifles/Mk02_tex/Normal.png": {
+    "mtime": 1782375948.7014468,
+    "ast_hash": "a7de150ff9057d43036fdc6ac84c531d",
+    "semantic_hash": ""
+  },
+  "tripo_rifles/Mk02_tex/Roughness.png": {
+    "mtime": 1782375949.0144086,
+    "ast_hash": "e5c4f560f99811850ef3f0d6b3668326",
+    "semantic_hash": ""
+  },
+  "tripo_rifles/Mk03_tex/Base Color.png": {
+    "mtime": 1782375950.0753326,
+    "ast_hash": "8dd21895f2ac087769eb196f5cd2319a",
+    "semantic_hash": ""
+  },
+  "tripo_rifles/Mk03_tex/Metallic.png": {
+    "mtime": 1782375951.0820959,
+    "ast_hash": "2f0ca1b400aa1b1a221e820ef8810a0e",
+    "semantic_hash": ""
+  },
+  "tripo_rifles/Mk03_tex/Normal.png": {
+    "mtime": 1782375950.5820103,
+    "ast_hash": "2625102e1d1b1ffc816f70d7bbca55c3",
+    "semantic_hash": ""
+  },
+  "tripo_rifles/Mk03_tex/Roughness.png": {
+    "mtime": 1782375950.9030259,
+    "ast_hash": "6dcc5b143d413fd1c8e2eb2486d1d82c",
+    "semantic_hash": ""
+  },
+  "tripo_rifles/Mk04_tex/Base Color.png": {
+    "mtime": 1782375951.9318001,
+    "ast_hash": "36be6ce55ebe59d6f3f1cd8420884840",
+    "semantic_hash": ""
+  },
+  "tripo_rifles/Mk04_tex/Metallic.png": {
+    "mtime": 1782375952.886746,
+    "ast_hash": "c9141a1b295ff3de9285e7abab3a605c",
+    "semantic_hash": ""
+  },
+  "tripo_rifles/Mk04_tex/Normal.png": {
+    "mtime": 1782375952.3531573,
+    "ast_hash": "f16dd1d4419a9e34045f2b6070e0cbfc",
+    "semantic_hash": ""
+  },
+  "tripo_rifles/Mk04_tex/Roughness.png": {
+    "mtime": 1782375952.662987,
+    "ast_hash": "f5cd58dfb5ccac6af8eedabd8a046ee5",
+    "semantic_hash": ""
+  },
+  "tripo_rifles/Mk05_tex/Base Color.png": {
+    "mtime": 1782375618.4889667,
+    "ast_hash": "48a7724903f1dea26781052baa2b7be0",
+    "semantic_hash": ""
+  },
+  "tripo_rifles/Mk05_tex/Metallic.png": {
+    "mtime": 1782375618.4813695,
+    "ast_hash": "c4ca8bacc16673e762e3ac028b379e54",
+    "semantic_hash": ""
+  },
+  "tripo_rifles/Mk05_tex/Normal.png": {
+    "mtime": 1782375618.4939604,
+    "ast_hash": "4111ec26158559f82161ad11f00316ea",
+    "semantic_hash": ""
+  },
+  "tripo_rifles/Mk05_tex/Roughness.png": {
+    "mtime": 1782375618.495966,
+    "ast_hash": "4b35b1e6f94dc8a3337fd70f65f11ad0",
+    "semantic_hash": ""
+  },
+  "tripo_rifles/Mk06_tex/Base Color.png": {
+    "mtime": 1782375953.698293,
+    "ast_hash": "26d7d8eeba1e681f75a500738ded65eb",
+    "semantic_hash": ""
+  },
+  "tripo_rifles/Mk06_tex/Metallic.png": {
+    "mtime": 1782375954.5470188,
+    "ast_hash": "8e8a385b7678d6e2cd8d4a739b948816",
+    "semantic_hash": ""
+  },
+  "tripo_rifles/Mk06_tex/Normal.png": {
+    "mtime": 1782375954.1891716,
+    "ast_hash": "8b4ad7a6f6047768ff933b7cd1c2bfe1",
+    "semantic_hash": ""
+  },
+  "tripo_rifles/Mk06_tex/Roughness.png": {
+    "mtime": 1782375954.405316,
+    "ast_hash": "4f272d794494d64d073a2cb8120a83a0",
+    "semantic_hash": ""
+  },
+  "tripo_rifles/Mk07_tex/Base Color.png": {
+    "mtime": 1782375955.175629,
+    "ast_hash": "b9efd7be73680650b0e2bc0703045673",
+    "semantic_hash": ""
+  },
+  "tripo_rifles/Mk07_tex/Metallic.png": {
+    "mtime": 1782375955.992257,
+    "ast_hash": "409dae108c982d17eea1bbc44226eb16",
+    "semantic_hash": ""
+  },
+  "tripo_rifles/Mk07_tex/Normal.png": {
+    "mtime": 1782375955.5691001,
+    "ast_hash": "5f194e7bfb0b981015f70498ed9c690a",
+    "semantic_hash": ""
+  },
+  "tripo_rifles/Mk07_tex/Roughness.png": {
+    "mtime": 1782375955.8555498,
+    "ast_hash": "c5e021765e404fa6fde0b894c2e80394",
+    "semantic_hash": ""
+  },
+  "tripo_rifles/Mk08_tex/Base Color.png": {
+    "mtime": 1782375956.6018083,
+    "ast_hash": "1d26e6cfaa6110a021fdbcede8ad9969",
+    "semantic_hash": ""
+  },
+  "tripo_rifles/Mk08_tex/Metallic.png": {
+    "mtime": 1782375957.2003326,
+    "ast_hash": "58f5f341bc62fc53ddbdaba6ba18d962",
+    "semantic_hash": ""
+  },
+  "tripo_rifles/Mk08_tex/Normal.png": {
+    "mtime": 1782375956.8811045,
+    "ast_hash": "66984f33318a6e0a6bccceed3ef14e03",
+    "semantic_hash": ""
+  },
+  "tripo_rifles/Mk08_tex/Roughness.png": {
+    "mtime": 1782375957.0787685,
+    "ast_hash": "38a9ce90f08319ae8e37fa0bde3984eb",
+    "semantic_hash": ""
+  },
+  "tripo_rifles/Mk09_tex/Base Color.png": {
+    "mtime": 1782375957.9510562,
+    "ast_hash": "0dcd53cb38c1d042ea5183d621466374",
+    "semantic_hash": ""
+  },
+  "tripo_rifles/Mk09_tex/Metallic.png": {
+    "mtime": 1782375958.862941,
+    "ast_hash": "286a922247b7e67976eec0d6ee272e38",
+    "semantic_hash": ""
+  },
+  "tripo_rifles/Mk09_tex/Normal.png": {
+    "mtime": 1782375958.3928986,
+    "ast_hash": "6acf5a7c958126e3ec4999c9c83b75e6",
+    "semantic_hash": ""
+  },
+  "tripo_rifles/Mk09_tex/Roughness.png": {
+    "mtime": 1782375958.6656623,
+    "ast_hash": "d7512bbc9424689e4144c83991332732",
+    "semantic_hash": ""
+  },
+  "tripo_rifles/Mk10_tex/Base Color.png": {
+    "mtime": 1782375866.1918786,
+    "ast_hash": "24217b943a39ed19b9fbfaa232d46d27",
+    "semantic_hash": ""
+  },
+  "tripo_rifles/Mk10_tex/Metallic.png": {
+    "mtime": 1782375866.8522675,
+    "ast_hash": "890269cbf62d9899bffd489cd8070abe",
+    "semantic_hash": ""
+  },
+  "tripo_rifles/Mk10_tex/Normal.png": {
+    "mtime": 1782375866.5006447,
+    "ast_hash": "efdb5332af9e41fe1c437bec998e87da",
+    "semantic_hash": ""
+  },
+  "tripo_rifles/Mk10_tex/Roughness.png": {
+    "mtime": 1782375866.717139,
+    "ast_hash": "9bd1f71e736eb51b678e86b62c1d85aa",
+    "semantic_hash": ""
+  },
+  "tripo_rifles/_review/Mk01_v1.png": {
+    "mtime": 1782371015.2857482,
+    "ast_hash": "1d53e17403f572a3725b4807d38e8769",
+    "semantic_hash": ""
+  },
+  "tripo_rifles/_review/Mk01_v2.png": {
+    "mtime": 1782371015.8771713,
+    "ast_hash": "5c64900768507ed57fecfb751666754f",
+    "semantic_hash": ""
+  },
+  "tripo_rifles/_review/Mk01_v3.png": {
+    "mtime": 1782371016.3392458,
+    "ast_hash": "2d95e1fb7bea84c0f083a04e298d8c58",
+    "semantic_hash": ""
+  },
+  "tripo_rifles/_review/Mk01b_v1.png": {
+    "mtime": 1782372207.125162,
+    "ast_hash": "eb79166b19f613b144387101b9392afe",
+    "semantic_hash": ""
+  },
+  "tripo_rifles/_review/Mk01b_v2.png": {
+    "mtime": 1782372207.624658,
+    "ast_hash": "17c7f75534a17dce8d9615ac791198fd",
+    "semantic_hash": ""
+  },
+  "tripo_rifles/_review/Mk01b_v3.png": {
+    "mtime": 1782372208.1881156,
+    "ast_hash": "37bbc1af1447ad21e06f6186c97a313d",
+    "semantic_hash": ""
+  },
+  "tripo_rifles/_review/Mk01b_v4.png": {
+    "mtime": 1782372208.6245959,
+    "ast_hash": "aefc3fed6200f5eec70463d483ae5b30",
+    "semantic_hash": ""
+  },
+  "tripo_rifles/_review/Mk01c_v1.png": {
+    "mtime": 1782373269.0025268,
+    "ast_hash": "493657e5ae74ed38479c9e33002fb59d",
+    "semantic_hash": ""
+  },
+  "tripo_rifles/_review/Mk01c_v2.png": {
+    "mtime": 1782373269.508099,
+    "ast_hash": "539356b40200c92e60cc3cc32fe8876e",
+    "semantic_hash": ""
+  },
+  "tripo_rifles/_review/Mk01c_v3.png": {
+    "mtime": 1782373269.902577,
+    "ast_hash": "567d754fa7cc3c788e1cd99909f406c5",
+    "semantic_hash": ""
+  },
+  "tripo_rifles/_review/Mk01c_v4.png": {
+    "mtime": 1782373270.3418696,
+    "ast_hash": "17be1e9ac397b4c203b049f9e5d8b42e",
+    "semantic_hash": ""
+  },
+  "tripo_rifles/_review/Mk01c_v5.png": {
+    "mtime": 1782373270.748392,
+    "ast_hash": "48077a4152ad160d9b9635d9caca3064",
+    "semantic_hash": ""
+  },
+  "tripo_rifles/_review/Mk01d_v1.png": {
+    "mtime": 1782373923.1250591,
+    "ast_hash": "2327748fb2c36904e8e7d901a9bea881",
+    "semantic_hash": ""
+  },
+  "tripo_rifles/_review/Mk01d_v10.png": {
+    "mtime": 1782373926.5335562,
+    "ast_hash": "0bf7f346cf0a963b5f463cb937f879f3",
+    "semantic_hash": ""
+  },
+  "tripo_rifles/_review/Mk01d_v2.png": {
+    "mtime": 1782373923.4867878,
+    "ast_hash": "ad1cb745a55c626b4b46753c4a5bf6af",
+    "semantic_hash": ""
+  },
+  "tripo_rifles/_review/Mk01d_v3.png": {
+    "mtime": 1782373924.0943289,
+    "ast_hash": "966b8bc5424d4ee657f169c9b1573bc8",
+    "semantic_hash": ""
+  },
+  "tripo_rifles/_review/Mk01d_v4.png": {
+    "mtime": 1782373924.480737,
+    "ast_hash": "b044cfc1a646d1479e46d16c59acedb3",
+    "semantic_hash": ""
+  },
+  "tripo_rifles/_review/Mk01d_v5.png": {
+    "mtime": 1782373924.845788,
+    "ast_hash": "31b24ba7ebe5715ddc6871eb978a23f0",
+    "semantic_hash": ""
+  },
+  "tripo_rifles/_review/Mk01d_v7.png": {
+    "mtime": 1782373925.3577528,
+    "ast_hash": "6eab5401a049aa82b373f53da465f3c4",
+    "semantic_hash": ""
+  },
+  "tripo_rifles/_review/Mk01d_v8.png": {
+    "mtime": 1782373925.721309,
+    "ast_hash": "3704bf8a5e326cf352974d613ff1877a",
+    "semantic_hash": ""
+  },
+  "tripo_rifles/_review/Mk01d_v9.png": {
+    "mtime": 1782373926.1100883,
+    "ast_hash": "27b0578081fc68f134e88c0f79140f2f",
+    "semantic_hash": ""
+  },
+  "tripo_rifles/_review/Mk02_v2.png": {
+    "mtime": 1782375860.496741,
+    "ast_hash": "12ff078d6c32d13b398d7353c92744d8",
+    "semantic_hash": ""
+  },
+  "tripo_rifles/_review/Mk03_v1.png": {
+    "mtime": 1782375860.9255395,
+    "ast_hash": "f0d798b49bd31e9eca9ef117c665d0c8",
+    "semantic_hash": ""
+  },
+  "tripo_rifles/_review/Mk03_v2.png": {
+    "mtime": 1782375861.310719,
+    "ast_hash": "3d098e0daf4b0f0b70997e9586e104c3",
+    "semantic_hash": ""
+  },
+  "tripo_rifles/_review/Mk04_v1.png": {
+    "mtime": 1782375861.746939,
+    "ast_hash": "4bc91b3e70664ad7160fb41ae2b8f2e3",
+    "semantic_hash": ""
+  },
+  "tripo_rifles/_review/Mk04_v2.png": {
+    "mtime": 1782375862.2896626,
+    "ast_hash": "64a65f259e9a45f12c2b9ce1e47b7648",
+    "semantic_hash": ""
+  },
+  "tripo_rifles/_review/Mk06_v1.png": {
+    "mtime": 1782375862.7115438,
+    "ast_hash": "22cfbc4cadd0f9690489a293a82ab085",
+    "semantic_hash": ""
+  },
+  "tripo_rifles/_review/Mk07_v2.png": {
+    "mtime": 1782375863.1786158,
+    "ast_hash": "348f01cf0f1a0ad1cd5e29bdde48ebad",
+    "semantic_hash": ""
+  },
+  "tripo_rifles/_review/Mk08_v1.png": {
+    "mtime": 1782375863.4922562,
+    "ast_hash": "ee0a20aeda36d31fae3f07098d6e2c9d",
+    "semantic_hash": ""
+  },
+  "tripo_rifles/_review/Mk08_v2.png": {
+    "mtime": 1782375863.85392,
+    "ast_hash": "c790be91904578e43d6dc4f835f78642",
+    "semantic_hash": ""
+  },
+  "tripo_rifles/_review/Mk09_v2.png": {
+    "mtime": 1782375864.2777255,
+    "ast_hash": "16896377003b85dc78908e1272a93cfb",
+    "semantic_hash": ""
+  },
+  "tripo_rifles/_review/Mk10_v1.png": {
+    "mtime": 1782371016.6723967,
+    "ast_hash": "674a42eb31f73878b25fcdacb362fc9b",
+    "semantic_hash": ""
+  },
+  "tripo_rifles/_review/Mk10_v2.png": {
+    "mtime": 1782371017.001024,
+    "ast_hash": "aebcd1cedbddf2b4493969296876d226",
+    "semantic_hash": ""
+  },
+  "tripo_rifles/_review/Mk10_v3.png": {
+    "mtime": 1782371017.3531425,
+    "ast_hash": "6cb378ebe31e3faa01e76e182fdf4377",
+    "semantic_hash": ""
+  },
+  "tripo_rifles/_review/_MID_BATCH.png": {
+    "mtime": 1782375895.4409287,
+    "ast_hash": "6a9121b78ff2eb23a588fe02873cd5f5",
+    "semantic_hash": ""
+  },
+  "tripo_rifles/_review/_MK1_ALL.png": {
+    "mtime": 1782373399.065645,
+    "ast_hash": "426fd4736b77743934d6b6cd31fef543",
+    "semantic_hash": ""
+  },
+  "tripo_rifles/_review/_MK1_D_BATCH.png": {
+    "mtime": 1782374013.8891952,
+    "ast_hash": "4861a2985eaa91b7ed6920fbbcaf8c16",
+    "semantic_hash": ""
+  },
+  "tripo_rifles/fx/smoke_puff.png": {
+    "mtime": 1782190546.2766745,
+    "ast_hash": "2b9deec79bfc83a3054e5cebbac10fe2",
+    "semantic_hash": ""
   }
 }

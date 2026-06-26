@@ -197,6 +197,8 @@ private:
 	float FireCooldown = 0.f;
 	bool bAttached = false;
 	int32 LastDiagLevel = -1;   // per-tier geometry diag logs once per tier change
+	int32 AppliedVisualLevel = -1;  // last Mk look applied; Tick re-applies live on research change
+	float VisualPollTimer = 0.f;    // throttle for the live visual-level poll
 	float Heat = 0.f;          // 0..1 heat; >=1 = overheated (locked until cooled)
 	bool bOverheated = false;
 	float FirePulse = 0.f;     // 0..1 per-shot emissive surge (energy crackle on fire)

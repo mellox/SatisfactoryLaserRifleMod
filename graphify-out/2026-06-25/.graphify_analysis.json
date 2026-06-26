@@ -1,0 +1,473 @@
+{
+  "communities": {
+    "0": [
+      "afgcharacterplayer",
+      "alaserriflesubsystem",
+      "aplayercontroller",
+      "flinearcolor",
+      "fvector",
+      "private_laserrifleweapon",
+      "private_laserrifleweapon_alaserrifleweapon",
+      "private_laserrifleweapon_applygripfromconfig",
+      "private_laserrifleweapon_applyvisualsforlevel",
+      "private_laserrifleweapon_attachtoarms",
+      "private_laserrifleweapon_attachtocamera",
+      "private_laserrifleweapon_beginplay",
+      "private_laserrifleweapon_configbool",
+      "private_laserrifleweapon_currentbeamcolor",
+      "private_laserrifleweapon_doreload",
+      "private_laserrifleweapon_ensurecrosshair",
+      "private_laserrifleweapon_ensurenativeammo",
+      "private_laserrifleweapon_equip",
+      "private_laserrifleweapon_firelaser",
+      "private_laserrifleweapon_forcecrosshair",
+      "private_laserrifleweapon_getsub",
+      "private_laserrifleweapon_gripcfg",
+      "private_laserrifleweapon_hidebeam",
+      "private_laserrifleweapon_levelcolor",
+      "private_laserrifleweapon_lr_palettecolor",
+      "private_laserrifleweapon_oncellrecharged",
+      "private_laserrifleweapon_proceduralarmshold",
+      "private_laserrifleweapon_refreshvisuals",
+      "private_laserrifleweapon_showbeam",
+      "private_laserrifleweapon_spawnpuff",
+      "private_laserrifleweapon_syncnativeammo",
+      "private_laserrifleweapon_tick",
+      "private_laserrifleweapon_ulaserrifleammo",
+      "private_laserrifleweapon_unequip",
+      "private_laserrifleweapon_updateheatfx",
+      "private_laserrifleweapon_updatesmoke",
+      "source_laserriflemod_private_laserrifleweapon_cpp_int32",
+      "source_laserriflemod_private_laserrifleweapon_cpp_tchar"
+    ],
+    "1": [
+      "private_laserriflesubsystem",
+      "private_laserriflesubsystem_alaserriflesubsystem",
+      "private_laserriflesubsystem_applydamagescaling",
+      "private_laserriflesubsystem_beginplay",
+      "private_laserriflesubsystem_countpurchased",
+      "private_laserriflesubsystem_getconfigbool",
+      "private_laserriflesubsystem_getconfigfloat",
+      "private_laserriflesubsystem_getcooltiercount",
+      "private_laserriflesubsystem_getdamagemultiplier",
+      "private_laserriflesubsystem_getdamagetiercount",
+      "private_laserriflesubsystem_getheattiercount",
+      "private_laserriflesubsystem_getriflelevel",
+      "private_laserriflesubsystem_getvisuallevel",
+      "private_laserriflesubsystem_refreshtick",
+      "private_laserriflesubsystem_resolveammoclass",
+      "source_laserriflemod_private_laserriflesubsystem_cpp_int32",
+      "source_laserriflemod_private_laserriflesubsystem_cpp_tarray",
+      "source_laserriflemod_private_laserriflesubsystem_cpp_tchar",
+      "source_laserriflemod_private_laserriflesubsystem_cpp_tsubclassof",
+      "source_laserriflemod_private_laserriflesubsystem_cpp_ufgschematic",
+      "ufgammotype"
+    ],
+    "2": [
+      "fstring",
+      "private_laserrifleschematics",
+      "private_laserrifleschematics_getallschematics",
+      "private_laserrifleschematics_getcooltiers",
+      "private_laserrifleschematics_getdamagetiers",
+      "private_laserrifleschematics_getheattiers",
+      "private_laserrifleschematics_getlevels",
+      "private_laserrifleschematics_lr_addinfounlock",
+      "private_laserrifleschematics_lr_applydefaultcost",
+      "private_laserrifleschematics_lr_init",
+      "private_laserrifleschematics_lr_initstat",
+      "private_laserrifleschematics_lr_seticon",
+      "private_laserrifleschematics_ucat_laserrifle",
+      "private_laserrifleschematics_uschematic_laserrifle_01",
+      "source_laserriflemod_private_laserrifleschematics_cpp_int32",
+      "source_laserriflemod_private_laserrifleschematics_cpp_tarray",
+      "source_laserriflemod_private_laserrifleschematics_cpp_tsubclassof",
+      "source_laserriflemod_private_laserrifleschematics_cpp_ufgschematic",
+      "utexture2d"
+    ],
+    "3": [
+      "fname",
+      "fsettingswidgetlocationdescriptor",
+      "ftext",
+      "private_laserriflesessionsettings",
+      "private_laserriflesessionsettings_buildsessionsettings",
+      "private_laserriflesessionsettings_finishsetting",
+      "private_laserriflesessionsettings_makecheckbox",
+      "private_laserriflesessionsettings_makelocation",
+      "private_laserriflesessionsettings_makeslider",
+      "private_laserriflesessionsettings_ulrsettingcategory",
+      "private_laserriflesessionsettings_ulrsubcat_main",
+      "source_laserriflemod_private_laserriflesessionsettings_cpp_int32",
+      "source_laserriflemod_private_laserriflesessionsettings_cpp_tarray",
+      "source_laserriflemod_private_laserriflesessionsettings_cpp_tchar",
+      "tobjectptr",
+      "uobject",
+      "usmlsessionsetting"
+    ],
+    "4": [
+      "mk01_color",
+      "mk01_metallic",
+      "mk01_normal",
+      "mk01_roughness",
+      "mk01_tex_base_color",
+      "mk01_tex_metallic",
+      "mk01_tex_normal",
+      "mk01_tex_roughness",
+      "rifle_icon_hero",
+      "rifle_icon_mk1",
+      "satisfactory_laser_rifle_guide_part_0",
+      "smoke_puff",
+      "tripo_mcp_setup",
+      "tripo_rifle_prompts",
+      "tripo_rifles_readme"
+    ],
+    "5": [
+      "ue_create_mam_tree",
+      "ue_create_mam_tree_build_tree",
+      "ue_create_mam_tree_carr",
+      "ue_create_mam_tree_children",
+      "ue_create_mam_tree_cls",
+      "ue_create_mam_tree_coord",
+      "ue_create_mam_tree_err",
+      "ue_create_mam_tree_log",
+      "ue_create_mam_tree_main",
+      "ue_create_mam_tree_node_struct",
+      "ue_create_mam_tree_parents",
+      "ue_create_mam_tree_rationale_57"
+    ],
+    "6": [
+      "public_laserrifleschematics",
+      "public_laserrifleschematics_laserrifleschematics",
+      "public_laserrifleschematics_lr_addunlock",
+      "public_laserrifleschematics_ufgschematiccategory",
+      "public_laserrifleschematics_ulaserrifleschematic_base",
+      "public_laserrifleschematics_ulaserrifleunlockrecipe",
+      "source_laserriflemod_public_laserrifleschematics_h_laserriflemod_api",
+      "source_laserriflemod_public_laserrifleschematics_h_namespace",
+      "ufgunlock"
+    ],
+    "7": [
+      "ue_import_tripo",
+      "ue_import_tripo_assign",
+      "ue_import_tripo_build_material",
+      "ue_import_tripo_fbx_opts",
+      "ue_import_tripo_get",
+      "ue_import_tripo_import_mesh",
+      "ue_import_tripo_import_tex",
+      "ue_import_tripo_log",
+      "ue_import_tripo_longest"
+    ],
+    "8": [
+      "fgeometry",
+      "fpaintargs",
+      "fslaterect",
+      "fslatewindowelementlist",
+      "fwidgetstyle",
+      "private_laserriflecrosshair",
+      "private_laserriflecrosshair_nativepaint",
+      "source_laserriflemod_private_laserriflecrosshair_cpp_int32"
+    ],
+    "9": [
+      "audio_staging_gen_laser",
+      "audio_staging_gen_laser_env_attack_decay",
+      "audio_staging_gen_laser_rationale_1",
+      "audio_staging_gen_laser_rationale_15",
+      "audio_staging_gen_laser_rationale_36",
+      "audio_staging_gen_laser_synth",
+      "audio_staging_gen_laser_write_wav"
+    ],
+    "10": [
+      "ue_apply",
+      "ue_apply_bp_cdo",
+      "ue_apply_log",
+      "ue_apply_make_bp",
+      "ue_apply_rationale_2",
+      "ue_apply_save",
+      "ue_apply_warn"
+    ],
+    "11": [
+      "ue_mkassets",
+      "ue_mkassets_fbx_opts",
+      "ue_mkassets_import_fbx",
+      "ue_mkassets_import_texture",
+      "ue_mkassets_log",
+      "ue_mkassets_longest_axis_cm",
+      "ue_mkassets_warn"
+    ],
+    "12": [
+      "ue_mkgameplay",
+      "ue_mkgameplay_cdo_of",
+      "ue_mkgameplay_log",
+      "ue_mkgameplay_make_bp",
+      "ue_mkgameplay_save",
+      "ue_mkgameplay_tset",
+      "ue_mkgameplay_warn"
+    ],
+    "13": [
+      "public_laserriflesessionsettings",
+      "public_laserriflesessionsettings_laserriflesettings",
+      "public_laserriflesessionsettings_ufgusersettingcategory",
+      "source_laserriflemod_public_laserriflesessionsettings_h_laserriflemod_api",
+      "source_laserriflemod_public_laserriflesessionsettings_h_namespace"
+    ],
+    "14": [
+      "ue_apply2",
+      "ue_apply2_bp_cdo",
+      "ue_apply2_log",
+      "ue_apply2_warn"
+    ],
+    "15": [
+      "class",
+      "public_laserriflemod",
+      "public_laserriflemod_fdefaultgamemoduleimpl"
+    ],
+    "16": [
+      "laserriflemod_laserriflemod_build",
+      "laserriflemod_laserriflemod_build_laserriflemod",
+      "modulerules"
+    ],
+    "17": [
+      "public_laserriflecrosshair",
+      "public_laserriflecrosshair_ulaserriflecrosshair",
+      "source_laserriflemod_public_laserriflecrosshair_h_laserriflemod_api"
+    ],
+    "18": [
+      "public_laserriflerootinstance",
+      "public_laserriflerootinstance_ulaserriflerootinstance",
+      "source_laserriflemod_public_laserriflerootinstance_h_laserriflemod_api"
+    ],
+    "19": [
+      "public_laserriflerootworld",
+      "public_laserriflerootworld_ulaserriflerootworld",
+      "source_laserriflemod_public_laserriflerootworld_h_laserriflemod_api"
+    ],
+    "20": [
+      "public_laserriflesubsystem",
+      "public_laserriflesubsystem_alaserriflesubsystem",
+      "source_laserriflemod_public_laserriflesubsystem_h_laserriflemod_api"
+    ],
+    "21": [
+      "public_laserrifleweapon",
+      "public_laserrifleweapon_ulaserrifleammo",
+      "source_laserriflemod_public_laserrifleweapon_h_laserriflemod_api"
+    ],
+    "22": [
+      "ue_discover",
+      "ue_discover_log",
+      "ue_discover_probe"
+    ],
+    "23": [
+      "ue_mkicons",
+      "ue_mkicons_import_tex",
+      "ue_mkicons_log"
+    ],
+    "24": [
+      "ue_refine_probe",
+      "ue_refine_probe_dump",
+      "ue_refine_probe_log"
+    ],
+    "25": [
+      "ue_verify",
+      "ue_verify_cdo",
+      "ue_verify_log"
+    ],
+    "26": [
+      "private_laserriflemod",
+      "private_laserriflemod_startupmodule"
+    ],
+    "27": [
+      "private_laserriflerootinstance",
+      "private_laserriflerootinstance_ulaserriflerootinstance"
+    ],
+    "28": [
+      "private_laserriflerootworld",
+      "private_laserriflerootworld_ulaserriflerootworld"
+    ],
+    "29": [
+      "scripts_build",
+      "scripts_build_log"
+    ],
+    "30": [
+      "ue_apply_itempolish",
+      "ue_apply_itempolish_log"
+    ],
+    "31": [
+      "ue_find_vfx",
+      "ue_find_vfx_grab"
+    ],
+    "32": [
+      "ue_mkbeam",
+      "ue_mkbeam_log"
+    ],
+    "33": [
+      "ue_mksmoke",
+      "ue_mksmoke_log"
+    ],
+    "34": [
+      "ue_move_sound_event",
+      "ue_move_sound_event_log"
+    ],
+    "35": [
+      "ue_probe",
+      "ue_probe_log"
+    ],
+    "36": [
+      "scripts_open_editor"
+    ],
+    "37": [
+      "ue_run_ue_python"
+    ]
+  },
+  "cohesion": {
+    "0": 0.13655761024182078,
+    "1": 0.19047619047619047,
+    "2": 0.25146198830409355,
+    "3": 0.22794117647058823,
+    "4": 0.1523809523809524,
+    "5": 0.36363636363636365,
+    "6": 0.2777777777777778,
+    "7": 0.3055555555555556,
+    "8": 0.25,
+    "9": 0.3333333333333333,
+    "10": 0.2857142857142857,
+    "11": 0.3333333333333333,
+    "12": 0.47619047619047616,
+    "13": 0.4,
+    "14": 0.5,
+    "15": 0.6666666666666666,
+    "16": 0.6666666666666666,
+    "17": 0.6666666666666666,
+    "18": 0.6666666666666666,
+    "19": 0.6666666666666666,
+    "20": 0.6666666666666666,
+    "21": 0.6666666666666666,
+    "22": 1.0,
+    "23": 0.6666666666666666,
+    "24": 1.0,
+    "25": 0.6666666666666666,
+    "26": 1.0,
+    "27": 1.0,
+    "28": 1.0,
+    "29": 1.0,
+    "30": 1.0,
+    "31": 1.0,
+    "32": 1.0,
+    "33": 1.0,
+    "34": 1.0,
+    "35": 1.0,
+    "36": 1.0,
+    "37": 1.0
+  },
+  "gods": [
+    {
+      "id": "private_laserrifleweapon_tick",
+      "label": "Tick()",
+      "degree": 15
+    },
+    {
+      "id": "private_laserrifleweapon_firelaser",
+      "label": "FireLaser()",
+      "degree": 11
+    },
+    {
+      "id": "tripo_rifles_readme",
+      "label": "Tripo Rifles README",
+      "degree": 11
+    },
+    {
+      "id": "private_laserriflesessionsettings_makeslider",
+      "label": "MakeSlider()",
+      "degree": 9
+    },
+    {
+      "id": "flinearcolor",
+      "label": "FLinearColor",
+      "degree": 9
+    },
+    {
+      "id": "private_laserriflecrosshair_nativepaint",
+      "label": "NativePaint()",
+      "degree": 8
+    },
+    {
+      "id": "private_laserrifleschematics_getallschematics",
+      "label": "GetAllSchematics()",
+      "degree": 8
+    },
+    {
+      "id": "private_laserriflesessionsettings_makecheckbox",
+      "label": "MakeCheckBox()",
+      "degree": 8
+    },
+    {
+      "id": "private_laserriflesubsystem_countpurchased",
+      "label": "CountPurchased()",
+      "degree": 8
+    },
+    {
+      "id": "private_laserrifleweapon_gripcfg",
+      "label": "GripCfg()",
+      "degree": 8
+    }
+  ],
+  "surprises": [
+    {
+      "source": "Rifle Icon Hero",
+      "target": "Satisfactory Laser Rifle Guide Part 0",
+      "source_files": [
+        "Content/Equipment/LaserRifle/Icons/src/rifle_icon_hero.png",
+        "satisfactory-laser-rifle-guide.md"
+      ],
+      "confidence": "INFERRED",
+      "relation": "references",
+      "why": "inferred connection - not explicitly stated in source; crosses file types (doc \u2194 image); connects across different repos/directories; peripheral node `Rifle Icon Hero` unexpectedly reaches hub `Satisfactory Laser Rifle Guide Part 0`"
+    },
+    {
+      "source": "Rifle Icon Mk1",
+      "target": "Satisfactory Laser Rifle Guide Part 0",
+      "source_files": [
+        "Content/Equipment/LaserRifle/Icons/src/rifle_icon_Mk1.png",
+        "satisfactory-laser-rifle-guide.md"
+      ],
+      "confidence": "INFERRED",
+      "relation": "references",
+      "why": "inferred connection - not explicitly stated in source; crosses file types (doc \u2194 image); connects across different repos/directories; peripheral node `Rifle Icon Mk1` unexpectedly reaches hub `Satisfactory Laser Rifle Guide Part 0`"
+    },
+    {
+      "source": "Mk01 Color",
+      "target": "Tripo Rifles README",
+      "source_files": [
+        "tripo_rifles/Mk01.fbm/Color.jpg",
+        "tripo_rifles/README.txt"
+      ],
+      "confidence": "INFERRED",
+      "relation": "references",
+      "why": "inferred connection - not explicitly stated in source; crosses file types (doc \u2194 image); peripheral node `Mk01 Color` unexpectedly reaches hub `Tripo Rifles README`"
+    },
+    {
+      "source": "Mk01 Metallic",
+      "target": "Tripo Rifles README",
+      "source_files": [
+        "tripo_rifles/Mk01.fbm/Metallic.jpg",
+        "tripo_rifles/README.txt"
+      ],
+      "confidence": "INFERRED",
+      "relation": "references",
+      "why": "inferred connection - not explicitly stated in source; crosses file types (doc \u2194 image); peripheral node `Mk01 Metallic` unexpectedly reaches hub `Tripo Rifles README`"
+    },
+    {
+      "source": "Mk01 Normal",
+      "target": "Tripo Rifles README",
+      "source_files": [
+        "tripo_rifles/Mk01.fbm/Normal.jpg",
+        "tripo_rifles/README.txt"
+      ],
+      "confidence": "INFERRED",
+      "relation": "references",
+      "why": "inferred connection - not explicitly stated in source; crosses file types (doc \u2194 image); peripheral node `Mk01 Normal` unexpectedly reaches hub `Tripo Rifles README`"
+    }
+  ],
+  "tokens": {
+    "input": 8724,
+    "output": 4118
+  }
+}

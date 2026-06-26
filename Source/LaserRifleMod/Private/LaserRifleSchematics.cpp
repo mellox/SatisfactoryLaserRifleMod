@@ -66,6 +66,16 @@ void ULaserRifleSchematic_Base::LR_SetIcon(UTexture2D* Icon)
 	mSmallSchematicIcon = Icon;
 	mSchematicIcon.SetResourceObject(Icon);
 	mSchematicIcon.ImageSize = FVector2D(256.0f, 256.0f);
+	// Also push this per-Mk icon onto the Info-only unlock that LR_Init already created with the
+	// generic Mk1 icon, so the MAM POPUP reward card matches the per-tier tree-node icon.
+	for (auto& U : mUnlocks)
+	{
+		if (UFGUnlockInfoOnly* Info = Cast<UFGUnlockInfoOnly>(U))
+		{
+			Info->mUnlockIconBig = Icon;
+			Info->mUnlockIconSmall = Icon;
+		}
+	}
 }
 
 void ULaserRifleSchematic_Base::LR_ApplyDefaultCost(int32 Tier)

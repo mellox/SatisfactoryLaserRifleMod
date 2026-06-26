@@ -471,7 +471,20 @@ void ALaserRifleWeapon::Tick(float DeltaSeconds)
 		else                { ApplyGripFromConfig(); }            // camera viewmodel
 	}
 
-	if (FireCooldown <= 0.f && !bOverheated && PC->IsInputKeyDown(EKeys::LeftMouseButton))
+	// Live visual refresh: poll the research-driven Mk level and re-apply the look the moment
+	// it changes, so buying a Mk schematic upgrades the held rifle WITHOUT a re-equip/save-load.
+	VisualPollTimer -= DeltaSeconds;
+	if (VisualPollTimer <= 0.f)
+	{
+		VisualPollTimer = 0.5f;
+		int32 VLnow = 1; if (ALaserRifleSubsystem* VS = GetSub()) { VLnow = VS->GetVisualLevel(); }
+		if (VLnow != AppliedVisualLevel) { ApplyVisualsForLevel(VLnow); }
+	}
+
+	// Don't fire while a menu/UI is open (MAM, inventory, build menu). Satisfactory shows the
+	// mouse cursor whenever a blocking menu is up, so gate the trigger on that — otherwise a
+	// click on a research node also fires the laser.
+	if (FireCooldown <= 0.f && !bOverheated && !PC->bShowMouseCursor && PC->IsInputKeyDown(EKeys::LeftMouseButton))
 	{
 		FireLaser(Char, PC);
 		// Past the soft limit (Heat>1) the rifle keeps firing but slower, up to
@@ -486,7 +499,7 @@ void ALaserRifleWeapon::Tick(float DeltaSeconds)
 	// Manual reload (R): top up the cell early so you're ready for the next fight. Edge-triggered
 	// (fires once per press). Skip if the cell is already full, a swap is already playing, or
 	// while overheated. Consumes a portion like any reload.
-	const bool bRNow = PC->IsInputKeyDown(EKeys::R);
+	const bool bRNow = PC->IsInputKeyDown(EKeys::R) && !PC->bShowMouseCursor;
 	if (bRNow && !bReloadKeyWasDown && !bSwapping && !bOverheated
 		&& CellShots >= 0.f && CellShots < ShotsPerCell)
 	{
@@ -898,6 +911,7 @@ void ALaserRifleWeapon::ApplyVisualsForLevel(int32 VisualLevel)
 {
 	if (!BodyMesh) { return; }
 	const int32 Idx = FMath::Clamp(VisualLevel, 1, 10) - 1;
+	AppliedVisualLevel = Idx + 1;   // mark applied so the Tick poll doesn't re-fire every frame
 	if (LevelBodyMeshes.IsValidIndex(Idx) && LevelBodyMeshes[Idx])
 	{
 		BodyMesh->SetStaticMesh(LevelBodyMeshes[Idx]);
