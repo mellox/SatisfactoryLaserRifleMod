@@ -105,8 +105,8 @@
     "semantic_hash": "7f8a4ce46a39a806e0a58be60997f14e"
   },
   "Source/LaserRifleMod/Private/LaserRifleMod.cpp": {
-    "mtime": 1782436951.656039,
-    "ast_hash": "2ddf3762b1c088256dc86121aa3fde0c",
+    "mtime": 1782442090.9809654,
+    "ast_hash": "b2536b8f66e622b314465789efa37bf5",
     "semantic_hash": ""
   },
   "Source/LaserRifleMod/Private/LaserRifleRootInstance.cpp": {
@@ -135,8 +135,8 @@
     "semantic_hash": "45d537fdec0ef5613cc2270c5ae88025"
   },
   "Source/LaserRifleMod/Private/LaserRifleWeapon.cpp": {
-    "mtime": 1782436929.582672,
-    "ast_hash": "c8472ea101efa57f6f46ae7190c2d048",
+    "mtime": 1782442072.4254186,
+    "ast_hash": "98e9e51718aa53e769bf9ca3c341e917",
     "semantic_hash": ""
   },
   "Source/LaserRifleMod/Public/LaserRifleCrosshair.h": {

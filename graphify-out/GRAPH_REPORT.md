@@ -1,7 +1,7 @@
 # Graph Report - SatisfactoryLaserRifleMod  (2026-06-25)
 
 ## Corpus Check
-- 43 files · ~7,037,457 words
+- 43 files · ~7,037,523 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
@@ -10,7 +10,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `705b815c`
+- Built from commit: `950553ba`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 

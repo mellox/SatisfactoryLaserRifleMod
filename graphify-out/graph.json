@@ -287,7 +287,7 @@
       "label": "SpawnSpark()",
       "file_type": "code",
       "source_file": "Source/LaserRifleMod/Private/LaserRifleWeapon.cpp",
-      "source_location": "L866",
+      "source_location": "L871",
       "_origin": "ast",
       "id": "private_laserrifleweapon_spawnspark",
       "community": 0,
@@ -297,7 +297,7 @@
       "label": "FLinearColor",
       "file_type": "code",
       "source_file": "Source/LaserRifleMod/Private/LaserRifleWeapon.cpp",
-      "source_location": "L866",
+      "source_location": "L871",
       "_origin": "ast",
       "id": "flinearcolor",
       "community": 0,
@@ -307,7 +307,7 @@
       "label": "UpdatePlasmaOrb()",
       "file_type": "code",
       "source_file": "Source/LaserRifleMod/Private/LaserRifleWeapon.cpp",
-      "source_location": "L898",
+      "source_location": "L903",
       "_origin": "ast",
       "id": "private_laserrifleweapon_updateplasmaorb",
       "community": 0,
@@ -317,7 +317,7 @@
       "label": "ShowBeam()",
       "file_type": "code",
       "source_file": "Source/LaserRifleMod/Private/LaserRifleWeapon.cpp",
-      "source_location": "L920",
+      "source_location": "L925",
       "_origin": "ast",
       "id": "private_laserrifleweapon_showbeam",
       "community": 0,
@@ -327,7 +327,7 @@
       "label": "HideBeam()",
       "file_type": "code",
       "source_file": "Source/LaserRifleMod/Private/LaserRifleWeapon.cpp",
-      "source_location": "L965",
+      "source_location": "L970",
       "_origin": "ast",
       "id": "private_laserrifleweapon_hidebeam",
       "community": 0,
@@ -337,7 +337,7 @@
       "label": "ForceCrosshair()",
       "file_type": "code",
       "source_file": "Source/LaserRifleMod/Private/LaserRifleWeapon.cpp",
-      "source_location": "L970",
+      "source_location": "L975",
       "_origin": "ast",
       "id": "private_laserrifleweapon_forcecrosshair",
       "community": 0,
@@ -347,7 +347,7 @@
       "label": "EnsureCrosshair()",
       "file_type": "code",
       "source_file": "Source/LaserRifleMod/Private/LaserRifleWeapon.cpp",
-      "source_location": "L983",
+      "source_location": "L988",
       "_origin": "ast",
       "id": "private_laserrifleweapon_ensurecrosshair",
       "community": 0,
@@ -357,7 +357,7 @@
       "label": "GetSub()",
       "file_type": "code",
       "source_file": "Source/LaserRifleMod/Private/LaserRifleWeapon.cpp",
-      "source_location": "L1012",
+      "source_location": "L1017",
       "_origin": "ast",
       "id": "private_laserrifleweapon_getsub",
       "community": 0,
@@ -367,7 +367,7 @@
       "label": "ALaserRifleSubsystem",
       "file_type": "code",
       "source_file": "Source/LaserRifleMod/Private/LaserRifleWeapon.cpp",
-      "source_location": "L1012",
+      "source_location": "L1017",
       "_origin": "ast",
       "id": "alaserriflesubsystem",
       "community": 0,
@@ -377,7 +377,7 @@
       "label": "EffectiveMkLevel()",
       "file_type": "code",
       "source_file": "Source/LaserRifleMod/Private/LaserRifleWeapon.cpp",
-      "source_location": "L1024",
+      "source_location": "L1029",
       "_origin": "ast",
       "id": "private_laserrifleweapon_effectivemklevel",
       "community": 0,
@@ -387,7 +387,7 @@
       "label": "int32",
       "file_type": "code",
       "source_file": "Source/LaserRifleMod/Private/LaserRifleWeapon.cpp",
-      "source_location": "L1024",
+      "source_location": "L1029",
       "_origin": "ast",
       "id": "int32",
       "community": 0,
@@ -397,7 +397,7 @@
       "label": "LR_PaletteColor()",
       "file_type": "code",
       "source_file": "Source/LaserRifleMod/Private/LaserRifleWeapon.cpp",
-      "source_location": "L1031",
+      "source_location": "L1036",
       "_origin": "ast",
       "id": "private_laserrifleweapon_lr_palettecolor",
       "community": 0,
@@ -407,7 +407,7 @@
       "label": "LevelColor()",
       "file_type": "code",
       "source_file": "Source/LaserRifleMod/Private/LaserRifleWeapon.cpp",
-      "source_location": "L1042",
+      "source_location": "L1047",
       "_origin": "ast",
       "id": "private_laserrifleweapon_levelcolor",
       "community": 0,
@@ -417,7 +417,7 @@
       "label": "CurrentBeamColor()",
       "file_type": "code",
       "source_file": "Source/LaserRifleMod/Private/LaserRifleWeapon.cpp",
-      "source_location": "L1055",
+      "source_location": "L1060",
       "_origin": "ast",
       "id": "private_laserrifleweapon_currentbeamcolor",
       "community": 0,
@@ -427,7 +427,7 @@
       "label": "RefreshVisuals()",
       "file_type": "code",
       "source_file": "Source/LaserRifleMod/Private/LaserRifleWeapon.cpp",
-      "source_location": "L1060",
+      "source_location": "L1065",
       "_origin": "ast",
       "id": "private_laserrifleweapon_refreshvisuals",
       "community": 0,
@@ -437,7 +437,7 @@
       "label": "ApplyVisualsForLevel()",
       "file_type": "code",
       "source_file": "Source/LaserRifleMod/Private/LaserRifleWeapon.cpp",
-      "source_location": "L1065",
+      "source_location": "L1070",
       "_origin": "ast",
       "id": "private_laserrifleweapon_applyvisualsforlevel",
       "community": 0,
@@ -449,9 +449,9 @@
       "source_file": "Source/LaserRifleMod/Public/LaserRifleWeapon.h",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "public_laserrifleweapon",
       "community": 21,
-      "norm_label": "laserrifleweapon.h"
+      "norm_label": "laserrifleweapon.h",
+      "id": "public_laserrifleweapon"
     },
     {
       "label": "ULaserRifleAmmo()",
@@ -459,9 +459,9 @@
       "source_file": "Source/LaserRifleMod/Public/LaserRifleWeapon.h",
       "source_location": "L24",
       "_origin": "ast",
-      "id": "public_laserrifleweapon_ulaserrifleammo",
       "community": 21,
-      "norm_label": "ulaserrifleammo()"
+      "norm_label": "ulaserrifleammo()",
+      "id": "public_laserrifleweapon_ulaserrifleammo"
     },
     {
       "label": "LASERRIFLEMOD_API",
@@ -469,9 +469,9 @@
       "source_file": "Source/LaserRifleMod/Public/LaserRifleWeapon.h",
       "source_location": "L24",
       "_origin": "ast",
-      "id": "laserriflemod_api",
       "community": 21,
-      "norm_label": "laserriflemod_api"
+      "norm_label": "laserriflemod_api",
+      "id": "laserriflemod_api"
     },
     {
       "label": "import_tripo.py",
@@ -3265,9 +3265,9 @@
       "source_file": "Source/LaserRifleMod/Private/LaserRifleWeapon.cpp",
       "source_location": "L866",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "private_laserrifleweapon",
-      "target": "private_laserrifleweapon_spawnspark",
-      "confidence_score": 1.0
+      "target": "private_laserrifleweapon_spawnspark"
     },
     {
       "relation": "contains",
@@ -3325,9 +3325,9 @@
       "source_file": "Source/LaserRifleMod/Private/LaserRifleWeapon.cpp",
       "source_location": "L898",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "private_laserrifleweapon",
-      "target": "private_laserrifleweapon_updateplasmaorb",
-      "confidence_score": 1.0
+      "target": "private_laserrifleweapon_updateplasmaorb"
     },
     {
       "relation": "contains",
@@ -3345,9 +3345,9 @@
       "source_file": "Source/LaserRifleMod/Private/LaserRifleWeapon.cpp",
       "source_location": "L819",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "private_laserrifleweapon",
-      "target": "private_laserrifleweapon_updatesparks",
-      "confidence_score": 1.0
+      "target": "private_laserrifleweapon_updatesparks"
     },
     {
       "relation": "calls",
@@ -3807,9 +3807,9 @@
       "source_file": "Source/LaserRifleMod/Private/LaserRifleWeapon.cpp",
       "source_location": "L504",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "private_laserrifleweapon_tick",
-      "target": "private_laserrifleweapon_updateplasmaorb",
-      "confidence_score": 1.0
+      "target": "private_laserrifleweapon_updateplasmaorb"
     },
     {
       "relation": "calls",
@@ -3829,9 +3829,9 @@
       "source_file": "Source/LaserRifleMod/Private/LaserRifleWeapon.cpp",
       "source_location": "L503",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "private_laserrifleweapon_tick",
-      "target": "private_laserrifleweapon_updatesparks",
-      "confidence_score": 1.0
+      "target": "private_laserrifleweapon_updatesparks"
     },
     {
       "relation": "references",
@@ -4016,9 +4016,9 @@
       "source_file": "Source/LaserRifleMod/Private/LaserRifleWeapon.cpp",
       "source_location": "L876",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "private_laserrifleweapon_spawnspark",
-      "target": "fvector",
-      "confidence_score": 1.0
+      "target": "fvector"
     },
     {
       "relation": "calls",
@@ -4027,9 +4027,9 @@
       "source_file": "Source/LaserRifleMod/Private/LaserRifleWeapon.cpp",
       "source_location": "L911",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "private_laserrifleweapon_updateplasmaorb",
-      "target": "fvector",
-      "confidence_score": 1.0
+      "target": "fvector"
     },
     {
       "relation": "calls",
@@ -4038,9 +4038,9 @@
       "source_file": "Source/LaserRifleMod/Private/LaserRifleWeapon.cpp",
       "source_location": "L857",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "private_laserrifleweapon_updatesparks",
-      "target": "fvector",
-      "confidence_score": 1.0
+      "target": "fvector"
     },
     {
       "relation": "calls",
@@ -4049,9 +4049,9 @@
       "source_file": "Source/LaserRifleMod/Private/LaserRifleWeapon.cpp",
       "source_location": "L830",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "private_laserrifleweapon_updatesparks",
-      "target": "flinearcolor",
-      "confidence_score": 1.0
+      "target": "flinearcolor"
     },
     {
       "relation": "calls",
@@ -4060,9 +4060,9 @@
       "source_file": "Source/LaserRifleMod/Private/LaserRifleWeapon.cpp",
       "source_location": "L839",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "private_laserrifleweapon_updatesparks",
-      "target": "private_laserrifleweapon_currentbeamcolor",
-      "confidence_score": 1.0
+      "target": "private_laserrifleweapon_currentbeamcolor"
     },
     {
       "relation": "calls",
@@ -4071,9 +4071,9 @@
       "source_file": "Source/LaserRifleMod/Private/LaserRifleWeapon.cpp",
       "source_location": "L822",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "private_laserrifleweapon_updatesparks",
-      "target": "private_laserrifleweapon_effectivemklevel",
-      "confidence_score": 1.0
+      "target": "private_laserrifleweapon_effectivemklevel"
     },
     {
       "relation": "calls",
@@ -4082,9 +4082,9 @@
       "source_file": "Source/LaserRifleMod/Private/LaserRifleWeapon.cpp",
       "source_location": "L845",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "private_laserrifleweapon_updatesparks",
-      "target": "private_laserrifleweapon_spawnspark",
-      "confidence_score": 1.0
+      "target": "private_laserrifleweapon_spawnspark"
     },
     {
       "relation": "references",
@@ -4093,9 +4093,9 @@
       "source_location": "L866",
       "weight": 1.0,
       "context": "parameter_type",
+      "confidence_score": 1.0,
       "source": "private_laserrifleweapon_spawnspark",
-      "target": "flinearcolor",
-      "confidence_score": 1.0
+      "target": "flinearcolor"
     },
     {
       "relation": "calls",
@@ -4170,9 +4170,9 @@
       "source_file": "Source/LaserRifleMod/Private/LaserRifleWeapon.cpp",
       "source_location": "L915",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "private_laserrifleweapon_updateplasmaorb",
-      "target": "private_laserrifleweapon_currentbeamcolor",
-      "confidence_score": 1.0
+      "target": "private_laserrifleweapon_currentbeamcolor"
     },
     {
       "relation": "calls",
@@ -4181,9 +4181,9 @@
       "source_file": "Source/LaserRifleMod/Private/LaserRifleWeapon.cpp",
       "source_location": "L901",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "private_laserrifleweapon_updateplasmaorb",
-      "target": "private_laserrifleweapon_effectivemklevel",
-      "confidence_score": 1.0
+      "target": "private_laserrifleweapon_effectivemklevel"
     },
     {
       "relation": "calls",
@@ -4247,9 +4247,9 @@
       "source_location": "L1024",
       "weight": 1.0,
       "context": "return_type",
+      "confidence_score": 1.0,
       "source": "private_laserrifleweapon_effectivemklevel",
-      "target": "int32",
-      "confidence_score": 1.0
+      "target": "int32"
     },
     {
       "relation": "calls",
@@ -4269,9 +4269,9 @@
       "source_location": "L1065",
       "weight": 1.0,
       "context": "parameter_type",
+      "confidence_score": 1.0,
       "source": "private_laserrifleweapon_applyvisualsforlevel",
-      "target": "int32",
-      "confidence_score": 1.0
+      "target": "int32"
     },
     {
       "relation": "references",
@@ -4280,9 +4280,9 @@
       "source_location": "L1042",
       "weight": 1.0,
       "context": "parameter_type",
+      "confidence_score": 1.0,
       "source": "private_laserrifleweapon_levelcolor",
-      "target": "int32",
-      "confidence_score": 1.0
+      "target": "int32"
     },
     {
       "relation": "references",
@@ -4291,9 +4291,9 @@
       "source_location": "L1031",
       "weight": 1.0,
       "context": "parameter_type",
+      "confidence_score": 1.0,
       "source": "private_laserrifleweapon_lr_palettecolor",
-      "target": "int32",
-      "confidence_score": 1.0
+      "target": "int32"
     },
     {
       "relation": "calls",
@@ -7734,5 +7734,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "705b815cd381e865d8425efae3b6819f49a4807a"
+  "built_at_commit": "950553ba0f2236e0627e5e7f2cbbc5262bcfa3b6"
 }
