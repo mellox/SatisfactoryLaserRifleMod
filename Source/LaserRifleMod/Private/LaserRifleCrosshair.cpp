@@ -50,8 +50,9 @@ int32 ULaserRifleCrosshair::NativePaint(const FPaintArgs& Args, const FGeometry&
 	};
 	Bar(BarL, BarL + FVector2D(BarW, 0.f), FLinearColor(0.f, 0.f, 0.f, 0.5f), 11.f);        // track
 	Bar(BarL, BarL + FVector2D(BarW * Frac, 0.f), EnergyCol, 11.f);                          // fill
-	const FString Txt = FString::Printf(TEXT("%d / %d    BATT %d/%d"),
+	FString Txt = FString::Printf(TEXT("%d / %d    BATT %d/%d"),
 		CellShots, CellMax, Portions, PortionsMax);
+	if (SpareBatteries >= 0) { Txt += FString::Printf(TEXT("   x%d spare"), SpareBatteries); }   // inventory Batteries
 	FSlateDrawElement::MakeText(OutDrawElements, Layer + 3,
 		AllottedGeometry.ToOffsetPaintGeometry(BarL + FVector2D(0.f, 10.f)),
 		Txt, FCoreStyle::GetDefaultFontStyle("Bold", 15), ESlateDrawEffect::None, EnergyCol);

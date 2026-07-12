@@ -14,6 +14,9 @@ ALaserRifleSubsystem::ALaserRifleSubsystem()
 {
 	// Populate the Mk1..Mk10 + stat-upgrade schematic class lists once.
 	LaserRifleSchematics::GetLevels(RifleSchematics);
+	// WIP / PARKED (2026-07-05): the Damage/Heat/Cool tier schematics are ORPHANED -- their research nodes
+	// were removed from the MAM tree ("only research for Mk1-10", see Scripts/ue/create_mam_tree.py), so
+	// these lists count 0 purchased forever. Kept populated so re-adding the research is a one-step change.
 	LaserRifleSchematics::GetDamageTiers(DamageSchematics);
 	LaserRifleSchematics::GetHeatTiers(HeatSchematics);
 	LaserRifleSchematics::GetCoolTiers(CoolSchematics);
@@ -92,15 +95,15 @@ int32 ALaserRifleSubsystem::GetCoolTierCount() const   { return CountPurchased(C
 
 float ALaserRifleSubsystem::GetDamageMultiplier() const
 {
-	// Damage comes mostly from the per-Mk damage line (DamagePerTier), with a
-	// small bump for reaching each Mk (MkBump). Both config-tunable live.
-	const int32 Mk  = GetRifleLevel();
-	const int32 Dmg = GetDamageTierCount();
-	const float PerTier = GetConfigFloat(LaserRifleSettings::Id_DamageBase, 0.12f);
-	const float MkBump  = GetConfigFloat(LaserRifleSettings::Id_MkBump, 0.05f);
-	const bool  bExp    = GetConfigBool(LaserRifleSettings::Id_Exponential, true);
-	const float DmgMul  = bExp ? FMath::Pow(1.0f + PerTier, (float)Dmg) : (1.0f + PerTier * (float)Dmg);
-	return DmgMul * FMath::Pow(1.0f + MkBump, (float)Mk);
+	// WIP / PARKED (2026-07-05): the damage-TIER research (Dmg I-V) is out of the MAM tree (Mk1-10 only),
+	// so its tier term would be 1 anyway -- AND its settings (Id_DamageBase / Id_Exponential) are no longer
+	// registered, so we must NOT read them here (that would query a non-existent option). Damage scales ONLY
+	// by Mk via MkBump: (1+MkBump)^Mk. When the Dmg research + its settings return, restore the tier term:
+	//   Dmg=GetDamageTierCount(); PerTier=GetConfigFloat(Id_DamageBase,..); bExp=GetConfigBool(Id_Exponential,..);
+	//   DmgMul = bExp ? Pow(1+PerTier,Dmg) : (1+PerTier*Dmg);  return DmgMul * Pow(1+MkBump, Mk);
+	const int32 Mk     = GetRifleLevel();
+	const float MkBump = GetConfigFloat(LaserRifleSettings::Id_MkBump, 0.05f);
+	return FMath::Pow(1.0f + MkBump, (float)Mk);
 }
 
 // --- Config reads ------------------------------------------------------------

@@ -41,7 +41,7 @@ void ULaserRifleSchematic_Base::LR_Init(int32 Level)
 	mHiddenUntilDependenciesMet = false;
 	mDependenciesBlocksSchematicAccess = false;
 	LR_AddInfoUnlock(mDisplayName.ToString(), mDescription.ToString());   // MAM description source
-	LR_ApplyDefaultCost(mTechTier);                                       // MAM ingredient cost
+	LR_SetCostFromRecipe(Level);                                          // MAM cost = the craft recipe (1 source)
 }
 
 void ULaserRifleSchematic_Base::LR_InitStat(const FString& Name, const FString& Desc, int32 TechTier, float MenuPriority)
@@ -78,28 +78,82 @@ void ULaserRifleSchematic_Base::LR_SetIcon(UTexture2D* Icon)
 	}
 }
 
-void ULaserRifleSchematic_Base::LR_ApplyDefaultCost(int32 Tier)
+void ULaserRifleSchematic_Base::LR_ApplyDefaultCost(int32 MkLevel)
 {
-	// Tier-scaled ingredient cost for the MAM "Cost:" panel. Paths confirmed against the on-disk
-	// base-game descriptors (Resource singular + item subfolder). FClassFinder runs at ctor time
-	// (called from LR_Init/LR_InitStat); the .Succeeded() guard drops any path that fails to load
-	// so a wrong path can never crash — it just yields a cheaper cost.
+	// Per-Mk MAM "Cost:" panel (what you feed the MAM to RESEARCH the node). This is a lighter
+	// "research sample" that MIRRORS the craft-recipe ladder's tier-appropriate hero material for
+	// each Mk (see Scripts/ue/make_mk_items.py RECIPE_LADDER + recipe-pricing-research.md), so the
+	// research cost visibly progresses with the same materials as the craft cost -- iron/quartz at
+	// Mk1 up to RCU/Cooling System at Mk10 -- instead of the old flat wire/iron/quartz scale.
+	// FClassFinder runs at ctor time; the .Succeeded() guard drops any path that fails to load so a
+	// wrong path can never crash (it just yields a cheaper cost). Item internal names that are NOT
+	// obvious: Heat Sink=AluminumPlateReinforced, AI Limiter=CircuitBoardHighSpeed,
+	// Supercomputer=ComputerSuper, RCU=ModularFrameLightweight.
 	auto Find = [](const TCHAR* Path) -> TSubclassOf<UFGItemDescriptor>
 	{
 		ConstructorHelpers::FClassFinder<UFGItemDescriptor> F(Path);
 		return F.Succeeded() ? F.Class : nullptr;
 	};
-	const int32 T = FMath::Max(1, Tier);
-	TSubclassOf<UFGItemDescriptor> Wire   = Find(TEXT("/Game/FactoryGame/Resource/Parts/Wire/Desc_Wire.Desc_Wire_C"));
-	TSubclassOf<UFGItemDescriptor> Iron   = Find(TEXT("/Game/FactoryGame/Resource/Parts/IronPlate/Desc_IronPlate.Desc_IronPlate_C"));
-	TSubclassOf<UFGItemDescriptor> Quartz = Find(TEXT("/Game/FactoryGame/Resource/Parts/QuartzCrystal/Desc_QuartzCrystal.Desc_QuartzCrystal_C"));
+	// MAM research cost == the WORKBENCH craft recipe's MATERIAL ingredients (the user wants the
+	// MAM panel to match the workbench, minus the "consume 1x prior Mk rifle" which you can't pay
+	// to research). MUST stay in sync with Scripts/ue/make_mk_items.py RECIPE_LADDER -- same items,
+	// same amounts. (Kept as a literal duplicate rather than reading the recipe CDO at ctor time,
+	// which is fragile w.r.t. asset load order.)
+	#define LR_PART(Folder, Name) Find(TEXT("/Game/FactoryGame/Resource/Parts/" Folder "/Desc_" Name "." "Desc_" Name "_C"))
+	const int32 M = FMath::Clamp(MkLevel, 1, 10);
 	TArray<FItemAmount> Cost;
-	if (Wire) { Cost.Add(FItemAmount(Wire, 25 * T)); }
-	if (Iron) { Cost.Add(FItemAmount(Iron, 10 * T)); }
-	if (Quartz && T >= 3) { Cost.Add(FItemAmount(Quartz, 5 * (T - 2))); }
+	auto Add = [&Cost](TSubclassOf<UFGItemDescriptor> C, int32 N){ if (C) { Cost.Add(FItemAmount(C, N)); } };
+	switch (M)
+	{
+	case 1:  Add(LR_PART("IronPlateReinforced","IronPlateReinforced"),5); Add(LR_PART("Wire","Wire"),40); Add(LR_PART("Cable","Cable"),10); Add(LR_PART("QuartzCrystal","QuartzCrystal"),10); break;
+	case 2:  Add(LR_PART("Rotor","Rotor"),3); Add(LR_PART("Cable","Cable"),20); Add(LR_PART("HighSpeedWire","HighSpeedWire"),20); Add(LR_PART("QuartzCrystal","QuartzCrystal"),15); break;
+	case 3:  Add(LR_PART("CircuitBoard","CircuitBoard"),4); Add(LR_PART("HighSpeedWire","HighSpeedWire"),40); Add(LR_PART("QuartzCrystal","QuartzCrystal"),25); break;
+	case 4:  Add(LR_PART("Stator","Stator"),5); Add(LR_PART("CrystalOscillator","CrystalOscillator"),3); Add(LR_PART("HighSpeedWire","HighSpeedWire"),60); break;
+	case 5:  Add(LR_PART("Motor","Motor"),4); Add(LR_PART("CircuitBoard","CircuitBoard"),8); Add(LR_PART("CrystalOscillator","CrystalOscillator"),5); break;
+	case 6:  Add(LR_PART("AluminumPlateReinforced","AluminumPlateReinforced"),6); Add(LR_PART("CircuitBoardHighSpeed","CircuitBoardHighSpeed"),4); Add(LR_PART("AluminumCasing","AluminumCasing"),10); break;
+	case 7:  Add(LR_PART("Computer","Computer"),2); Add(LR_PART("AluminumPlateReinforced","AluminumPlateReinforced"),10); Add(LR_PART("CrystalOscillator","CrystalOscillator"),8); break;
+	case 8:  Add(LR_PART("ModularFrameHeavy","ModularFrameHeavy"),3); Add(LR_PART("HighSpeedConnector","HighSpeedConnector"),8); Add(LR_PART("Computer","Computer"),3); break;
+	case 9:  Add(LR_PART("CoolingSystem","CoolingSystem"),6); Add(LR_PART("ComputerSuper","ComputerSuper"),2); Add(LR_PART("CircuitBoardHighSpeed","CircuitBoardHighSpeed"),10); break;
+	case 10: Add(LR_PART("ModularFrameLightweight","ModularFrameLightweight"),4); Add(LR_PART("CoolingSystem","CoolingSystem"),10); Add(LR_PART("ComputerSuper","ComputerSuper"),4); break;
+	default: Add(LR_PART("Wire","Wire"),20); break;
+	}
+	#undef LR_PART
 	LR_SetCost(Cost);
-	UE_LOG(LogLaserRifle, Display, TEXT("[LR] MAM cost tier=%d items=%d (wire=%d iron=%d quartz=%d)"),
-		T, Cost.Num(), Wire ? 1 : 0, Iron ? 1 : 0, Quartz ? 1 : 0);
+	UE_LOG(LogLaserRifle, Display, TEXT("[LR] MAM research cost Mk%d (literal fallback): %d items"), M, Cost.Num());
+}
+
+void ULaserRifleSchematic_Base::LR_SetCostFromRecipe(int32 MkLevel)
+{
+	// SINGLE SOURCE OF TRUTH: the MAM research node's "Cost:" == the ingredients of the SAME
+	// Recipe_LaserRifle_Mk<N> asset the workbench crafts from (authored in Scripts/ue/make_mk_items.py),
+	// so the two can never drift again -- including the "consume 1x prior Mk rifle" upgrade ingredient
+	// (user 2026-07-05: "they should be the same recipe and it should consume the previous rifle").
+	// FClassFinder force-loads the recipe class synchronously during CDO construction, so by the time
+	// .Succeeded() is true its CDO's mIngredients is deserialized; GetIngredients() (line 127 FGRecipe.h)
+	// is a plain CDO accessor needing no world context. If the recipe is somehow unavailable at ctor
+	// time we fall back to the literal parts ladder so the node is never free.
+	const int32 M = FMath::Clamp(MkLevel, 1, 10);
+	const FString Path = FString::Printf(
+		TEXT("/LaserRifleMod/Recipes/Recipe_LaserRifle_Mk%d.Recipe_LaserRifle_Mk%d_C"), M, M);
+	ConstructorHelpers::FClassFinder<UFGRecipe> RecipeFinder(*Path);
+	if (RecipeFinder.Succeeded())
+	{
+		if (const UFGRecipe* RecipeCDO = GetDefault<UFGRecipe>(RecipeFinder.Class))
+		{
+			const TArray<FItemAmount>& Ings = RecipeCDO->GetIngredients();
+			if (Ings.Num() > 0)
+			{
+				LR_SetCost(Ings);
+				UE_LOG(LogLaserRifle, Display,
+					TEXT("[LR] MAM cost Mk%d <- Recipe_LaserRifle_Mk%d (%d ingredients, matches workbench)"),
+					M, M, Ings.Num());
+				return;
+			}
+		}
+	}
+	UE_LOG(LogLaserRifle, Warning,
+		TEXT("[LR] MAM cost Mk%d: recipe %s unavailable at ctor -> literal-ladder fallback"), M, *Path);
+	LR_ApplyDefaultCost(M);
 }
 
 void ULaserRifleSchematic_Base::LR_AddInfoUnlock(const FString& Name, const FString& Desc)
@@ -146,6 +200,21 @@ USchematic_LaserRifle_01::USchematic_LaserRifle_01()
 		Unlock->LR_SetRecipe(RecipeFinder.Class);
 		mUnlocks.Add(Unlock);
 	}
+
+	// Also unlock the ENERGY CELL fuel recipe here, so researching the Mk1 rifle grants its craftable fuel at
+	// the SAME time. This fixes the early-rifle-with-no-fuel gap: the rifle burns Energy Cells to reload, and
+	// before this the reload pulled a base-game Battery (unlocks ~Tier 8) -> a fresh Mk1 bricked once its
+	// starting charge ran out. Guarded FClassFinder: if Recipe_LR_EnergyCell isn't cooked yet (e.g. the first
+	// build before the Python author step) this simply adds no unlock -- it never crashes. See [[laserrifle-energycell]].
+	static ConstructorHelpers::FClassFinder<UFGRecipe> CellRecipeFinder(
+		TEXT("/LaserRifleMod/Recipes/Recipe_LR_EnergyCell.Recipe_LR_EnergyCell_C"));
+	if (CellRecipeFinder.Succeeded())
+	{
+		ULaserRifleUnlockRecipe* CellUnlock =
+			CreateDefaultSubobject<ULaserRifleUnlockRecipe>(TEXT("CellRecipeUnlock"));
+		CellUnlock->LR_SetRecipe(CellRecipeFinder.Class);
+		mUnlocks.Add(CellUnlock);
+	}
 }
 
 // --- Mk2..Mk10 (no recipe unlock; pure level markers) ------------------------
@@ -177,6 +246,14 @@ LR_SCHEMATIC_CTOR(USchematic_LaserRifle_10, 10)
 
 #undef LR_SCHEMATIC_CTOR
 
+// ================================================================================================
+// WIP / PARKED (2026-07-05): these Damage / Heat / Cooling stat-upgrade schematics are ORPHANED. Their
+// research NODES were removed from the MAM tree ("only research for Mk1-10" -- see create_mam_tree.py),
+// so they are defined + registered but UNRESEARCHABLE, and the subsystem tier-counts that read them stay
+// 0 (damage scales purely by Mk). Left in place so the feature is a re-add away: to re-enable, add their
+// nodes back in Scripts/ue/create_mam_tree.py and rebuild the tree assets. Their session settings are
+// tagged "(inactive)" until then. DO NOT assume these do anything at runtime right now.
+// ================================================================================================
 #define LR_STAT_CTOR(ClassName, Name, Desc, Tier, Prio) \
 	ClassName::ClassName() { \
 		LR_InitStat(TEXT(Name), TEXT(Desc), Tier, Prio); \

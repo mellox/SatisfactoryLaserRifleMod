@@ -60,8 +60,15 @@ public:
 	void LR_AddInfoUnlock(const FString& Name, const FString& Desc);
 
 	/** Fill mCost with a tier-scaled default ingredient cost (resolved via FClassFinder; skips any
-	 *  item whose path fails to load, so a wrong path can never crash). Call from a constructor. */
+	 *  item whose path fails to load, so a wrong path can never crash). Call from a constructor.
+	 *  Used as the FALLBACK for LR_SetCostFromRecipe and as the cost for stat nodes. */
 	void LR_ApplyDefaultCost(int32 Tier);
+
+	/** Set mCost = the ingredients of Recipe_LaserRifle_Mk<MkLevel> (the SAME list the workbench
+	 *  shows, INCLUDING the "consume prior Mk rifle" ingredient) so the MAM research cost and the
+	 *  craft recipe are one source of truth. Falls back to LR_ApplyDefaultCost if the recipe can't
+	 *  be read at construction time. Call from a constructor. */
+	void LR_SetCostFromRecipe(int32 MkLevel);
 
 	/** Sets the small + large schematic icon to the same texture. */
 	void LR_SetIcon(class UTexture2D* Icon);

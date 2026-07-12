@@ -18,6 +18,7 @@ public:
 	int32 CellMax = 30;
 	int32 Portions = 0;
 	int32 PortionsMax = 8;
+	int32 SpareBatteries = -1;   // spare base-game Batteries in the player's inventory (-1 = don't draw)
 	bool  bOverheated = false;
 
 	// Native ammo HUD does NOT render for this weapon (it bypasses the vanilla fire
