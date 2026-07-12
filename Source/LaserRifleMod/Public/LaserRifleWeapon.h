@@ -2,6 +2,7 @@
 
 #include "CoreMinimal.h"
 #include "Equipment/FGWeapon.h"
+#include "DamageTypes/FGDamageType.h"
 #include "LaserRifleWeapon.generated.h"
 
 class UStaticMesh;
@@ -96,6 +97,21 @@ class LASERRIFLEMOD_API ULaserRifleAmmo : public UFGAmmoType
 	GENERATED_BODY()
 public:
 	ULaserRifleAmmo();
+};
+
+/**
+ * Laser damage type. Subclasses UFGDamageType so FactoryGame actors whose TakeDamage casts the damage event's
+ * DamageTypeClass CDO to UFGDamageType via GetDefaultObject<T>() (a check()ed cast -- e.g. AFGSporeFlower,
+ * FGSporeFlower.cpp:36) do NOT crash the way a base UDamageType did. UFGDamageType's ctor ZEROES
+ * DamageImpulse/DestructibleImpulse (base UDamageType uses 800), so we restore them + mShouldDamageDestructible
+ * to keep the knockback / destructible behaviour the laser had before the crash fix. See [[laserrifle-sporeflower-crash]].
+ */
+UCLASS()
+class LASERRIFLEMOD_API ULaserRifleDamageType : public UFGDamageType
+{
+	GENERATED_BODY()
+public:
+	ULaserRifleDamageType(const FObjectInitializer& ObjectInitializer);
 };
 
 /**

@@ -22,6 +22,7 @@
 #include "SessionSettings/SessionSettingsManager.h"
 #include "LaserRifleSessionSettings.h"
 #include "GameFramework/DamageType.h"
+#include "DamageTypes/FGDamageType.h"   // UFGDamageType -- required so FG actors' TakeDamage cast doesn't crash
 #include "Kismet/GameplayStatics.h"
 #include "Engine/World.h"
 #include "AkAudioEvent.h"
@@ -95,6 +96,17 @@ static TAutoConsoleVariable<float> CVarHoldRoll(TEXT("lr.HoldRoll"), 0.0f, TEXT(
 ULaserRifleAmmo::ULaserRifleAmmo()
 {
 	mMagazineSize = 30;   // protected in UFGAmmoType; matches ALaserRifleWeapon::ShotsPerCell
+}
+
+// Laser damage type (fixes the AFGSporeFlower TakeDamage crash -- see the FireLaser ApplyPointDamage call).
+// UFGDamageType's ctor zeroes the physics impulses the base UDamageType sets to 800, so restore them (+ let it
+// hurt destructibles) to keep the same knockback / destructible feel the laser had before the fix.
+ULaserRifleDamageType::ULaserRifleDamageType(const FObjectInitializer& ObjectInitializer)
+	: Super(ObjectInitializer)
+{
+	DamageImpulse             = 800.f;   // base UDamageType default; UFGDamageType's ctor zeroes it
+	DestructibleImpulse       = 800.f;
+	mShouldDamageDestructible = true;    // keep destructibles damageable (base UDamageType had no such gate)
 }
 
 ALaserRifleWeapon::ALaserRifleWeapon()
@@ -1988,9 +2000,17 @@ void ALaserRifleWeapon::FireLaser(AFGCharacterPlayer* Char, APlayerController* P
 	{
 		AActor* HitActor = Hit.GetActor();
 		const bool bPawn = HitActor && HitActor->IsA(APawn::StaticClass());
+		// Damage type MUST be a UFGDamageType subclass (NOT the base UDamageType). Some FactoryGame actors'
+		// TakeDamage take the damage event's DamageTypeClass CDO and cast it to UFGDamageType via
+		// GetDefaultObject<T>() -- a check()ed cast (Class.h: `check(Ret->IsA(T::StaticClass()))`). AFGSporeFlower
+		// does exactly this (FGSporeFlower.cpp:36), so shooting one with a base UDamageType HARD-CRASHED on that
+		// assert. We pass ULaserRifleDamageType (our UFGDamageType subclass): the cast succeeds AND its ctor
+		// restores the 800 physics impulse + destructible damage that UFGDamageType's ctor zeroes (parity with
+		// the pre-fix base-UDamageType feel). Still a UDamageType, so no other TakeDamage handler regresses.
+		// See [[laserrifle-sporeflower-crash]].
 		UGameplayStatics::ApplyPointDamage(HitActor, Dmg, Dir, Hit,
-			PC, this, UDamageType::StaticClass());
-		UE_LOG(LogLaserRifle, Display, TEXT("[LR] FireLaser HIT %s [%s]%s dmg=%.1f (x%.2f)"),
+			PC, this, ULaserRifleDamageType::StaticClass());
+		UE_LOG(LogLaserRifle, Display, TEXT("[LR] FireLaser HIT %s [%s]%s dmg=%.1f (x%.2f) dmgType=ULaserRifleDamageType"),
 			*GetNameSafe(HitActor), *GetNameSafe(Hit.GetComponent()),
 			bPawn ? TEXT(" <PAWN>") : TEXT(""), Dmg, Mult);
 	}
