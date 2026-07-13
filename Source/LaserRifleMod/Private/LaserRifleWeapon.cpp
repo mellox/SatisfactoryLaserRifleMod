@@ -35,6 +35,38 @@
 #include "Engine/SkeletalMesh.h"
 #include "Math/RandomStream.h"
 
+// --- Dev console command: give the local player one of each Mk1-10 laser rifle, so every tier
+//     can be equipped for muzzle/visual tuning without researching + crafting the whole ladder.
+//     In-game console: lr.GiveRifles  (behind the console -> dev/testing only). ---
+static void LR_GiveAllRifles(UWorld* World)
+{
+	if (!World) { return; }
+	AFGCharacterPlayer* Ch = Cast<AFGCharacterPlayer>(UGameplayStatics::GetPlayerCharacter(World, 0));
+	if (!Ch)  { UE_LOG(LogLaserRifle, Warning, TEXT("[LR] GiveRifles: no local player character.")); return; }
+	UFGInventoryComponent* Inv = Ch->GetInventory();
+	if (!Inv) { UE_LOG(LogLaserRifle, Warning, TEXT("[LR] GiveRifles: player has no inventory.")); return; }
+	int32 Given = 0;
+	for (int32 M = 1; M <= 10; ++M)
+	{
+		const FString Path = FString::Printf(
+			TEXT("/LaserRifleMod/Equipment/LaserRifle/Desc_LaserRifle_Mk%d.Desc_LaserRifle_Mk%d_C"), M, M);
+		UClass* DescCls = LoadClass<UFGItemDescriptor>(nullptr, *Path);
+		if (!DescCls)
+		{
+			UE_LOG(LogLaserRifle, Warning, TEXT("[LR] GiveRifles: Mk%d descriptor not found (%s)"), M, *Path);
+			continue;
+		}
+		const int32 Added = Inv->AddStack(FInventoryStack(1, TSubclassOf<UFGItemDescriptor>(DescCls)), true);
+		if (Added > 0) { ++Given; }
+		UE_LOG(LogLaserRifle, Display, TEXT("[LR] GiveRifles: Mk%d added=%d"), M, Added);
+	}
+	UE_LOG(LogLaserRifle, Display, TEXT("[LR] GiveRifles: gave %d/10 Mk rifles."), Given);
+}
+static FAutoConsoleCommandWithWorld GCmdLRGiveRifles(
+	TEXT("lr.GiveRifles"),
+	TEXT("Dev: add one of each Mk1-10 Laser Rifle to the local player's inventory (for tuning/testing)."),
+	FConsoleCommandWithWorldDelegate::CreateStatic(&LR_GiveAllRifles));
+
 // --- Rig driver console vars: live-tunable in-game so ONE build tests many behaviours. ---
 static TAutoConsoleVariable<int32> CVarRigEnable(TEXT("lr.RigEnable"), 0,
 	TEXT("LaserRifle: use the OLD rigged skeletal pilot body on Mk1 (1=on) instead of the shipped static ")
