@@ -20,3 +20,15 @@ __writetest_dir/
 # OS cruft
 Thumbs.db
 .DS_Store
+
+# Claude/ruflo tooling + local working dirs (not release content)
+.claude-flow/
+_vfx_preview/
+
+# Internal team notes + asset-pipeline docs (kept local, not published)
+_team/
+tripo-mcp-setup.md
+tripo-rifle-prompts.md
+
+# 3D-generation working data (huge, >100MB meshes; kept local, never committed)
+tripo_rifles/
