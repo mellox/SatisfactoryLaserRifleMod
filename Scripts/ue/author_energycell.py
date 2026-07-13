@@ -18,7 +18,9 @@ def err(m):
 eal=unreal.EditorAssetLibrary; at=unreal.AssetToolsHelpers.get_asset_tools()
 EQ="/LaserRifleMod/Equipment/LaserRifle"
 RECDIR="/LaserRifleMod/Recipes"
-ICON=EQ+"/Icons/T_LaserRifle_Icon_Mk1"              # reuse an existing cooked texture for the first build
+ICON=EQ+"/Icons/T_LR_EnergyCell"                    # rendered cobbled-canister icon (batt_canister_taped)
+ICON_PNG=r"C:\Claude\Projects\SatisfactoryLaserRifleMod\Content\Equipment\LaserRifle\Icons\src\energycell_icon.png"
+ICON_DEST_DIR="/LaserRifleMod/Equipment/LaserRifle/Icons"
 
 DESC_NAME="Desc_LR_EnergyCell";     DESC_FULL=EQ+"/"+DESC_NAME
 RECIPE_NAME="Recipe_LR_EnergyCell"; RECIPE_FULL=RECDIR+"/"+RECIPE_NAME
@@ -28,6 +30,7 @@ ITEMDESC_PARENT="/Script/FactoryGame.FGItemDescriptor"
 WIRE  ="/Game/FactoryGame/Resource/Parts/Wire/Desc_Wire.Desc_Wire_C"
 QUARTZ="/Game/FactoryGame/Resource/Parts/QuartzCrystal/Desc_QuartzCrystal.Desc_QuartzCrystal_C"
 WORKBENCH="/Game/FactoryGame/Buildable/-Shared/WorkBench/BP_WorkshopComponent.BP_WorkshopComponent_C"
+ASSEMBLER="/Game/FactoryGame/Buildable/Factory/AssemblerMk1/Build_AssemblerMk1.Build_AssemblerMk1_C"  # 2-ingredient machine (user 2026-07-13: cell is machine-producible, same recipe)
 
 def item_amount(cls, amt):
     ia=unreal.ItemAmount()
@@ -91,10 +94,18 @@ def make_recipe(desc_bp):
     if wire:   ings.append(item_amount(wire, 5))
     if quartz: ings.append(item_amount(quartz, 2))
     _set(cdo, "mIngredients", ings, "ingredients")
-    wb=unreal.load_class(None, WORKBENCH)                  # base template's mProducedIn is EMPTY -> set explicitly
-    if wb: _set(cdo, "mProducedIn", [wb], "producedIn")
-    else:  err("WORKBENCH FAILED -> recipe UNCRAFTABLE (no mProducedIn): "+WORKBENCH)
-    _set(cdo, "mManufactoringDuration", 2.0, "duration")  # NOTE header spelling: mManufactoringDuration
+    # mProducedIn LIST (user 2026-07-13: cell is machine-producible via the SAME recipe, like base-game ammo --
+    # Iron Rebar = Constructor+Workshop, Shatter Rebar = Assembler+Workshop). The cell has 2 ingredients so it
+    # goes in the Assembler + the Equipment Workshop hand-craft; machines just overclock for speed. Machine-first
+    # order matches the base-game "Assembler, Equipment Workshop" display.
+    wb=unreal.load_class(None, WORKBENCH)
+    asm=unreal.load_class(None, ASSEMBLER)
+    producers=[p for p in (asm, wb) if p]
+    if producers: _set(cdo, "mProducedIn", producers, "producedIn")
+    else: err("NO producers loaded -> recipe UNCRAFTABLE")
+    log("  producedIn: assembler=%s workshop=%s (%d total)" % (bool(asm), bool(wb), len(producers)))
+    if not asm: err("Assembler class FAILED to load -- cell NOT machine-craftable, check path: "+ASSEMBLER)
+    _set(cdo, "mManufactoringDuration", 20.0, "duration")  # mManufactoringDuration (header spelling). 20s hand-craft (user 2026-07-13: match the rifle; bulk = machine)
     _set(cdo, "mDisplayName", unreal.Text("Energy Cell"), "recipeName")
     eal.save_loaded_asset(dup)
     # READ-BACK proof (cold-review finding): mProduct/mIngredients go through fail-soft _set, so a silent set-
@@ -111,8 +122,29 @@ def make_recipe(desc_bp):
         RECIPE_NAME, prod0, len(rb_ings), bool(wb)))
     return dup
 
+def import_icon():
+    # Import the rendered cobbled-canister PNG as T_LR_EnergyCell (replace in place), so make_desc can point the
+    # cell's mSmallIcon at it. Fail-soft: if the PNG is missing, log + leave whatever T_LR_EnergyCell resolves to
+    # (make_desc then falls back to the cloned Battery icon).
+    import os
+    if not os.path.exists(ICON_PNG):
+        err("icon PNG MISSING (cell keeps its prior icon): "+ICON_PNG); return
+    task=unreal.AssetImportTask()
+    task.filename=ICON_PNG; task.destination_path=ICON_DEST_DIR; task.destination_name="T_LR_EnergyCell"
+    task.replace_existing=True; task.automated=True; task.save=True
+    at.import_asset_tasks([task])
+    tex=eal.load_asset(ICON)
+    if tex:
+        try: tex.set_editor_property("lod_group", unreal.TextureGroup.TEXTUREGROUP_UI)   # crisp inventory icon
+        except Exception as e: log("  icon lod_group warn: "+str(e))
+        eal.save_loaded_asset(tex)
+        log("icon imported: T_LR_EnergyCell <- energycell_icon.png")
+    else:
+        err("icon import FAILED to load T_LR_EnergyCell after task")
+
 def main():
     log("====== author_energycell START ======")
+    import_icon()
     d=make_desc()
     if not d: err("desc author FAILED -> aborting recipe"); return False
     r=make_recipe(d)

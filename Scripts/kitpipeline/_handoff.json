@@ -1,0 +1,30 @@
+{
+  "body_id": "body_mk10_sleek",
+  "mk_index": 10,
+  "fbx": "C:\\Claude\\Projects\\SatisfactoryLaserRifleMod\\tripo_rifles\\component_library\\kit_composed\\fbx\\Kit_body_mk10_sleek_FINAL.fbx",
+  "body_only_fbx": "C:\\Claude\\Projects\\SatisfactoryLaserRifleMod\\tripo_rifles\\component_library\\kit_composed\\fbx\\Kit_body_mk10_sleek_BODYONLY.fbx",
+  "muzzle_frac": [
+    -0.8962758493028079,
+    0.3461202110977136
+  ],
+  "slot_to_part": {
+    "ConnectorMat.010": null,
+    "tripo_node_21292a98-81e4-401e-888a-dff2bf2b3edd_material.003": "ant_emitter_spike",
+    "tripo_node_3875bb1d-1942-406c-a71f-2b060e2a53a0_material.004": "batt_canister_taped",
+    "tripo_node_d69fcb8e-7920-4acc-8bde-a25e4ca811f7_material.001": "gauge_analog_dial",
+    "tripo_node_483a6600-9330-4b9f-bc49-c1036dbb25de_material.004": "light_taped_flashlight",
+    "tripo_node_3dff7fa7-c34b-4a7b-92c6-8be239d68d01_material.003": "vent_intake_sleek",
+    "tripo_node_3309ab8f-141d-4e49-99aa-da538f09528a_material.005": "vent_louver_rust",
+    "tripo_node_5b4c08ca-db1c-4ca7-a824-240f9e11a92d_material.001": "body_mk10_sleek"
+  },
+  "texture_root": "C:\\Claude\\Projects\\SatisfactoryLaserRifleMod\\tripo_rifles\\component_library\\kit_composed\\_matfix",
+  "part_source_glbs": {
+    "body_mk10_sleek": "C:\\Claude\\Projects\\SatisfactoryLaserRifleMod\\tripo_rifles\\component_library\\kit_bodies\\raw\\body_mk10_sleek_tex.glb",
+    "light_taped_flashlight": "C:\\Claude\\Projects\\SatisfactoryLaserRifleMod\\tripo_rifles\\component_library\\kit_parts\\raw\\light_taped_flashlight_tex.glb",
+    "gauge_analog_dial": "C:\\Claude\\Projects\\SatisfactoryLaserRifleMod\\tripo_rifles\\component_library\\kit_parts\\raw\\gauge_analog_dial_tex.glb",
+    "batt_canister_taped": "C:\\Claude\\Projects\\SatisfactoryLaserRifleMod\\tripo_rifles\\component_library\\kit_parts\\raw\\batt_canister_taped_tex.glb",
+    "vent_louver_rust": "C:\\Claude\\Projects\\SatisfactoryLaserRifleMod\\tripo_rifles\\component_library\\kit_parts\\raw\\vent_louver_rust_tex.glb",
+    "ant_emitter_spike": "C:\\Claude\\Projects\\SatisfactoryLaserRifleMod\\tripo_rifles\\component_library\\kit_parts\\raw\\ant_emitter_spike_tex.glb",
+    "vent_intake_sleek": "C:\\Claude\\Projects\\SatisfactoryLaserRifleMod\\tripo_rifles\\component_library\\kit_parts\\raw\\vent_intake_sleek_tex.glb"
+  }
+}

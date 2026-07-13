@@ -1,0 +1,30 @@
+{
+  "body_id": "body_mk9_high",
+  "mk_index": 9,
+  "fbx": "C:\\Claude\\Projects\\SatisfactoryLaserRifleMod\\tripo_rifles\\component_library\\kit_composed\\fbx\\Kit_body_mk9_high_FINAL.fbx",
+  "body_only_fbx": "C:\\Claude\\Projects\\SatisfactoryLaserRifleMod\\tripo_rifles\\component_library\\kit_composed\\fbx\\Kit_body_mk9_high_BODYONLY.fbx",
+  "muzzle_frac": [
+    0.413488617698056,
+    0.6858292435705294
+  ],
+  "slot_to_part": {
+    "ConnectorMat.008": null,
+    "tripo_node_3875bb1d-1942-406c-a71f-2b060e2a53a0_material.002": "batt_canister_taped",
+    "tripo_node_3283dde8-65ba-4da0-987e-a8e008c3c344_material.001": "batt_cell_sleek",
+    "tripo_node_97e05dea-64fb-489c-b3cd-8f2a2b53d0de_material.002": "gauge_digital_strip",
+    "tripo_node_8cdde76b-1ae2-4037-9836-4982f7c9982e_material.001": "tape_collar_grey",
+    "tripo_node_40ad79d1-4502-4c32-8014-1e22aa952641_material": "vent_fan_exposed",
+    "tripo_node_3309ab8f-141d-4e49-99aa-da538f09528a_material.003": "vent_louver_rust",
+    "tripo_node_e44a0661-4e81-4a7c-8326-777599422b4d_material": "body_mk9_high"
+  },
+  "texture_root": "C:\\Claude\\Projects\\SatisfactoryLaserRifleMod\\tripo_rifles\\component_library\\kit_composed\\_matfix",
+  "part_source_glbs": {
+    "batt_canister_taped": "C:\\Claude\\Projects\\SatisfactoryLaserRifleMod\\tripo_rifles\\component_library\\kit_parts\\raw\\batt_canister_taped_tex.glb",
+    "tape_collar_grey": "C:\\Claude\\Projects\\SatisfactoryLaserRifleMod\\tripo_rifles\\component_library\\kit_parts\\raw\\tape_collar_grey_tex.glb",
+    "gauge_digital_strip": "C:\\Claude\\Projects\\SatisfactoryLaserRifleMod\\tripo_rifles\\component_library\\kit_parts\\raw\\gauge_digital_strip_tex.glb",
+    "batt_cell_sleek": "C:\\Claude\\Projects\\SatisfactoryLaserRifleMod\\tripo_rifles\\component_library\\kit_parts\\raw\\batt_cell_sleek_tex.glb",
+    "vent_louver_rust": "C:\\Claude\\Projects\\SatisfactoryLaserRifleMod\\tripo_rifles\\component_library\\kit_parts\\raw\\vent_louver_rust_tex.glb",
+    "vent_fan_exposed": "C:\\Claude\\Projects\\SatisfactoryLaserRifleMod\\tripo_rifles\\component_library\\kit_parts\\raw\\vent_fan_exposed_tex.glb",
+    "body_mk9_high": "C:\\Claude\\Projects\\SatisfactoryLaserRifleMod\\tripo_rifles\\component_library\\kit_bodies\\raw\\body_mk9_high_tex.glb"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "body_id": "body_mk1_junk",
+  "mk_index": 1,
+  "fbx": "C:\\Claude\\Projects\\SatisfactoryLaserRifleMod\\tripo_rifles\\component_library\\kit_composed\\fbx\\Kit_body_mk1_junk_FINAL.fbx",
+  "body_only_fbx": "C:\\Claude\\Projects\\SatisfactoryLaserRifleMod\\tripo_rifles\\component_library\\kit_composed\\fbx\\Kit_body_mk1_junk_BODYONLY.fbx",
+  "muzzle_frac": [
+    0.02132980567988193,
+    0.41141539155375595
+  ],
+  "slot_to_part": {
+    "ConnectorMat": null,
+    "tripo_node_68d15819-8b8e-40ae-b241-ec65eb0e69c1_material": "ant_stub_coil",
+    "tripo_node_3875bb1d-1942-406c-a71f-2b060e2a53a0_material": "batt_canister_taped",
+    "tripo_node_97e05dea-64fb-489c-b3cd-8f2a2b53d0de_material": "gauge_digital_strip",
+    "tripo_node_3dff7fa7-c34b-4a7b-92c6-8be239d68d01_material": "vent_intake_sleek",
+    "tripo_node_3309ab8f-141d-4e49-99aa-da538f09528a_material": "vent_louver_rust",
+    "tripo_node_2a1d81c6-8b33-42ee-b947-50d4780b7dac_material": "wire_sheathed",
+    "tripo_node_49fff4b3-c25f-471b-a844-8086a1685d45_material.001": "body_mk1_junk"
+  },
+  "texture_root": "C:\\Claude\\Projects\\SatisfactoryLaserRifleMod\\tripo_rifles\\component_library\\kit_composed\\_matfix",
+  "part_source_glbs": {
+    "batt_canister_taped": "C:\\Claude\\Projects\\SatisfactoryLaserRifleMod\\tripo_rifles\\component_library\\kit_parts\\raw\\batt_canister_taped_tex.glb",
+    "gauge_digital_strip": "C:\\Claude\\Projects\\SatisfactoryLaserRifleMod\\tripo_rifles\\component_library\\kit_parts\\raw\\gauge_digital_strip_tex.glb",
+    "wire_sheathed": "C:\\Claude\\Projects\\SatisfactoryLaserRifleMod\\tripo_rifles\\component_library\\kit_parts\\raw\\wire_sheathed_tex.glb",
+    "ant_stub_coil": "C:\\Claude\\Projects\\SatisfactoryLaserRifleMod\\tripo_rifles\\component_library\\kit_parts\\raw\\ant_stub_coil_tex.glb",
+    "body_mk1_junk": "C:\\Claude\\Projects\\SatisfactoryLaserRifleMod\\tripo_rifles\\component_library\\kit_bodies\\raw\\body_mk1_junk_tex.glb",
+    "vent_louver_rust": "C:\\Claude\\Projects\\SatisfactoryLaserRifleMod\\tripo_rifles\\component_library\\kit_parts\\raw\\vent_louver_rust_tex.glb",
+    "vent_intake_sleek": "C:\\Claude\\Projects\\SatisfactoryLaserRifleMod\\tripo_rifles\\component_library\\kit_parts\\raw\\vent_intake_sleek_tex.glb"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "body_id": "body_mk8_high",
+  "mk_index": 8,
+  "fbx": "C:\\Claude\\Projects\\SatisfactoryLaserRifleMod\\tripo_rifles\\component_library\\kit_composed\\fbx\\Kit_body_mk8_high_FINAL.fbx",
+  "body_only_fbx": "C:\\Claude\\Projects\\SatisfactoryLaserRifleMod\\tripo_rifles\\component_library\\kit_composed\\fbx\\Kit_body_mk8_high_BODYONLY.fbx",
+  "muzzle_frac": [
+    -0.21303407276416297,
+    0.5742036979526288
+  ],
+  "slot_to_part": {
+    "ConnectorMat.007": null,
+    "tripo_node_1aebb239-1a99-4655-9f2d-175499ed2b8a_material.002": "ant_bent_rod",
+    "tripo_node_2244970b-46b4-4de6-8f9e-4c9c3e5d4bee_material.001": "ant_folding",
+    "tripo_node_4128f5c1-bb04-4bf0-a2c3-9491b8d7cb2f_material.002": "cap_bank_mid",
+    "tripo_node_f49cc59c-f56e-4a3f-b0c7-3a896d84f51f_material.001": "cap_cell_sleek",
+    "tripo_node_349b6953-152d-4b4d-82bb-e99671058eda_material": "scope_red_dot",
+    "tripo_node_8cdde76b-1ae2-4037-9836-4982f7c9982e_material": "tape_collar_grey",
+    "tripo_node_6932f57d-3955-40ec-8687-0260c05cf6c8_material": "body_mk8_high"
+  },
+  "texture_root": "C:\\Claude\\Projects\\SatisfactoryLaserRifleMod\\tripo_rifles\\component_library\\kit_composed\\_matfix",
+  "part_source_glbs": {
+    "scope_red_dot": "C:\\Claude\\Projects\\SatisfactoryLaserRifleMod\\tripo_rifles\\component_library\\kit_parts\\raw\\scope_red_dot_tex.glb",
+    "tape_collar_grey": "C:\\Claude\\Projects\\SatisfactoryLaserRifleMod\\tripo_rifles\\component_library\\kit_parts\\raw\\tape_collar_grey_tex.glb",
+    "cap_bank_mid": "C:\\Claude\\Projects\\SatisfactoryLaserRifleMod\\tripo_rifles\\component_library\\kit_parts\\raw\\cap_bank_mid_tex.glb",
+    "body_mk8_high": "C:\\Claude\\Projects\\SatisfactoryLaserRifleMod\\tripo_rifles\\component_library\\kit_bodies\\raw\\body_mk8_high_tex.glb",
+    "ant_folding": "C:\\Claude\\Projects\\SatisfactoryLaserRifleMod\\tripo_rifles\\component_library\\kit_parts\\raw\\ant_folding_tex.glb",
+    "ant_bent_rod": "C:\\Claude\\Projects\\SatisfactoryLaserRifleMod\\tripo_rifles\\component_library\\kit_parts\\raw\\ant_bent_rod_tex.glb",
+    "cap_cell_sleek": "C:\\Claude\\Projects\\SatisfactoryLaserRifleMod\\tripo_rifles\\component_library\\kit_parts\\raw\\cap_cell_sleek_tex.glb"
+  }
+}

@@ -1,0 +1,11 @@
+{
+ "body_id": "mk1_d",
+ "mk_index": 1,
+ "body_only_fbx": "C:\\Claude\\Projects\\SatisfactoryLaserRifleMod\\tripo_rifles\\mk1_v31\\final\\Body_mk1_d.fbx",
+ "muzzle_frac": [
+  0.093,
+  0.2477
+ ],
+ "src_glb": "C:\\Claude\\Projects\\SatisfactoryLaserRifleMod\\tripo_rifles\\mk1_v31\\mk1_d.glb",
+ "verify_png": "C:\\Claude\\Projects\\SatisfactoryLaserRifleMod\\tripo_rifles\\mk1_v31\\_review\\orient\\mk1_d_verify.png"
+}

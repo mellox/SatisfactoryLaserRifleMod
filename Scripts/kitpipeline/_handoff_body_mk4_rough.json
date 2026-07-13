@@ -1,0 +1,30 @@
+{
+  "body_id": "body_mk4_rough",
+  "mk_index": 4,
+  "fbx": "C:\\Claude\\Projects\\SatisfactoryLaserRifleMod\\tripo_rifles\\component_library\\kit_composed\\fbx\\Kit_body_mk4_rough_FINAL.fbx",
+  "body_only_fbx": "C:\\Claude\\Projects\\SatisfactoryLaserRifleMod\\tripo_rifles\\component_library\\kit_composed\\fbx\\Kit_body_mk4_rough_BODYONLY.fbx",
+  "muzzle_frac": [
+    0.25436395302504056,
+    0.20244559922184524
+  ],
+  "slot_to_part": {
+    "ConnectorMat.003": null,
+    "tripo_node_1aebb239-1a99-4655-9f2d-175499ed2b8a_material.001": "ant_bent_rod",
+    "tripo_node_21292a98-81e4-401e-888a-dff2bf2b3edd_material": "ant_emitter_spike",
+    "tripo_node_482e2a3d-6a95-465c-b3e2-d288e8d75085_material.001": "batt_car_scrap",
+    "tripo_node_483a6600-9330-4b9f-bc49-c1036dbb25de_material": "light_taped_flashlight",
+    "tripo_node_3309ab8f-141d-4e49-99aa-da538f09528a_material.001": "vent_louver_rust",
+    "tripo_node_2a1d81c6-8b33-42ee-b947-50d4780b7dac_material.001": "wire_sheathed",
+    "tripo_node_a66c2113-baed-48d6-b736-f62fc05db799_material": "body_mk4_rough"
+  },
+  "texture_root": "C:\\Claude\\Projects\\SatisfactoryLaserRifleMod\\tripo_rifles\\component_library\\kit_composed\\_matfix",
+  "part_source_glbs": {
+    "ant_emitter_spike": "C:\\Claude\\Projects\\SatisfactoryLaserRifleMod\\tripo_rifles\\component_library\\kit_parts\\raw\\ant_emitter_spike_tex.glb",
+    "light_taped_flashlight": "C:\\Claude\\Projects\\SatisfactoryLaserRifleMod\\tripo_rifles\\component_library\\kit_parts\\raw\\light_taped_flashlight_tex.glb",
+    "body_mk4_rough": "C:\\Claude\\Projects\\SatisfactoryLaserRifleMod\\tripo_rifles\\component_library\\kit_bodies\\raw\\body_mk4_rough_tex.glb",
+    "batt_car_scrap": "C:\\Claude\\Projects\\SatisfactoryLaserRifleMod\\tripo_rifles\\component_library\\kit_parts\\raw\\batt_car_scrap_tex.glb",
+    "wire_sheathed": "C:\\Claude\\Projects\\SatisfactoryLaserRifleMod\\tripo_rifles\\component_library\\kit_parts\\raw\\wire_sheathed_tex.glb",
+    "vent_louver_rust": "C:\\Claude\\Projects\\SatisfactoryLaserRifleMod\\tripo_rifles\\component_library\\kit_parts\\raw\\vent_louver_rust_tex.glb",
+    "ant_bent_rod": "C:\\Claude\\Projects\\SatisfactoryLaserRifleMod\\tripo_rifles\\component_library\\kit_parts\\raw\\ant_bent_rod_tex.glb"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "body_id": "body_mk7_mid",
+  "mk_index": 7,
+  "fbx": "C:\\Claude\\Projects\\SatisfactoryLaserRifleMod\\tripo_rifles\\component_library\\kit_composed\\fbx\\Kit_body_mk7_mid_FINAL.fbx",
+  "body_only_fbx": "C:\\Claude\\Projects\\SatisfactoryLaserRifleMod\\tripo_rifles\\component_library\\kit_composed\\fbx\\Kit_body_mk7_mid_BODYONLY.fbx",
+  "muzzle_frac": [
+    0.7218613090786093,
+    0.09057662051857429
+  ],
+  "slot_to_part": {
+    "ConnectorMat.006": null,
+    "tripo_node_21292a98-81e4-401e-888a-dff2bf2b3edd_material.001": "ant_emitter_spike",
+    "tripo_node_482e2a3d-6a95-465c-b3e2-d288e8d75085_material.002": "batt_car_scrap",
+    "tripo_node_b4e92e14-e4cd-4277-a126-3bab20d9f9d8_material.001": "batt_cell_pack",
+    "tripo_node_16ff2e14-96d7-466c-8423-d97d56f38da4_material": "core_energy_crystal",
+    "tripo_node_483a6600-9330-4b9f-bc49-c1036dbb25de_material.002": "light_taped_flashlight",
+    "tripo_node_796cdbeb-a56b-425f-a211-71b72e58c253_material.001": "scope_makeshift",
+    "tripo_node_03c37c20-79b8-429f-9bfb-b66f81fee3dc_material": "body_mk7_mid"
+  },
+  "texture_root": "C:\\Claude\\Projects\\SatisfactoryLaserRifleMod\\tripo_rifles\\component_library\\kit_composed\\_matfix",
+  "part_source_glbs": {
+    "light_taped_flashlight": "C:\\Claude\\Projects\\SatisfactoryLaserRifleMod\\tripo_rifles\\component_library\\kit_parts\\raw\\light_taped_flashlight_tex.glb",
+    "body_mk7_mid": "C:\\Claude\\Projects\\SatisfactoryLaserRifleMod\\tripo_rifles\\component_library\\kit_bodies\\raw\\body_mk7_mid_tex.glb",
+    "batt_car_scrap": "C:\\Claude\\Projects\\SatisfactoryLaserRifleMod\\tripo_rifles\\component_library\\kit_parts\\raw\\batt_car_scrap_tex.glb",
+    "batt_cell_pack": "C:\\Claude\\Projects\\SatisfactoryLaserRifleMod\\tripo_rifles\\component_library\\kit_parts\\raw\\batt_cell_pack_tex.glb",
+    "core_energy_crystal": "C:\\Claude\\Projects\\SatisfactoryLaserRifleMod\\tripo_rifles\\component_library\\kit_parts\\raw\\core_energy_crystal_tex.glb",
+    "scope_makeshift": "C:\\Claude\\Projects\\SatisfactoryLaserRifleMod\\tripo_rifles\\component_library\\kit_parts\\raw\\scope_makeshift_tex.glb",
+    "ant_emitter_spike": "C:\\Claude\\Projects\\SatisfactoryLaserRifleMod\\tripo_rifles\\component_library\\kit_parts\\raw\\ant_emitter_spike_tex.glb"
+  }
+}

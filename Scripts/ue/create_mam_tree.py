@@ -126,23 +126,24 @@ def build_tree(asset_name, display, pre_desc, post_desc, columns):
 
 def main():
     log("====== create_mam_tree START ======")
-    # Tree 1: Mk + damage-line chain (slice: damage tiers only on the Mk1 line).
+    # ONLY-Mk1-10 research (user 2026-07-05: "only have research needed for the mk 1-10").
+    # Single linear chain Mk1 -> Mk2 -> ... -> Mk10, each node gating the next. The damage
+    # (Dmg I..V) and Systems (Heat/Cooling) research were REMOVED -- damage now scales purely
+    # by Mk level (the built-in 1.25^(Mk-1) curve). The old Dmg/Heat/Cool schematic ASSETS are
+    # left orphaned (unresearchable, harmless); the Systems TREE asset is deleted below so it
+    # stops appearing in the MAM.
     mk = ["Schematic_LaserRifle_%02d"%n for n in range(1,11)]
-    dmg = ["Schematic_LR_Dmg_%02d"%n for n in range(1,6)]
-    main_col = [mk[0]] + dmg + mk[1:]          # Mk1, Dmg I..V, Mk2..Mk10
     ok1 = build_tree("MAM_LaserRifle", "Laser Rifle",
-        "Research the craftable laser rifle and its Mk + damage upgrades.",
-        "Each damage tier raises damage; finishing a Mk's damage line unlocks the next Mk.",
-        [main_col])
-    # Tree 2: systems -- Heat Capacity column + Cooling column.
-    heat = ["Schematic_LR_Heat_%02d"%n for n in range(1,3)]
-    cool = ["Schematic_LR_Cool_%02d"%n for n in range(1,3)]
-    ok2 = build_tree("MAM_LaserRifle_Systems", "Laser Rifle - Systems",
-        "Upgrade the laser rifle's heat handling.",
-        "Heat Capacity adds shots before overheat; Cooling speeds recharge.",
-        [heat, cool])
-    log("====== DONE main=%s systems=%s ======"%(ok1, ok2))
-    return ok1 and ok2
+        "Research the craftable laser rifle, Mk1 through Mk10.",
+        "Each Mk unlocks a stronger craftable rifle; completing a Mk unlocks the next.",
+        [mk])
+    # Delete the now-removed Systems tree so it doesn't linger in-game.
+    sys_asset = PKG_DIR + "/MAM_LaserRifle_Systems"
+    if unreal.EditorAssetLibrary.does_asset_exist(sys_asset):
+        unreal.EditorAssetLibrary.delete_asset(sys_asset)
+        log("  deleted removed Systems tree: " + sys_asset)
+    log("====== DONE main=%s (Mk1-10 only) ======"%(ok1,))
+    return ok1
 
 try:
     ok=main(); log("Script "+("SUCCEEDED" if ok else "FAILED")); sys.exit(0 if ok else 1)

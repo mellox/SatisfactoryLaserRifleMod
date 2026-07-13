@@ -1,0 +1,30 @@
+{
+  "body_id": "body_mk5_mid",
+  "mk_index": 5,
+  "fbx": "C:\\Claude\\Projects\\SatisfactoryLaserRifleMod\\tripo_rifles\\component_library\\kit_composed\\fbx\\Kit_body_mk5_mid_FINAL.fbx",
+  "body_only_fbx": "C:\\Claude\\Projects\\SatisfactoryLaserRifleMod\\tripo_rifles\\component_library\\kit_composed\\fbx\\Kit_body_mk5_mid_BODYONLY.fbx",
+  "muzzle_frac": [
+    -0.34853450199943464,
+    0.450692124470653
+  ],
+  "slot_to_part": {
+    "ConnectorMat.004": null,
+    "tripo_node_68d15819-8b8e-40ae-b241-ec65eb0e69c1_material.002": "ant_stub_coil",
+    "tripo_node_45624216-59b2-46ba-801a-8d974c710b31_material": "cap_can_leaky",
+    "tripo_node_483a6600-9330-4b9f-bc49-c1036dbb25de_material.001": "light_taped_flashlight",
+    "tripo_node_796cdbeb-a56b-425f-a211-71b72e58c253_material": "scope_makeshift",
+    "tripo_node_12a13d91-595f-4193-93d2-90b1738327ed_material": "tape_collar_red",
+    "tripo_node_41b258df-3b90-4152-b113-9e5592417ea4_material": "wire_taped_run",
+    "tripo_node_c5ed1ccd-388b-4526-9fc6-ebbf7ef8fed5_material": "body_mk5_mid"
+  },
+  "texture_root": "C:\\Claude\\Projects\\SatisfactoryLaserRifleMod\\tripo_rifles\\component_library\\kit_composed\\_matfix",
+  "part_source_glbs": {
+    "light_taped_flashlight": "C:\\Claude\\Projects\\SatisfactoryLaserRifleMod\\tripo_rifles\\component_library\\kit_parts\\raw\\light_taped_flashlight_tex.glb",
+    "wire_taped_run": "C:\\Claude\\Projects\\SatisfactoryLaserRifleMod\\tripo_rifles\\component_library\\kit_parts\\raw\\wire_taped_run_tex.glb",
+    "tape_collar_red": "C:\\Claude\\Projects\\SatisfactoryLaserRifleMod\\tripo_rifles\\component_library\\kit_parts\\raw\\tape_collar_red_tex.glb",
+    "cap_can_leaky": "C:\\Claude\\Projects\\SatisfactoryLaserRifleMod\\tripo_rifles\\component_library\\kit_parts\\raw\\cap_can_leaky_tex.glb",
+    "ant_stub_coil": "C:\\Claude\\Projects\\SatisfactoryLaserRifleMod\\tripo_rifles\\component_library\\kit_parts\\raw\\ant_stub_coil_tex.glb",
+    "scope_makeshift": "C:\\Claude\\Projects\\SatisfactoryLaserRifleMod\\tripo_rifles\\component_library\\kit_parts\\raw\\scope_makeshift_tex.glb",
+    "body_mk5_mid": "C:\\Claude\\Projects\\SatisfactoryLaserRifleMod\\tripo_rifles\\component_library\\kit_bodies\\raw\\body_mk5_mid_tex.glb"
+  }
+}

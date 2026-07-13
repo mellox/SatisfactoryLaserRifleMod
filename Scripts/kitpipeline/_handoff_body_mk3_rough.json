@@ -1,0 +1,30 @@
+{
+  "body_id": "body_mk3_rough",
+  "mk_index": 3,
+  "fbx": "C:\\Claude\\Projects\\SatisfactoryLaserRifleMod\\tripo_rifles\\component_library\\kit_composed\\fbx\\Kit_body_mk3_rough_FINAL.fbx",
+  "body_only_fbx": "C:\\Claude\\Projects\\SatisfactoryLaserRifleMod\\tripo_rifles\\component_library\\kit_composed\\fbx\\Kit_body_mk3_rough_BODYONLY.fbx",
+  "muzzle_frac": [
+    -0.07660986483008035,
+    0.18763396656138953
+  ],
+  "slot_to_part": {
+    "ConnectorMat.002": null,
+    "tripo_node_2244970b-46b4-4de6-8f9e-4c9c3e5d4bee_material": "ant_folding",
+    "tripo_node_68d15819-8b8e-40ae-b241-ec65eb0e69c1_material.001": "ant_stub_coil",
+    "tripo_node_b4e92e14-e4cd-4277-a126-3bab20d9f9d8_material": "batt_cell_pack",
+    "tripo_node_3283dde8-65ba-4da0-987e-a8e008c3c344_material": "batt_cell_sleek",
+    "tripo_node_4128f5c1-bb04-4bf0-a2c3-9491b8d7cb2f_material": "cap_bank_mid",
+    "tripo_node_f49cc59c-f56e-4a3f-b0c7-3a896d84f51f_material": "cap_cell_sleek",
+    "tripo_node_40f982fa-7d20-4434-8724-694e1164eae5_material": "body_mk3_rough"
+  },
+  "texture_root": "C:\\Claude\\Projects\\SatisfactoryLaserRifleMod\\tripo_rifles\\component_library\\kit_composed\\_matfix",
+  "part_source_glbs": {
+    "body_mk3_rough": "C:\\Claude\\Projects\\SatisfactoryLaserRifleMod\\tripo_rifles\\component_library\\kit_bodies\\raw\\body_mk3_rough_tex.glb",
+    "batt_cell_pack": "C:\\Claude\\Projects\\SatisfactoryLaserRifleMod\\tripo_rifles\\component_library\\kit_parts\\raw\\batt_cell_pack_tex.glb",
+    "ant_stub_coil": "C:\\Claude\\Projects\\SatisfactoryLaserRifleMod\\tripo_rifles\\component_library\\kit_parts\\raw\\ant_stub_coil_tex.glb",
+    "batt_cell_sleek": "C:\\Claude\\Projects\\SatisfactoryLaserRifleMod\\tripo_rifles\\component_library\\kit_parts\\raw\\batt_cell_sleek_tex.glb",
+    "cap_bank_mid": "C:\\Claude\\Projects\\SatisfactoryLaserRifleMod\\tripo_rifles\\component_library\\kit_parts\\raw\\cap_bank_mid_tex.glb",
+    "ant_folding": "C:\\Claude\\Projects\\SatisfactoryLaserRifleMod\\tripo_rifles\\component_library\\kit_parts\\raw\\ant_folding_tex.glb",
+    "cap_cell_sleek": "C:\\Claude\\Projects\\SatisfactoryLaserRifleMod\\tripo_rifles\\component_library\\kit_parts\\raw\\cap_cell_sleek_tex.glb"
+  }
+}
