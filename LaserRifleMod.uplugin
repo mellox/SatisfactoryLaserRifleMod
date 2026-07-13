@@ -1,8 +1,8 @@
 {
 	"FileVersion": 3,
 	"Version": 1,
-	"VersionName": "1.0.0",
-	"SemVersion": "1.0.0",
+	"VersionName": "1.0.1",
+	"SemVersion": "1.0.1",
 	"GameVersion": ">=491125",
 	"FriendlyName": "Laser Rifle",
 	"Description": "Craftable, equippable hitscan laser rifle with a 10-level (Mk1-Mk10) MAM research progression. Reloads from craftable Energy Cells (multi-fuel: also accepts base-game Batteries), heats up and can overheat under sustained fire, and scales damage on a tunable curve while each Mk swaps the body mesh and beam color/intensity. Extensively configurable via in-game settings.",
