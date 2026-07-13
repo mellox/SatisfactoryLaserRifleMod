@@ -176,6 +176,7 @@ The laser rifle works in singleplayer, co-op listen servers, and (with limitatio
 
 - **Singleplayer & Listen Servers:** Full functionality; all mechanics work as intended
 - **Dedicated Server (known issue):** Reload consumption is gated by authority checks and currently only runs fully on the local controller, which can allow free reloads in rare MP scenarios. Use in co-op listen mode for reliable shared behavior. (This limitation is flagged for future fix.)
+- **Photo Mode pose (cosmetic, known issue):** With the rifle equipped, Satisfactory's Photo Mode decoupled (free-fly) camera can render your pioneer in a distorted, over-extended aim pose — an artifact of the first-person aim rig being viewed from an outside angle. It affects the photo framing only and has no gameplay impact; the rifle's own viewmodel and effects render owner-only. A proper Photo Mode pose fix is on the roadmap.
 
 ---
 
@@ -225,17 +226,39 @@ Your save remains intact. The Energy Cell items will persist in storage/inventor
 
 ---
 
+## Pairs Well With — Hostile Scaling
+
+Building the full Mk1–Mk10 arsenal means a lot more when the bugs actually fight back. **[Hostile Scaling](https://ficsit.app/mod/HostileScaling)** (by the same author) scales hostile creature **health, damage, and spawn density** as you push through the milestone tiers — so packs grow tougher and denser the deeper you go, instead of turning trivial the moment you leave the starting biome.
+
+The two mods share the same tier axis, which is what makes them click together:
+
+- **Firepower keeps pace with the threat** — Hostile Scaling ramps enemy health and damage each milestone tier, and the rifle's Mk1→Mk10 MAM progression scales your damage on that same tier curve. Research the next Mk to answer the next wave.
+- **Built for the tougher, denser packs** it creates — precise hitscan beams, a sustained-fire heat/overheat skill ceiling, and craftable Energy Cell fuel so you're never caught dry mid-swarm.
+- **Both are highly configurable and co-op friendly** — dial difficulty and firepower to taste; Hostile Scaling runs fully server-side (see Known Limitations for the rifle's multiplayer reload note).
+
+Tip: if you also run spawn-multiplier mods, start Hostile Scaling's `PerTier` values low, and tech up your rifle alongside your factory — the late-game Mk8–Mk10 rifles feel earned rather than like overkill.
+
+---
+
 ## Credits & Support
 
-**Created by:** mello
+**Created by:** Mellox
 
 The Laser Rifle mod is a complete weapon system built atop Satisfactory's modding framework (SML3) and powered by Wwise audio. Balancing, art, and mechanics have been refined through extensive playtesting and community feedback.
 
-For issues, feature requests, or compatibility questions, please report via the mod's support channel (if available on ficsit.app or your mod host).
+**Need help or found a bug?**
+- **Report issues / request features:** [GitHub Issues](https://github.com/mellox/SatisfactoryLaserRifleMod/issues)
+- **Chat & modding help:** [Satisfactory Modding Discord](https://ficsit.app/community)
 
 ---
 
 ## Description Change History
+
+### 2026-07-13 — Added Hostile Scaling companion section
+- Added a "Pairs Well With — Hostile Scaling" section cross-promoting the companion mod: shared milestone-tier scaling means enemies grow tougher and denser as the rifle's Mk1–Mk10 progression scales your firepower on the same tier axis. Links the [Hostile Scaling](https://ficsit.app/mod/HostileScaling) ficsit.app page.
+
+### 2026-07-13 — Support & author update
+- Corrected author handle to **Mellox**. Added a Support section linking [GitHub Issues](https://github.com/mellox/SatisfactoryLaserRifleMod/issues) for bug reports / feature requests and the [Satisfactory Modding Discord](https://ficsit.app/community) for community help.
 
 ### 2026-07-13 — v1.0.0 initial description
 - Initial comprehensive FICSIT description covering all 10 Mk laser rifle progression, MAM research tree, Energy Cell fuel system, heat/overheat mechanics, per-Mk bodies and visual effects, first-person viewmodel, custom crosshair HUD, configurable in-game settings (15+ sliders in Main and Advanced categories), crafting recipes, damage scaling, multiplayer support, and known limitations. Document serves as authoritative source for all mod capabilities, end-to-end player experience, and configuration options.

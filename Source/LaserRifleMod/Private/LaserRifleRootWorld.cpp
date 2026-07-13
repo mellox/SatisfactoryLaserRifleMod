@@ -2,6 +2,7 @@
 #include "LaserRifleSubsystem.h"
 #include "LaserRifleSchematics.h"
 #include "LaserRifleMod.h"
+#include "LaserRifleLog.h"
 
 #include "FGResearchTree.h"
 #include "UObject/ConstructorHelpers.h"
@@ -23,7 +24,7 @@ ULaserRifleRootWorld::ULaserRifleRootWorld()
 	if (TreeFinder.Succeeded())
 	{
 		mResearchTrees.Add(TreeFinder.Class);
-		UE_LOG(LogLaserRifle, Log, TEXT("[LR] MAM_LaserRifle research tree registered."));
+		LR_LOG(CVarLrLogGeneral, TEXT("[LR] MAM_LaserRifle research tree registered."));
 	}
 	else
 	{
@@ -39,14 +40,14 @@ ULaserRifleRootWorld::ULaserRifleRootWorld()
 	if (SystemsTreeFinder.Succeeded())
 	{
 		mResearchTrees.Add(SystemsTreeFinder.Class);
-		UE_LOG(LogLaserRifle, Log, TEXT("[LR] MAM_LaserRifle_Systems research tree registered."));
+		LR_LOG(CVarLrLogGeneral, TEXT("[LR] MAM_LaserRifle_Systems research tree registered."));
 	}
 	else
 	{
-		UE_LOG(LogLaserRifle, Log,   // parked, not an error -- Systems tree intentionally absent (Mk1-10 only)
+		LR_LOG(CVarLrLogGeneral,   // parked, not an error -- Systems tree intentionally absent (Mk1-10 only)
 			TEXT("[LR] MAM_LaserRifle_Systems research tree absent (parked; Mk1-10 research only)."));
 	}
 
-	UE_LOG(LogLaserRifle, Log, TEXT("[LR] RootWorld: registered %d schematics + subsystem."),
+	LR_LOG(CVarLrLogGeneral, TEXT("[LR] RootWorld: registered %d schematics + subsystem."),
 		mSchematics.Num());
 }

@@ -101,7 +101,7 @@ This mod is built using the **Satisfactory Modding Loader (SML)** and Unreal Eng
 ### Build Gotchas
 
 - **Two Source Trees**: Always sync `Source/` and `Config/` from the repo to `SatisfactoryModLoader\Mods\LaserRifleMod` before building (UAT compiles the Mods copy, not the repo).
-- **WeaponUpgrades Conflict** (if present): Temporarily rename `Mods\WeaponUpgrades\WeaponUpgrades.uplugin` → `.disabled_for_build` during the build, then restore. This works around a UHT false-positive "unused friend" warning that blocks the shared FactoryEditor target.
+- **Multiple mods in one project**: The shared FactoryEditor target compiles *every* mod in your `Mods\` folder, so an AccessTransformer friend-grant in **another** mod can trigger a UHT false-positive "unused friend" error (C2248) that fails the whole build — including this one. Workaround: temporarily rename the conflicting mod's `.uplugin` → `.uplugin.disabled_for_build` during the build, then restore it. This mod builds cleanly on its own.
 
 ## How It Works
 
@@ -152,8 +152,9 @@ This mod is provided as-is for the Satisfactory community. See the included LICE
 
 ## Support
 
-For issues, feedback, or feature requests, please check the mod's page on **ficsit.app** or open an issue on GitHub.
+- **Bug reports & feature requests:** [open an issue on GitHub](https://github.com/mellox/SatisfactoryLaserRifleMod/issues)
+- **Modding community chat:** [Satisfactory Modding Discord](https://ficsit.app/community)
 
 ---
 
-**Mod Version**: 0.1.0 | **Game**: Satisfactory Update 8+ | **SML**: 3.12+
+**Mod Version**: 1.0.0 | **Game**: Satisfactory Update 8+ | **SML**: 3.12+

@@ -2,6 +2,7 @@
 #include "LaserRifleMod.h"
 #include "LaserRifleSchematics.h"
 #include "LaserRifleSessionSettings.h"
+#include "LaserRifleLog.h"
 
 #include "FGSchematicManager.h"
 #include "Equipment/FGAmmoType.h"
@@ -28,7 +29,7 @@ void ALaserRifleSubsystem::BeginPlay()
 
 	SchematicManager = AFGSchematicManager::Get(GetWorld());
 
-	UE_LOG(LogLaserRifle, Log, TEXT("[LR] Subsystem BeginPlay (Authority=%d, %d schematics)."),
+	LR_LOG(CVarLrLogGeneral, TEXT("[LR] Subsystem BeginPlay (Authority=%d, %d schematics)."),
 		HasAuthority() ? 1 : 0, RifleSchematics.Num());
 
 	// Server drives damage application; re-applies periodically so live config
@@ -202,6 +203,6 @@ void ALaserRifleSubsystem::ApplyDamageScaling()
 	}
 	LastAppliedMult = Mult;
 
-	UE_LOG(LogLaserRifle, Log, TEXT("[LR] Applied damage x%.2f (level %d) to %s."),
+	LR_LOG(CVarLrLogBeam, TEXT("[LR] Applied damage x%.2f (level %d) to %s."),
 		Mult, GetRifleLevel(), *GetNameSafe(AmmoClass.Get()));
 }

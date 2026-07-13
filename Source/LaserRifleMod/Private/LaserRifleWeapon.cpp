@@ -1,6 +1,7 @@
 #include "LaserRifleWeapon.h"
 #include "LaserRifleSubsystem.h"
 #include "LaserRifleMod.h"
+#include "LaserRifleLog.h"
 
 #include "Components/StaticMeshComponent.h"
 #include "Engine/StaticMesh.h"
@@ -257,7 +258,7 @@ ALaserRifleWeapon::ALaserRifleWeapon()
 	if (ZapSnd.Succeeded()) { FireSound = ZapSnd.Object; }
 	// One-time diagnostic: a single launch tells us if the custom event resolved.
 	// <none> => path/cook problem (fall back to ShockShank); a name => asset resolved.
-	UE_LOG(LogLaserRifle, Display, TEXT("[LR] FireSound=%s"),
+	LR_LOG(CVarLrLogGeneral, TEXT("[LR] FireSound=%s"),
 		FireSound ? *FireSound->GetName() : TEXT("<none>"));
 	for (int32 i = 0; i < 24; ++i)
 	{
@@ -346,7 +347,7 @@ void ALaserRifleWeapon::BeginPlay()
 
 	// DIAGNOSTIC: confirm the beam cylinder survived the Shipping cook. If this
 	// logs <none>, /Engine/BasicShapes was not packaged -> swap to a cooked mesh.
-	UE_LOG(LogLaserRifle, Display, TEXT("[LR] BeginPlay beamMesh=%s bodyMat=%s beamMat=%s colors=%d"),
+	LR_LOG(CVarLrLogBeam, TEXT("[LR] BeginPlay beamMesh=%s bodyMat=%s beamMat=%s colors=%d"),
 		(BeamMesh && BeamMesh->GetStaticMesh()) ? *BeamMesh->GetStaticMesh()->GetName() : TEXT("<none>"),
 		BodyMaterial ? *BodyMaterial->GetName() : TEXT("<none>"),
 		BeamMaterial ? *BeamMaterial->GetName() : TEXT("<none>"),
@@ -417,7 +418,7 @@ void ALaserRifleWeapon::BeginPlay()
 				WireLocalAxis.Add((L.X >= L.Y && L.X >= L.Z) ? 0 : (L.Y >= L.Z ? 1 : 2));
 			}
 			WireRefSegLen = FMath::Max(FVector::Dist(WireRefPos[0], WireRefPos[1]), KINDA_SMALL_NUMBER);
-			UE_LOG(LogLaserRifle, Display,
+			LR_LOG(CVarLrLogRig,
 				TEXT("[LR] WireChain refDir[0]=(%.2f,%.2f,%.2f) refSpan=%.1fcm segLen=%.1fcm localAxis=%d (measured)"),
 				WireRefDir[0].X, WireRefDir[0].Y, WireRefDir[0].Z,
 				FVector::Dist(WireRefPos[0], WireRefPos.Last()), WireRefSegLen, WireLocalAxis[0]);
@@ -433,7 +434,7 @@ void ALaserRifleWeapon::BeginPlay()
 			}
 			bWireMeshReady = true;
 		}
-		UE_LOG(LogLaserRifle, Display, TEXT("[LR] WireChain: mesh=%s bones=%d ready=%d"),
+		LR_LOG(CVarLrLogRig, TEXT("[LR] WireChain: mesh=%s bones=%d ready=%d"),
 			*GetNameSafe(WireChainMesh), WireBoneNames.Num(), bWireMeshReady ? 1 : 0);
 	}
 	else
@@ -481,7 +482,7 @@ void ALaserRifleWeapon::Equip(AFGCharacterPlayer* character)
 	bUseArmsAttach = true;
 	mArmAnimation = EArmEquipment::AE_Rifle;
 	AttachToArms();
-	UE_LOG(LogLaserRifle, Display, TEXT("[LR] Weapon Equip armsAttach=%d armAnim=%d bodyMesh=%s"),
+	LR_LOG(CVarLrLogRig, TEXT("[LR] Weapon Equip armsAttach=%d armAnim=%d bodyMesh=%s"),
 		bUseArmsAttach ? 1 : 0, (int32)GetArmsAnimation(),
 		(BodyMesh && BodyMesh->GetStaticMesh()) ? *BodyMesh->GetStaticMesh()->GetName() : TEXT("<none>"));
 }
@@ -515,7 +516,7 @@ void ALaserRifleWeapon::AttachToCamera()
 	BodyMesh->SetVisibility(true);
 	bAttached = true;
 	ApplyGripFromConfig();
-	UE_LOG(LogLaserRifle, Display, TEXT("[LR] Body attached to CAMERA viewmodel -- live grip sliders active."));
+	LR_LOG(CVarLrLogRig, TEXT("[LR] Body attached to CAMERA viewmodel -- live grip sliders active."));
 }
 
 void ALaserRifleWeapon::AttachToArms()
@@ -533,7 +534,7 @@ void ALaserRifleWeapon::AttachToArms()
 	FString Names;
 	for (const FName& N : Arms->GetAllSocketNames()) { Names += N.ToString() + TEXT(", "); }
 	const bool bHasSocket = Arms->DoesSocketExist(GripSocketName);
-	UE_LOG(LogLaserRifle, Display, TEXT("[LR] Mesh1P sockets: %s"), *Names);
+	LR_LOG(CVarLrLogRig, TEXT("[LR] Mesh1P sockets: %s"), *Names);
 
 	BodyMesh->AttachToComponent(Arms, FAttachmentTransformRules::SnapToTargetNotIncludingScale, GripSocketName);
 	BodyMesh->SetOnlyOwnerSee(true);
@@ -543,7 +544,7 @@ void ALaserRifleWeapon::AttachToArms()
 	bAttached = true;
 	bHeldInit = false;           // re-snap the smoothed hold to the new target
 	ProceduralArmsHold(0.f);     // place it immediately (procedural: hand-follow + aim-forward)
-	UE_LOG(LogLaserRifle, Display, TEXT("[LR] Body attached to arms socket '%s' (exists=%d) -- PROCEDURAL hold (aim-forward)"),
+	LR_LOG(CVarLrLogRig, TEXT("[LR] Body attached to arms socket '%s' (exists=%d) -- PROCEDURAL hold (aim-forward)"),
 		*GripSocketName.ToString(), bHasSocket ? 1 : 0);
 	// DIAGNOSTIC: where did everything end up? (camera vs socket vs rifle body) so we
 	// can see WHY arms-mode hides the rifle (socket off-screen, or grip offset wrong).
@@ -558,13 +559,13 @@ void ALaserRifleWeapon::AttachToArms()
 		const FVector SockUp  = SockX.GetUnitAxis(EAxis::Z);
 		const FVector RifleFwd = BodyMesh->GetForwardVector();  // muzzle = +X local
 		const FVector RifleUp  = BodyMesh->GetUpVector();
-		UE_LOG(LogLaserRifle, Display,
+		LR_LOG(CVarLrLogRig,
 			TEXT("[LR] ARMS-POS cam=%s socket=%s body=%s | body-cam=%.0f socket-cam=%.0f | rel=%s scale=%s vis=%d"),
 			*Cam.ToCompactString(), *Sock.ToCompactString(), *Body.ToCompactString(),
 			(Body - Cam).Size(), (Sock - Cam).Size(),
 			*BodyMesh->GetRelativeLocation().ToCompactString(), *BodyMesh->GetRelativeScale3D().ToCompactString(),
 			BodyMesh->IsVisible() ? 1 : 0);
-		UE_LOG(LogLaserRifle, Display,
+		LR_LOG(CVarLrLogRig,
 			TEXT("[LR] ARMS-DIR camFwd=%s sockFwd=%s sockUp=%s rifleFwd=%s rifleUp=%s | relRot=%s"),
 			*CamFwd.ToCompactString(), *SockFwd.ToCompactString(), *SockUp.ToCompactString(),
 			*RifleFwd.ToCompactString(), *RifleUp.ToCompactString(),
@@ -665,7 +666,7 @@ void ALaserRifleWeapon::ProceduralArmsHold(float Dt)
 			-SwapYawLeft  * present,                   // yaw: muzzle across to the LEFT
 			SwapTiltRoll  * present + 3.0f * wobble);  // roll: hand turn (+ wobble)
 		if (t >= down && !bSwapMidLogged) { bSwapMidLogged = true;
-			UE_LOG(LogLaserRifle, Display, TEXT("[LR] CellSwap presented: t=%.2f hold=%.2fs pitch=%.1f yawL=%.1f"),
+			LR_LOG(CVarLrLogRig, TEXT("[LR] CellSwap presented: t=%.2f hold=%.2fs pitch=%.1f yawL=%.1f"),
 				t, SwapHoldTime, SwapTiltPitch, SwapYawLeft); }
 	}
 	else { bSwapMidLogged = false; }   // re-arm for the next swap
@@ -753,7 +754,7 @@ void ALaserRifleWeapon::SetupRig()
 	{
 		const int32 NumMat = RiggedBody->GetNumMaterials();
 		for (int32 m = 0; m < FMath::Max(1, NumMat); ++m) { RiggedBody->SetMaterial(m, RiggedBodyMaterial); }
-		UE_LOG(LogLaserRifle, Display, TEXT("[LR] Rigged Mk1 material applied: %s (%d slots)"),
+		LR_LOG(CVarLrLogRig, TEXT("[LR] Rigged Mk1 material applied: %s (%d slots)"),
 			*GetNameSafe(RiggedBodyMaterial), NumMat);
 	}
 	// Measure the rig mesh's actual size so we can normalize it to the 110cm rifle convention at
@@ -808,10 +809,10 @@ void ALaserRifleWeapon::SetupRig()
 			if (Ref.FindBoneIndex(FName(*FString::Printf(TEXT("mount_%d"), mi))) != INDEX_NONE) { ++MountsFound; }
 		}
 		bRigHasMountBones = (MountsFound == 6);
-		UE_LOG(LogLaserRifle, Display, TEXT("[LR] Rig mount bones: %d/6 found -> bodyBoneAnchors=%d"),
+		LR_LOG(CVarLrLogRig, TEXT("[LR] Rig mount bones: %d/6 found -> bodyBoneAnchors=%d"),
 			MountsFound, bRigHasMountBones ? 1 : 0);
 	}
-	UE_LOG(LogLaserRifle, Display,
+	LR_LOG(CVarLrLogRig,
 		TEXT("[LR] Rig setup: bonesFound=%d/5 nativeLongest=%.2fcm stiff=%.1f damp=%.1f lag=%.2f idle(f=%.2f a=%.3f) root=%d"),
 		found, RigNativeLongest, RigStiff, RigDamp, RigLag, RigIdleFreq, RigIdleAmp, RootIdx);
 }
@@ -1038,7 +1039,7 @@ void ALaserRifleWeapon::RollRandomComponents()
 			// up again, this line says exactly which connector + what Len it computed.
 			const FVector DiagStart = Comp->GetComponentTransform().TransformPosition(Spec.LocalOffset);
 			const FVector DiagEnd = BodyMesh->GetComponentTransform().TransformPosition(BodyAnchor);
-			UE_LOG(LogLaserRifle, Display,
+			LR_LOG(CVarLrLogRig,
 				TEXT("[LR] Connector[%d] mount=%d type=%d part=%s len=%.1fcm (hideBelow=6cm)"),
 				ConnectorCursor - 1, m, (int32)Spec.Type, *Part->GetName(),
 				FVector::Dist(DiagStart, DiagEnd));
@@ -1057,14 +1058,14 @@ void ALaserRifleWeapon::RollRandomComponents()
 			const FVector P = RiggedBody->GetSocketTransform(MB, RTS_Component).GetLocation();
 			MountLog += FString::Printf(TEXT("m%d=(%.0f,%.0f,%.0f) "), mi, P.X, P.Y, P.Z);
 		}
-		UE_LOG(LogLaserRifle, Display, TEXT("[LR] Rig mount bones comp-space: %s(rigNativeLongest=%.0fcm)"),
+		LR_LOG(CVarLrLogRig, TEXT("[LR] Rig mount bones comp-space: %s(rigNativeLongest=%.0fcm)"),
 			*MountLog, RigNativeLongest);
 	}
 
 	bHasRolledLoadout = true;
 	// Visibility is enforced every frame by the same bWantRig blocks that toggle BodyMesh/
 	// RiggedBody (ProceduralArmsHold + ApplyVisualsForLevel) -- no need to set it here too.
-	UE_LOG(LogLaserRifle, Display, TEXT("[LR] RandomComponents rolled: %s (bodyLongest=%.1fcm, connectors=%d/%d)"),
+	LR_LOG(CVarLrLogRig, TEXT("[LR] RandomComponents rolled: %s (bodyLongest=%.1fcm, connectors=%d/%d)"),
 		*RollLog, BodyLongest, ConnectorCursor, ConnectorStates.Num());
 }
 
@@ -1293,7 +1294,7 @@ void ALaserRifleWeapon::DriveRigBones(float Dt, const FTransform& RifleXf)
 
 	if (CVarRigDebug.GetValueOnGameThread() != 0)
 	{
-		UE_LOG(LogLaserRifle, Display,
+		LR_LOG(CVarLrLogRig,
 			TEXT("[LR] Rig acc=(%.0f,%.0f,%.0f) pend=(%.2f,%.2f) p1=(%.2f,%.2f) p2=(%.2f,%.2f) ant=(%.2f,%.2f) react=%d floppy=%d"),
 			LocalAcc.X, LocalAcc.Y, LocalAcc.Z, RigAngle[2].X, RigAngle[2].Y, RigAngle[3].X, RigAngle[3].Y,
 			RigAngle[4].X, RigAngle[4].Y, RigAngle[0].X, RigAngle[0].Y, bReactive ? 1 : 0, bFloppy ? 1 : 0);
@@ -1350,7 +1351,7 @@ void ALaserRifleWeapon::SetupDanglingBattery()
 		BatWireSway.SetNum(BatteryWires.Num());
 	}
 	bBatteryReady = true;
-	UE_LOG(LogLaserRifle, Display, TEXT("[LR] Dangling battery ready: mesh=%s len=%.1fcm"),
+	LR_LOG(CVarLrLogRig, TEXT("[LR] Dangling battery ready: mesh=%s len=%.1fcm"),
 		*GetNameSafe(BatMesh), BatCellLen);
 }
 
@@ -1500,7 +1501,7 @@ void ALaserRifleWeapon::UpdateDanglingBattery(float Dt)
 
 	if (CVarBatteryDebug.GetValueOnGameThread() != 0)
 	{
-		UE_LOG(LogLaserRifle, Display,
+		LR_LOG(CVarLrLogRig,
 			TEXT("[LR] Battery insert=%.2f show=%d swing=(%.2f,%.2f) mount=(%.1f,%.1f,%.1f) wires=%d cell=%.0f swap=%d"),
 			BatInsert, bShow ? 1 : 0, BatSwing.X, BatSwing.Y,
 			MountLocal.X, MountLocal.Y, MountLocal.Z, BatteryWires.Num(), CellShots, bSwapping ? 1 : 0);
@@ -1570,7 +1571,7 @@ void ALaserRifleWeapon::OnCellRecharged()
 	RechargeFlash   = 1.f;       // existing emissive swell (UpdateHeatFX decays it)
 	const float Total = SwapDownTime + SwapHoldTime + SwapUpTime;
 	FireCooldown    = FMath::Max(FireCooldown, Total);
-	UE_LOG(LogLaserRifle, Display,
+	LR_LOG(CVarLrLogFuel,
 		TEXT("[LR] OnCellRecharged: swap start (down=%.2f hold=%.2f up=%.2f total=%.2fs)"),
 		SwapDownTime, SwapHoldTime, SwapUpTime, Total);
 }
@@ -1602,7 +1603,7 @@ void ALaserRifleWeapon::DoReload()
 				PortionsPerBattery = FMath::Max(1, FuelPortions[i]);   // this pack's size (drives the HUD max)
 				Portions = PortionsPerBattery;
 				bConsumed = true;
-				UE_LOG(LogLaserRifle, Display,
+				LR_LOG(CVarLrLogFuel,
 					TEXT("[LR] Fuel consumed: %s (%d->%d) -> fresh pack of %d portions (highest available)"),
 					*GetNameSafe(FuelCls), Have, Have - 1, PortionsPerBattery);
 				break;
@@ -1631,7 +1632,7 @@ void ALaserRifleWeapon::DoReload()
 	CellShots = ShotsPerCell;
 	Portions  = FMath::Max(0, Portions - 1);
 	OnCellRecharged();   // cell-swap motion + glow swell + fire lockout
-	UE_LOG(LogLaserRifle, Display, TEXT("[LR] Reload: %.0f shots, %d portions left"), CellShots, Portions);
+	LR_LOG(CVarLrLogFuel, TEXT("[LR] Reload: %.0f shots, %d portions left"), CellShots, Portions);
 }
 
 TSubclassOf<UFGItemDescriptor> ALaserRifleWeapon::ResolveBatteryClass()
@@ -1648,7 +1649,7 @@ TSubclassOf<UFGItemDescriptor> ALaserRifleWeapon::ResolveBatteryClass()
 		bBatteryResolveTried = true;
 		BatteryItemClass = LoadClass<UFGItemDescriptor>(nullptr,
 			TEXT("/LaserRifleMod/Equipment/LaserRifle/Desc_LR_EnergyCell.Desc_LR_EnergyCell_C"));
-		UE_LOG(LogLaserRifle, Display, TEXT("[LR] Energy Cell item resolve: %s"),
+		LR_LOG(CVarLrLogFuel, TEXT("[LR] Energy Cell item resolve: %s"),
 			BatteryItemClass ? *GetNameSafe(BatteryItemClass) : TEXT("FAILED -> reloads free + no spare count (fail-open)"));
 	}
 	return BatteryItemClass;
@@ -1683,7 +1684,7 @@ void ALaserRifleWeapon::ResolveFuelTable()
 		{
 			FuelClasses.Add(Cls);
 			FuelPortions.Add(Row.Portions);
-			UE_LOG(LogLaserRifle, Display, TEXT("[LR] Fuel resolve: %s -> %d portions"), *GetNameSafe(Cls), Row.Portions);
+			LR_LOG(CVarLrLogFuel, TEXT("[LR] Fuel resolve: %s -> %d portions"), *GetNameSafe(Cls), Row.Portions);
 		}
 		else
 		{
@@ -1700,7 +1701,7 @@ void ALaserRifleWeapon::ResolveFuelTable()
 			FuelClasses.Swap(j, j - 1);
 		}
 	}
-	UE_LOG(LogLaserRifle, Display, TEXT("[LR] Fuel table resolved: %d fuel(s)"), FuelClasses.Num());
+	LR_LOG(CVarLrLogFuel, TEXT("[LR] Fuel table resolved: %d fuel(s)"), FuelClasses.Num());
 }
 
 int32 ALaserRifleWeapon::CountSpareFuel()
@@ -1734,7 +1735,7 @@ void ALaserRifleWeapon::EnsureNativeAmmo()
 	// can't loop us. Returns true once a magazine object is built.
 	const bool bMag = InitializeMagazineObject();
 	bNativeAmmoInit = true;
-	UE_LOG(LogLaserRifle, Display,
+	LR_LOG(CVarLrLogAmmo,
 		TEXT("[LR] NativeAmmo init: ammoClass=%s magObj=%s magSize=%d initMagRet=%d"),
 		*GetNameSafe(mCurrentAmmunitionClass), *GetNameSafe(GetAmmoTypeDescriptor()),
 		GetMagSize(), bMag ? 1 : 0);
@@ -1753,7 +1754,7 @@ void ALaserRifleWeapon::SyncNativeAmmo(float Dt)
 	if (AmmoLogTimer <= 0.f)
 	{
 		AmmoLogTimer = 1.0f;
-		UE_LOG(LogLaserRifle, Display,
+		LR_LOG(CVarLrLogAmmo,
 			TEXT("[LR] NativeAmmo sync: GetCurrentAmmo=%d GetMagSize=%d ammoClass=%s magObj=%s spare=%d"),
 			GetCurrentAmmo(), GetMagSize(), *GetNameSafe(mCurrentAmmunitionClass),
 			*GetNameSafe(GetAmmoTypeDescriptor()),
@@ -1790,7 +1791,7 @@ void ALaserRifleWeapon::Tick(float DeltaSeconds)
 			// Flag turned off (or was never on): retire the rolled loadout entirely.
 			bHasRolledLoadout = false;   // the per-frame visibility blocks hide parts + wires
 			LastRandomComponentsValue = CVarRandomComponents.GetValueOnGameThread();
-			UE_LOG(LogLaserRifle, Display, TEXT("[LR] RandomComponents feature flag OFF -> loadout hidden"));
+			LR_LOG(CVarLrLogRig, TEXT("[LR] RandomComponents feature flag OFF -> loadout hidden"));
 		}
 	}
 
@@ -1856,7 +1857,7 @@ void ALaserRifleWeapon::Tick(float DeltaSeconds)
 	if (bRNow && !bReloadKeyWasDown && !bSwapping
 		&& CellShots >= 0.f && CellShots < ShotsPerCell)
 	{
-		UE_LOG(LogLaserRifle, Display, TEXT("[LR] Manual reload (R) at %.0f/%.0f"), CellShots, ShotsPerCell);
+		LR_LOG(CVarLrLogFuel, TEXT("[LR] Manual reload (R) at %.0f/%.0f"), CellShots, ShotsPerCell);
 		DoReload();
 	}
 	bReloadKeyWasDown = bRNow;
@@ -1977,7 +1978,7 @@ void ALaserRifleWeapon::FireLaser(AFGCharacterPlayer* Char, APlayerController* P
 		const FRotator BRot = BodyMesh->GetComponentRotation();
 		const FVector BeamDir = (BeamEnd - BeamStart).GetSafeNormal();
 		const float CrosshairDist = bBeamHit ? (BeamEnd - Start).Size() : -1.f;   // crosshair hit range (uu), -1 = miss (max range)
-		UE_LOG(LogLaserRifle, Display,
+		LR_LOG(CVarLrLogBeam,
 			TEXT("[LR] BEAMDIAG Mk%d muzzleLocal=(%.1f,%.1f,%.1f) bodyFwdPitch=%.1f bodyRot=(P%.1f Y%.1f R%.1f) beamStart=(%.0f,%.0f,%.0f) beamLen=%.0f crosshairDist=%.0f beamPitch=%.1f viewPitch=%.1f"),
 			EffectiveMkLevel(), MuzzleLocal.X, MuzzleLocal.Y, MuzzleLocal.Z,
 			FMath::RadiansToDegrees(FMath::Asin(FMath::Clamp(Fwd.Z, -1.f, 1.f))),
@@ -2010,7 +2011,7 @@ void ALaserRifleWeapon::FireLaser(AFGCharacterPlayer* Char, APlayerController* P
 		// See [[laserrifle-sporeflower-crash]].
 		UGameplayStatics::ApplyPointDamage(HitActor, Dmg, Dir, Hit,
 			PC, this, ULaserRifleDamageType::StaticClass());
-		UE_LOG(LogLaserRifle, Display, TEXT("[LR] FireLaser HIT %s [%s]%s dmg=%.1f (x%.2f) dmgType=ULaserRifleDamageType"),
+		LR_LOG(CVarLrLogBeam, TEXT("[LR] FireLaser HIT %s [%s]%s dmg=%.1f (x%.2f) dmgType=ULaserRifleDamageType"),
 			*GetNameSafe(HitActor), *GetNameSafe(Hit.GetComponent()),
 			bPawn ? TEXT(" <PAWN>") : TEXT(""), Dmg, Mult);
 	}
@@ -2035,7 +2036,7 @@ void ALaserRifleWeapon::FireLaser(AFGCharacterPlayer* Char, APlayerController* P
 	Heat = FMath::Min(2.f, Heat + 1.f / Shots);
 	LastShotAge = 0.f;   // heat won't cool until the gun is idle again (see UpdateHeatFX)
 	if (Heat >= 2.f && !bOverheated) { bOverheated = true;
-		UE_LOG(LogLaserRifle, Display, TEXT("[LR] OVERHEAT (2x) -- locked until cooled to soft limit.")); }
+		LR_LOG(CVarLrLogFx, TEXT("[LR] OVERHEAT (2x) -- locked until cooled to soft limit.")); }
 }
 
 void ALaserRifleWeapon::UpdateHeatFX(float DeltaSeconds)
@@ -2112,7 +2113,7 @@ void ALaserRifleWeapon::UpdateHeatFX(float DeltaSeconds)
 		// FireLaser reset PulsePos to 0 last frame; detect that edge for a one-shot diag.
 		if (PulsePos < 0.05f && PrevPulsePos >= 1.f)
 		{
-			UE_LOG(LogLaserRifle, Display,
+			LR_LOG(CVarLrLogFx,
 				TEXT("[LR] RacingStrip start: band=%.1f sharp=%.1f dur=%.2fs"),
 				PulseBandAmount, PulseSharpness, PulseDuration);
 		}
@@ -2585,7 +2586,7 @@ void ALaserRifleWeapon::ShowBeam(const FVector& A, const FVector& B, const FLine
 		{
 			BeamMID = UMaterialInstanceDynamic::Create(Src, this);
 			BeamMesh->SetMaterial(0, BeamMID);
-			UE_LOG(LogLaserRifle, Display, TEXT("[LR] Beam MID from %s; first colour=(%.2f,%.2f,%.2f)"),
+			LR_LOG(CVarLrLogBeam, TEXT("[LR] Beam MID from %s; first colour=(%.2f,%.2f,%.2f)"),
 				*GetNameSafe(Src), Color.R, Color.G, Color.B);
 		}
 		if (BeamMID)
@@ -2619,7 +2620,7 @@ void ALaserRifleWeapon::ForceCrosshair(APlayerController* PC)
 	HUD->SetCrosshairState(ECrosshairState::ECS_Weapon);
 	static bool bLogged = false;
 	if (!bLogged) { bLogged = true;
-		UE_LOG(LogLaserRifle, Display, TEXT("[LR] Crosshair forced ON (ECS_Weapon) via FGHUD.")); }
+		LR_LOG(CVarLrLogBeam, TEXT("[LR] Crosshair forced ON (ECS_Weapon) via FGHUD.")); }
 }
 
 void ALaserRifleWeapon::EnsureCrosshair(APlayerController* PC, const FLinearColor& Color)
@@ -2633,7 +2634,7 @@ void ALaserRifleWeapon::EnsureCrosshair(APlayerController* PC, const FLinearColo
 			Crosshair->CrosshairColor = Color;
 			Crosshair->AddToViewport(50);
 			bCrosshairAdded = true;
-			UE_LOG(LogLaserRifle, Display, TEXT("[LR] Custom crosshair widget added to viewport."));
+			LR_LOG(CVarLrLogBeam, TEXT("[LR] Custom crosshair widget added to viewport."));
 		}
 	}
 	else
@@ -2753,7 +2754,7 @@ void ALaserRifleWeapon::ApplyVisualsForLevel(int32 VisualLevel)
 			const FBox LB = LevelBodyMeshes[Idx]->GetBoundingBox();
 			const FVector Ext = LB.GetSize();
 			const FVector Cen = LB.GetCenter();
-			UE_LOG(LogLaserRifle, Display,
+			LR_LOG(CVarLrLogVisual,
 				TEXT("[LR] Visual Mk%d mesh=%s bbox=(%.1f,%.1f,%.1f) muzzleX=%.1f center=(%.1f,%.1f,%.1f) longestIsX=%d"),
 				Idx + 1, *GetNameSafe(LevelBodyMeshes[Idx]), Ext.X, Ext.Y, Ext.Z,
 				LB.Max.X, Cen.X, Cen.Y, Cen.Z,

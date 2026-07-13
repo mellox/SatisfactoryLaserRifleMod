@@ -1,5 +1,6 @@
 #include "LaserRifleSchematics.h"
 #include "LaserRifleMod.h"
+#include "LaserRifleLog.h"
 
 #include "Engine/Texture2D.h"
 #include "Styling/SlateBrush.h"
@@ -119,7 +120,7 @@ void ULaserRifleSchematic_Base::LR_ApplyDefaultCost(int32 MkLevel)
 	}
 	#undef LR_PART
 	LR_SetCost(Cost);
-	UE_LOG(LogLaserRifle, Display, TEXT("[LR] MAM research cost Mk%d (literal fallback): %d items"), M, Cost.Num());
+	LR_LOG(CVarLrLogGeneral, TEXT("[LR] MAM research cost Mk%d (literal fallback): %d items"), M, Cost.Num());
 }
 
 void ULaserRifleSchematic_Base::LR_SetCostFromRecipe(int32 MkLevel)
@@ -144,7 +145,7 @@ void ULaserRifleSchematic_Base::LR_SetCostFromRecipe(int32 MkLevel)
 			if (Ings.Num() > 0)
 			{
 				LR_SetCost(Ings);
-				UE_LOG(LogLaserRifle, Display,
+				LR_LOG(CVarLrLogGeneral,
 					TEXT("[LR] MAM cost Mk%d <- Recipe_LaserRifle_Mk%d (%d ingredients, matches workbench)"),
 					M, M, Ings.Num());
 				return;
