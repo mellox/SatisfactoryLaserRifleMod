@@ -12,11 +12,16 @@ The Laser Rifle mod adds a powerful craftable hitscan weapon to Satisfactory wit
 The journey begins with the **Mk1 Laser Rifle**, a ramshackle assembly of salvaged electronics and wires held together by hope. Crafted from raw materials at your Equipment Workshop—5 Reinforced Iron Plates, 40 Wire, 10 Copper Wire, and 10 Quartz—it delivers modest hitscan damage but serves as your entry point into laser weaponry. Mk1 research also unlocks the **Energy Cell recipe** (the custom fuel cell), allowing you to power your rifle.
 
 **Research cost:** Raw parts + parts only (no prior rifle needed).
+![Node Showcase](https://raw.githubusercontent.com/mellox/SatisfactoryLaserRifleMod/master/Media/LrMk1.png)
 
 ### Mk2 to Mk5: Steel & Refinement
 Each step from Mk2 through Mk5 evolves the rifle's construction. Craft each by consuming the previous Mk rifle plus new tier-appropriate parts (copper, steel, rotors, cooling systems, and more). The bodies transition from the frankenrifle's jury-rigged look toward more purposeful designs. Damage, energy capacity, and heat tolerance scale smoothly across these tiers.
 
 **Research cost per tier:** Consumes the prior Mk rifle + tier-specific parts.
+![Node Showcase](https://raw.githubusercontent.com/mellox/SatisfactoryLaserRifleMod/master/Media/LrMk2.png)
+---
+![Node Showcase](https://raw.githubusercontent.com/mellox/SatisfactoryLaserRifleMod/master/Media/LrMk3.png)
+
 
 ### Mk6 to Mk10: Energy Weapons
 Mk6 onward transforms the laser into sleek, glowing energy weapons. Mk6 emits a **cyan beam**, Mk7 a **blue beam**, Mk8 a **violet beam**, Mk9 a **magenta beam**, and Mk10 a brilliant **white-gold energy burst**. These rifles sport luminous cores that self-illuminate based on your equipped tier; crafting them requires advanced parts (motors, cooling systems, crystal oscillators, and quantum components) plus the prior Mk rifle.
@@ -30,6 +35,7 @@ Mk6 onward transforms the laser into sleek, glowing energy weapons. Mk6 emits a 
 All 10 rifles live in a single **"Laser Rifle"** research chain in the MAM. Progress sequentially—researching Mk2 requires completing Mk1, researching Mk3 requires completing Mk2, and so on. Each research costs the ingredients shown in the MAM description (which match your Equipment Workshop recipe exactly). To upgrade from Mk1 to Mk2 rifle, you must research the Mk2 schematic (consuming a Mk1 rifle as part of research cost) AND craft a new Mk2 (consuming another Mk1 rifle as part of the crafting cost).
 
 Early research tiers unlock quickly with basic resources; later tiers demand advanced components and considerable investment, forming a natural gate on raw firepower.
+![Node Showcase](https://raw.githubusercontent.com/mellox/SatisfactoryLaserRifleMod/master/Media/LrResearch.png)
 
 ---
 
@@ -91,6 +97,7 @@ Each Mk rifle sports a distinct 3D model and per-tier visual identity:
 - **Plasma Orb (Mk6+, optional):** At high research tiers, a subtle emissive glow pulses near the muzzle.
 
 **Muzzle bloom** briefly illuminates the barrel on each shot, and the **custom crosshair** displays your current rifle's status.
+![Node Showcase](https://raw.githubusercontent.com/mellox/SatisfactoryLaserRifleMod/master/Media/TagYourIt.png)
 
 ---
 
@@ -141,6 +148,7 @@ Access the mod settings via **Mod Settings → Laser Rifle** in your savegame me
 - **Random Components (WIP):** Feature flag for randomized kit loadouts (default off)
 
 All settings adjust live—no reload required.
+![Node Showcase](https://raw.githubusercontent.com/mellox/SatisfactoryLaserRifleMod/master/Media/LrConfig.png)
 
 ---
 
@@ -170,7 +178,7 @@ With default settings, higher Mk rifles deal exponentially more damage. Adjust *
 
 ---
 
-## Multiplayer & Dedicated Servers
+## Multiplayer & Dedicated Servers (Attempt not Tested, let me know)
 
 The laser rifle works in singleplayer, co-op listen servers, and (with limitations) on dedicated servers:
 
@@ -248,17 +256,14 @@ The Laser Rifle mod is a complete weapon system built atop Satisfactory's moddin
 
 **Need help or found a bug?**
 - **Report issues / request features:** [GitHub Issues](https://github.com/mellox/SatisfactoryLaserRifleMod/issues)
-- **Chat & modding help:** [Satisfactory Modding Discord](https://ficsit.app/community)
+- **Chat & modding help:** [Satisfactory Modding Discord](https://discord.gg/AU2uBWCEY)
+
+**Question: Is it a feature or a bug?**
+- While playing with it I found the laser can destroy certain objects such as breakable wall and resource nugets. I was about to look into it, but it was soooo satisfying shooting down those breakable walls.
 
 ---
 
 ## Description Change History
-
-### 2026-07-13 — Added Hostile Scaling companion section
-- Added a "Pairs Well With — Hostile Scaling" section cross-promoting the companion mod: shared milestone-tier scaling means enemies grow tougher and denser as the rifle's Mk1–Mk10 progression scales your firepower on the same tier axis. Links the [Hostile Scaling](https://ficsit.app/mod/HostileScaling) ficsit.app page.
-
-### 2026-07-13 — Support & author update
-- Corrected author handle to **Mellox**. Added a Support section linking [GitHub Issues](https://github.com/mellox/SatisfactoryLaserRifleMod/issues) for bug reports / feature requests and the [Satisfactory Modding Discord](https://ficsit.app/community) for community help.
 
 ### 2026-07-13 — v1.0.0 initial description
 - Initial comprehensive FICSIT description covering all 10 Mk laser rifle progression, MAM research tree, Energy Cell fuel system, heat/overheat mechanics, per-Mk bodies and visual effects, first-person viewmodel, custom crosshair HUD, configurable in-game settings (15+ sliders in Main and Advanced categories), crafting recipes, damage scaling, multiplayer support, and known limitations. Document serves as authoritative source for all mod capabilities, end-to-end player experience, and configuration options.
